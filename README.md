@@ -1,0 +1,2 @@
+# 2025_QianCompetition_GreenAwnDream
+2025嵌入式大赛应用赛道_青芒筑梦队
