@@ -22,56 +22,10 @@ Output  : none
 void Drive_Motor(float Vx,float Vy,float Vz)
 {
 		float amplitude=3.5; //Wheel target speed limit //车轮目标速度限幅
-	
-	  //Speed smoothing is enabled when moving the omnidirectional trolley
-	  //全向移动小车才开启速度平滑处理
-	  if(Car_Mode==Mec_Car||Car_Mode==Omni_Car)
-		{
-			Smooth_control(Vx,Vy,Vz); //Smoothing the input speed //对输入速度进行平滑处理
-  
-      //Get the smoothed data 
-			//获取平滑处理后的数据			
-			Vx=smooth_control.VX;     
-			Vy=smooth_control.VY;
-			Vz=smooth_control.VZ;
-		}
-		
-		//Mecanum wheel car
-	  //麦克纳姆轮小车
-	  if (Car_Mode==Mec_Car) 
-    {
-			//Inverse kinematics //运动学逆解
-			MOTOR_A.Target   = +Vy+Vx-Vz*(Axle_spacing+Wheel_spacing);
-			MOTOR_B.Target   = -Vy+Vx-Vz*(Axle_spacing+Wheel_spacing);
-			MOTOR_C.Target   = +Vy+Vx+Vz*(Axle_spacing+Wheel_spacing);
-			MOTOR_D.Target   = -Vy+Vx+Vz*(Axle_spacing+Wheel_spacing);
-		
-			//Wheel (motor) target speed limit //车轮(电机)目标速度限幅
-			MOTOR_A.Target=target_limit_float(MOTOR_A.Target,-amplitude,amplitude); 
-			MOTOR_B.Target=target_limit_float(MOTOR_B.Target,-amplitude,amplitude); 
-			MOTOR_C.Target=target_limit_float(MOTOR_C.Target,-amplitude,amplitude); 
-			MOTOR_D.Target=target_limit_float(MOTOR_D.Target,-amplitude,amplitude); 
-		} 
-		
-		//Omni car
-		//全向轮小车
-		else if (Car_Mode==Omni_Car) 
-		{
-			//Inverse kinematics //运动学逆解
-			MOTOR_A.Target   =   Vy + Omni_turn_radiaus*Vz;
-			MOTOR_B.Target   =  -X_PARAMETER*Vx - Y_PARAMETER*Vy + Omni_turn_radiaus*Vz;
-			MOTOR_C.Target   =  +X_PARAMETER*Vx - Y_PARAMETER*Vy + Omni_turn_radiaus*Vz;
-		
-			//Wheel (motor) target speed limit //车轮(电机)目标速度限幅
-			MOTOR_A.Target=target_limit_float(MOTOR_A.Target,-amplitude,amplitude); 
-			MOTOR_B.Target=target_limit_float(MOTOR_B.Target,-amplitude,amplitude); 
-			MOTOR_C.Target=target_limit_float(MOTOR_C.Target,-amplitude,amplitude); 
-			MOTOR_D.Target=0;	//Out of use //没有使用到
-		}
 		
 		//Ackermann structure car
 		//阿克曼小车
-		else if (Car_Mode==Akm_Car) 
+		 if (Car_Mode==Akm_Car) 
 		{
 			//Ackerman car specific related variables //阿克曼小车专用相关变量
 			float R, Ratio=636.56, AngleR, Angle_Servo;
@@ -112,18 +66,18 @@ void Drive_Motor(float Vx,float Vy,float Vz)
 		
 		//Differential car
 		//差速小车
-		else if (Car_Mode==Diff_Car) 
-		{
-			//Inverse kinematics //运动学逆解
-			MOTOR_A.Target  = Vx - Vz * Wheel_spacing / 2.0f; //计算出左轮的目标速度
-		  MOTOR_B.Target =  Vx + Vz * Wheel_spacing / 2.0f; //计算出右轮的目标速度
-			
-			//Wheel (motor) target speed limit //车轮(电机)目标速度限幅
-		  MOTOR_A.Target=target_limit_float( MOTOR_A.Target,-amplitude,amplitude); 
-	    MOTOR_B.Target=target_limit_float( MOTOR_B.Target,-amplitude,amplitude); 
-			MOTOR_C.Target=0; //Out of use //没有使用到
-			MOTOR_D.Target=0; //Out of use //没有使用到
-		}
+//		else if (Car_Mode==Diff_Car) 
+//		{
+//			//Inverse kinematics //运动学逆解
+//			MOTOR_A.Target  = Vx - Vz * Wheel_spacing / 2.0f; //计算出左轮的目标速度
+//		  MOTOR_B.Target =  Vx + Vz * Wheel_spacing / 2.0f; //计算出右轮的目标速度
+//			
+//			//Wheel (motor) target speed limit //车轮(电机)目标速度限幅
+//		  MOTOR_A.Target=target_limit_float( MOTOR_A.Target,-amplitude,amplitude); 
+//	    MOTOR_B.Target=target_limit_float( MOTOR_B.Target,-amplitude,amplitude); 
+//			MOTOR_C.Target=0; //Out of use //没有使用到
+//			MOTOR_D.Target=0; //Out of use //没有使用到
+//		}
 		
 		//FourWheel car
 		//四驱车
@@ -142,20 +96,7 @@ void Drive_Motor(float Vx,float Vy,float Vz)
 			MOTOR_D.Target=target_limit_float( MOTOR_D.Target,-amplitude,amplitude); 	
 		}
 		
-		//Tank Car
-		//履带车
-		else if (Car_Mode==Tank_Car) 
-		{
-			//Inverse kinematics //运动学逆解
-			MOTOR_A.Target  = Vx - Vz * (Wheel_spacing) / 2.0f;    //计算出左轮的目标速度
-		  MOTOR_B.Target =  Vx + Vz * (Wheel_spacing) / 2.0f;    //计算出右轮的目标速度
-			
-			//Wheel (motor) target speed limit //车轮(电机)目标速度限幅
-		  MOTOR_A.Target=target_limit_float( MOTOR_A.Target,-amplitude,amplitude); 
-	    MOTOR_B.Target=target_limit_float( MOTOR_B.Target,-amplitude,amplitude); 
-			MOTOR_C.Target=0; //Out of use //没有使用到
-			MOTOR_D.Target=0; //Out of use //没有使用到
-		}
+
 }
 /**************************************************************************
 Function: FreerTOS task, core motion control task
@@ -234,6 +175,9 @@ void Balance_task(void *pvParameters)
 				 //如果Turn_Off(Voltage)返回值为1，不允许控制小车进行运动，PWM值设置为0
 				 else	Set_Pwm(0,0,0,0,0); 
 			 }
+			
+			 //以下else为自检程序代码
+			 
 				else
 				{
 					if(Proc_Flag==3)						//自检电机

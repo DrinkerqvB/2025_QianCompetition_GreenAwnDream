@@ -626,6 +626,16 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>author</GroupName>
+          <Files>
+            <File>
+              <FileName>修改.md</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\修改.md</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
   </Targets>
