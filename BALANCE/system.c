@@ -174,7 +174,8 @@ void systemInit(void)
 	//Serial port 5 initialization, communication baud rate 115200, 
 	//can be used to communicate with ROS terminal
 	//串口5初始化，通信波特率115200，可用于与ROS端通信
-	uart5_init(115200);
+	//uart5_init(115200);
+	Tracking_Init();
 
 	//ADC pin initialization, used to read the battery voltage and potentiometer gear, 
 	//potentiometer gear determines the car after the boot of the car model

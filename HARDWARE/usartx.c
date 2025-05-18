@@ -27,7 +27,7 @@ void data_task(void *pvParameters)
 				data_transition(); 
 				USART1_SEND();     //Serial port 1 sends data //串口1发送数据
 				USART3_SEND();     //Serial port 3 (ROS) sends data  //串口3(ROS)发送数据
-				USART5_SEND();		 //Serial port 5 sends data //串口5发送数据
+				//USART5_SEND();		 //Serial port 5 sends data //串口5发送数据
 				CAN_SEND();        //CAN send data //CAN发送数据	
 			}
 	}
@@ -192,22 +192,7 @@ void USART3_Return(void)
 	usart3_send('\r');
 	usart3_send('\n');
 }
-/**************************************************************************
-Function: Serial port 5 sends data
-Input   : none
-Output  : none
-函数功能：串口5发送数据
-入口参数：无
-返回  值：无
-**************************************************************************/
-void USART5_SEND(void)
-{
-  unsigned char i = 0;	
-	for(i=0; i<24; i++)
-	{
-		usart5_send(Send_Data.buffer[i]);
-	}	 
-}
+
 /**************************************************************************
 Function: CAN sends data
 Input   : none
@@ -391,66 +376,7 @@ void uart3_init(u32 bound)
   USART_ITConfig(USART3, USART_IT_RXNE, ENABLE); //Open the serial port to accept interrupts //开启串口接受中断
   USART_Cmd(USART3, ENABLE);                     //Enable serial port 3 //使能串口3 
 }
-/**************************************************************************
-Function: Serial port 5 initialization
-Input   : none
-Output  : none
-函数功能：串口5初始化
-入口参数：无
-返回  值：无
-**************************************************************************/
-void uart5_init(u32 bound)
-{  	 
-  GPIO_InitTypeDef GPIO_InitStructure;
-	USART_InitTypeDef USART_InitStructure;
-	NVIC_InitTypeDef NVIC_InitStructure;
-	
-	//PC12 TX
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);	 //Enable the gpio clock  //使能GPIO时钟
-		//PD2 RX
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);	 //Enable the gpio clock  //使能GPIO时钟
-  RCC_APB1PeriphClockCmd(RCC_APB1Periph_UART5, ENABLE); //Enable the Usart clock //使能USART时钟
 
-	GPIO_PinAFConfig(GPIOC,GPIO_PinSource12,GPIO_AF_UART5);	
-	GPIO_PinAFConfig(GPIOD,GPIO_PinSource2 ,GPIO_AF_UART5);	 
-	
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;
-	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_AF;            //输出模式
-	GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;          //推挽输出
-	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_50MHz;       //高速50MHZ
-	GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_UP;            //上拉
-	GPIO_Init(GPIOC, &GPIO_InitStructure);  		          //初始化
-
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
-	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_AF;            //输出模式
-	GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;          //推挽输出
-	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_50MHz;       //高速50MHZ
-	GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_UP;            //上拉
-	GPIO_Init(GPIOD, &GPIO_InitStructure);  		          //初始化
-	
-  //UsartNVIC configuration //UsartNVIC配置
-  NVIC_InitStructure.NVIC_IRQChannel = UART5_IRQn;
-	//Preempt priority //抢占优先级
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2 ;
-	//Preempt priority //抢占优先级
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;		
-	//Enable the IRQ channel //IRQ通道使能	
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;	
-  //Initialize the VIC register with the specified parameters 
-	//根据指定的参数初始化VIC寄存器		
-	NVIC_Init(&NVIC_InitStructure);
-	
-  //USART Initialization Settings 初始化设置
-	USART_InitStructure.USART_BaudRate = bound; //Port rate //串口波特率
-	USART_InitStructure.USART_WordLength = USART_WordLength_8b; //The word length is 8 bit data format //字长为8位数据格式
-	USART_InitStructure.USART_StopBits = USART_StopBits_1; //A stop bit //一个停止
-	USART_InitStructure.USART_Parity = USART_Parity_No; //Prosaic parity bits //无奇偶校验位
-	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None; //No hardware data flow control //无硬件数据流控制
-	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;	//Sending and receiving mode //收发模式
-  USART_Init(UART5, &USART_InitStructure);      //Initialize serial port 5 //初始化串口5
-  USART_ITConfig(UART5, USART_IT_RXNE, ENABLE); //Open the serial port to accept interrupts //开启串口接受中断
-  USART_Cmd(UART5, ENABLE);                     //Enable serial port 5 //使能串口5
-}
 /**************************************************************************
 Function: Serial port 1 receives interrupted
 Input   : none
@@ -750,76 +676,7 @@ int USART3_IRQHandler(void)
   return 0;	
 }
 
-/**************************************************************************
-Function: Serial port 5 receives interrupted
-Input   : none
-Output  : none
-函数功能：串口5接收中断
-入口参数：无
-返回  值：无
-**************************************************************************/
-int UART5_IRQHandler(void)
-{	
-	static u8 Count=0;
-	u8 Usart_Receive;
 
-	if(USART_GetITStatus(UART5, USART_IT_RXNE) != RESET) //Check if data is received //判断是否接收到数据
-	{
-		Usart_Receive = USART_ReceiveData(UART5);//Read the data //读取数据
-		if(Time_count<CONTROL_DELAY)
-			// Data is not processed until 10 seconds after startup
-		  //开机10秒前不处理数据
-		  return 0;	
-		
-		//Fill the array with serial data
-		//串口数据填入数组
-    Receive_Data.buffer[Count]=Usart_Receive;
-		
-		// Ensure that the first data in the array is FRAME_HEADER
-		//确保数组第一个数据为FRAME_HEADER
-		if(Usart_Receive == FRAME_HEADER||Count>0) 
-			Count++; 
-		else 
-			Count=0;
-		
-		if (Count == 11) //Verify the length of the packet //验证数据包的长度
-		{   
-				Count=0; //Prepare for the serial port data to be refill into the array //为串口数据重新填入数组做准备
-				if(Receive_Data.buffer[10] == FRAME_TAIL) //Verify the frame tail of the packet //验证数据包的帧尾
-				{
-					//Data exclusionary or bit check calculation, mode 0 is sent data check
-					//数据异或位校验计算，模式0是发送数据校验
-					if(Receive_Data.buffer[9] ==Check_Sum(9,0))	 
-				  {	
-						float Vz;						
-						//All modes flag position 0, USART3 control mode
-            //所有模式标志位置0，为Usart5控制模式						
-						PS2_ON_Flag=0;
-						Remote_ON_Flag=0;
-						APP_ON_Flag=0;
-						CAN_ON_Flag=0;
-						Usart5_ON_Flag=0;
-						command_lost_count=0; //CAN/串口控制命令丢失计数清零
-
-						//Calculate the target speed of three axis from serial data, unit m/s
-						//从串口数据求三轴目标速度， 单位m/s
-						Move_X=XYZ_Target_Speed_transition(Receive_Data.buffer[3],Receive_Data.buffer[4]);
-						Move_Y=XYZ_Target_Speed_transition(Receive_Data.buffer[5],Receive_Data.buffer[6]);
-						Vz    =XYZ_Target_Speed_transition(Receive_Data.buffer[7],Receive_Data.buffer[8]);
-						if(Car_Mode==Akm_Car)
-						{
-							Move_Z=Vz_to_Akm_Angle(Move_X, Vz);
-						}
-						else
-						{
-							Move_Z=XYZ_Target_Speed_transition(Receive_Data.buffer[7],Receive_Data.buffer[8]);
-						}				  }
-					
-			}
-		}
-	} 
-  return 0;	
-}
 /**************************************************************************
 Function: After the top 8 and low 8 figures are integrated into a short type data, the unit reduction is converted
 Input   : 8 bits high, 8 bits low
@@ -925,19 +782,7 @@ void usart3_send(u8 data)
 	while((USART3->SR&0x40)==0);	
 }
 
-/**************************************************************************
-Function: Serial port 5 sends data
-Input   : The data to send
-Output  : none
-函数功能：串口5发送数据
-入口参数：要发送的数据
-返回  值：无
-**************************************************************************/
-void usart5_send(u8 data)
-{
-	UART5->DR = data;
-	while((UART5->SR&0x40)==0);	
-}
+
 /**************************************************************************
 Function: Calculates the check bits of data to be sent/received
 Input   : Count_Number: The first few digits of a check; Mode: 0-Verify the received data, 1-Validate the sent data

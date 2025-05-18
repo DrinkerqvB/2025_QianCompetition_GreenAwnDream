@@ -454,6 +454,11 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\usartx.c</FilePath>
             </File>
+            <File>
+              <FileName>tracking.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\tracking.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

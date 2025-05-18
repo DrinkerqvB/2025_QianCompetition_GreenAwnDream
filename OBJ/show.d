@@ -75,5 +75,6 @@
 ..\obj\show.o: ..\HARDWARE\MPU6050\I2C.h
 ..\obj\show.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdbool.h
 ..\obj\show.o: ..\HARDWARE\MPU6050\MPU6050.h
+..\obj\show.o: ..\HARDWARE\tracking.h
 ..\obj\show.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 ..\obj\show.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h

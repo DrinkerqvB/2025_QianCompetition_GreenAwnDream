@@ -73,6 +73,7 @@
 ..\obj\i2c.o: ..\BALANCE\robot_select_init.h
 ..\obj\i2c.o: ..\HARDWARE\MPU6050\I2C.h
 ..\obj\i2c.o: ..\HARDWARE\MPU6050\MPU6050.h
+..\obj\i2c.o: ..\HARDWARE\tracking.h
 ..\obj\i2c.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 ..\obj\i2c.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
 ..\obj\i2c.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdbool.h

@@ -74,5 +74,6 @@
 ..\obj\timer.o: ..\HARDWARE\MPU6050\I2C.h
 ..\obj\timer.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdbool.h
 ..\obj\timer.o: ..\HARDWARE\MPU6050\MPU6050.h
+..\obj\timer.o: ..\HARDWARE\tracking.h
 ..\obj\timer.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 ..\obj\timer.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h

@@ -58,18 +58,18 @@ void data_task(void *pvParameters);
 void data_transition(void);
 void USART1_SEND(void);
 void USART3_SEND(void);
-void USART5_SEND(void);
+
 
 void CAN_SEND(void);
 void uart1_init(u32 bound);
 void uart2_init(u32 bound);
 void uart3_init(u32 bound);
-void uart5_init(u32 bound);
+
 
 int USART1_IRQHandler(void);
 int USART2_IRQHandler(void);
 int USART3_IRQHandler(void);
-int UART5_IRQHandler(void);
+
 
 float Vz_to_Akm_Angle(float Vx, float Vz);
 float XYZ_Target_Speed_transition(u8 High,u8 Low);
@@ -77,7 +77,7 @@ void usart1_send(u8 data);
 void usart2_send(u8 data);
 void usart3_send(u8 data);
 void USART3_Return(void);
-void usart5_send(u8 data);
+
 
 u8 Check_Sum(unsigned char Count_Number,unsigned char Mode);
 
