@@ -190,7 +190,7 @@ Function: Read the encoder count
 Input   : The timer
 Output  : Encoder value (representing speed)
 函数功能：读取编码器计数
-入口参数：定时器
+入口参数：定时器（一个数字）
 返回  值：编码器数值(代表速度)
 **************************************************************************/
 int Read_Encoder(u8 TIMX)
