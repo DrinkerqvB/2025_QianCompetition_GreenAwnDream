@@ -97,92 +97,90 @@ void Encoder_Init_TIM3(void)
 	TIM_SetCounter(TIM3,0);
   TIM_Cmd(TIM3, ENABLE); 
 }
-/**************************************************************************
-Function: Initialize TIM4 as the encoder interface mode
-Input   : none
-Output  : none
-函数功能：把TIM4初始化为编码器接口模式
-入口参数：无
-返 回 值：无
-**************************************************************************/
-void Encoder_Init_TIM4(void)
-{
-	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;  
-  TIM_ICInitTypeDef TIM_ICInitStructure;  
-  GPIO_InitTypeDef GPIO_InitStructure;
-  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);//使能定时器4的时钟
-  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);//使能PB端口时钟
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;//端口配置
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
-  GPIO_InitStructure.GPIO_OType = GPIO_OType_OD;
-  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
-  GPIO_Init(GPIOB, &GPIO_InitStructure);   //根据设定参数初始化GPIOB
 
-  GPIO_PinAFConfig(GPIOB,GPIO_PinSource6,GPIO_AF_TIM4); //复用为TIM4 编码器接口
-  GPIO_PinAFConfig(GPIOB,GPIO_PinSource7,GPIO_AF_TIM4); //复用为TIM4 编码器接口
-  
-  TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
-  
-  TIM_TimeBaseStructure.TIM_Prescaler = 0x0; // No prescaling 
-  TIM_TimeBaseStructure.TIM_Period = ENCODER_TIM_PERIOD; //设定计数器自动重装值
-  TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;//选择时钟分频：不分频
-  TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;   //TIM向上计数  
-  TIM_TimeBaseInit(TIM4, &TIM_TimeBaseStructure);
-  
-  TIM_EncoderInterfaceConfig(TIM4, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising, TIM_ICPolarity_Rising);//使用编码器模式3
-  TIM_ICStructInit(&TIM_ICInitStructure);
-  TIM_ICInitStructure.TIM_ICFilter = 0;
-  TIM_ICInit(TIM4, &TIM_ICInitStructure);
-  
-  TIM_ClearFlag(TIM4, TIM_FLAG_Update);
-  TIM_ITConfig(TIM4, TIM_IT_Update, ENABLE);
-	TIM_SetCounter(TIM4,0);
-  TIM_Cmd(TIM4, ENABLE); 
-}
+
+
+
 /**************************************************************************
-Function: Initialize TIM5 as the encoder interface mode
-Input   : none
-Output  : none
-函数功能：把TIM5初始化为编码器接口模式
+函数功能：把PA2、PB0初始化为外部中断模式
 入口参数：无
 返回  值：无
 **************************************************************************/
-void Encoder_Init_TIM5(void)
+void Encoder_Z_Init(void)
 {
-	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;  
-  TIM_ICInitTypeDef TIM_ICInitStructure;  
-  GPIO_InitTypeDef GPIO_InitStructure;
-  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5, ENABLE);//使能定时器4的时钟
-  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);//使能PB端口时钟
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA,ENABLE);
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB,ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
 	
-	 GPIO_PinAFConfig(GPIOA,GPIO_PinSource0,GPIO_AF_TIM5); //复用为TIM4 编码器接口
-  GPIO_PinAFConfig(GPIOA,GPIO_PinSource1,GPIO_AF_TIM5); //复用为TIM4 编码器接口
+	//PA2
+	GPIO_InitTypeDef GPIO_InitStructure;
+	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_IN;
+	GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_Pin=GPIO_Pin_2;
+	GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_DOWN;
+	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_50MHz;
+	GPIO_Init(GPIOA,&GPIO_InitStructure);
 	
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1;//端口配置
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
-  GPIO_InitStructure.GPIO_OType = GPIO_OType_OD;
-  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
-  GPIO_Init(GPIOA, &GPIO_InitStructure);   //根据设定参数初始化GPIOB
+	//PB0
+	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_IN;
+	GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_Pin=GPIO_Pin_0;
+	GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_DOWN;
+	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_50MHz;
+	GPIO_Init(GPIOB,&GPIO_InitStructure);
+	
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOA,EXTI_PinSource2);
+	SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOB,EXTI_PinSource0);
+	
+	EXTI_InitTypeDef EXTI_InitStructure;
+	EXTI_InitStructure.EXTI_Line=EXTI_Line2;
+	EXTI_InitStructure.EXTI_Mode=EXTI_Mode_Interrupt;
+	EXTI_InitStructure.EXTI_Trigger=EXTI_Trigger_Rising;
+	EXTI_InitStructure.EXTI_LineCmd=ENABLE;
+	EXTI_Init(&EXTI_InitStructure);
+	
+	EXTI_InitStructure.EXTI_Line=EXTI_Line0;
+	EXTI_InitStructure.EXTI_Mode=EXTI_Mode_Interrupt;
+	EXTI_InitStructure.EXTI_Trigger=EXTI_Trigger_Rising;
+	EXTI_InitStructure.EXTI_LineCmd=ENABLE;
+	EXTI_Init(&EXTI_InitStructure);
 
-  TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
-  
-  TIM_TimeBaseStructure.TIM_Prescaler = 0x0; // No prescaling 
-  TIM_TimeBaseStructure.TIM_Period = ENCODER_TIM_PERIOD; //设定计数器自动重装值
-  TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;//选择时钟分频：不分频
-  TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;   //TIM向上计数  
-  TIM_TimeBaseInit(TIM5, &TIM_TimeBaseStructure);
-  
-  TIM_EncoderInterfaceConfig(TIM5, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising, TIM_ICPolarity_Rising);//使用编码器模式3
-  TIM_ICStructInit(&TIM_ICInitStructure);
-  TIM_ICInitStructure.TIM_ICFilter = 0;
-  TIM_ICInit(TIM5, &TIM_ICInitStructure);
-  
-  TIM_ClearFlag(TIM5, TIM_FLAG_Update);
-  TIM_ITConfig(TIM5, TIM_IT_Update, ENABLE);
-	TIM_SetCounter(TIM5,0);
-  TIM_Cmd(TIM5, ENABLE); 
+
+	NVIC_InitTypeDef NVIC_InitStructure;
+	NVIC_InitStructure.NVIC_IRQChannel=EXTI2_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelCmd=ENABLE;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=1;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority=0;
+	NVIC_Init(&NVIC_InitStructure);
+	
+	NVIC_InitStructure.NVIC_IRQChannel=EXTI0_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelCmd=ENABLE;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=1;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority=0;
+	NVIC_Init(&NVIC_InitStructure);
+	
+}
+
+
+void EXTI0_IRQHandler(void)
+{
+	if(EXTI_GetITStatus(EXTI_Line0)==SET){
+		
+		TIM_SetCounter(TIM3,0x00);
+		
+		EXTI_ClearITPendingBit(EXTI_Line0);
+	}
+}
+
+
+void EXTI2_IRQHandler(void)
+{
+	if(EXTI_GetITStatus(EXTI_Line2)==SET){
+		
+		TIM_SetCounter(TIM2,0x00);
+		
+		EXTI_ClearITPendingBit(EXTI_Line2);
+	}
 }
 
 /**************************************************************************
@@ -200,8 +198,8 @@ int Read_Encoder(u8 TIMX)
  {
 	case 2:  Encoder_TIM= (short)TIM2 -> CNT;   TIM2 -> CNT=0;  break;
 	case 3:  Encoder_TIM= (short)TIM3 -> CNT;   TIM3 -> CNT=0;  break;
-	case 4:  Encoder_TIM= (short)TIM4 -> CNT;   TIM4 -> CNT=0;  break;	
-	case 5:  Encoder_TIM= (short)TIM5 -> CNT;   TIM5 -> CNT=0;  break;	
+	//case 4:  Encoder_TIM= (short)TIM4 -> CNT;   TIM4 -> CNT=0;  break;	
+	//case 5:  Encoder_TIM= (short)TIM5 -> CNT;   TIM5 -> CNT=0;  break;	
 	default: Encoder_TIM=0;
  }
 	return Encoder_TIM;
@@ -237,43 +235,43 @@ void TIM3_IRQHandler(void)
 	}				   
 	TIM3->SR&=~(1<<0); //Clear the interrupt flag bit //清除中断标志位  	    
 }
-/**************************************************************************
-Function: Tim4 interrupt service function
-Input   : none
-Output  : none
-函数功能：TIM4中断服务函数
-入口参数：无
-返 回 值：无
-**************************************************************************/
-void TIM4_IRQHandler(void)
-{ 		    		  			    
-	if(TIM4->SR&0X0001) //Overflow interrupt //溢出中断
-	{    				   				     	    	
-	}				   
-	TIM4->SR&=~(1<<0); //Clear the interrupt flag bit //清除中断标志位  	    
-}
+///**************************************************************************
+//Function: Tim4 interrupt service function
+//Input   : none
+//Output  : none
+//函数功能：TIM4中断服务函数
+//入口参数：无
+//返 回 值：无
+//**************************************************************************/
+//void TIM4_IRQHandler(void)
+//{ 		    		  			    
+//	if(TIM4->SR&0X0001) //Overflow interrupt //溢出中断
+//	{    				   				     	    	
+//	}				   
+//	TIM4->SR&=~(1<<0); //Clear the interrupt flag bit //清除中断标志位  	    
+//}
 
-/**************************************************************************
-Function: Tim9 interrupt service function
-Input   : none
-Output  : none
-函数功能：TIM9中断服务函数
-入口参数：无
-返 回 值：无
-**************************************************************************/
-void TIM5_IRQHandler(void)
-{ 		    		  			    
-	if(TIM5->SR&0X0001) //Overflow interrupt //溢出中断
-	{    				   				     	    	
-	}				   
-	TIM5->SR&=~(1<<0); //Clear the interrupt flag bit //清除中断标志位  	    
-}
+///**************************************************************************
+//Function: Tim9 interrupt service function
+//Input   : none
+//Output  : none
+//函数功能：TIM9中断服务函数
+//入口参数：无
+//返 回 值：无
+//**************************************************************************/
+//void TIM5_IRQHandler(void)
+//{ 		    		  			    
+//	if(TIM5->SR&0X0001) //Overflow interrupt //溢出中断
+//	{    				   				     	    	
+//	}				   
+//	TIM5->SR&=~(1<<0); //Clear the interrupt flag bit //清除中断标志位  	    
+//}
 
-void TIM8_BRK_TIM12_IRQHandler(void)
-{
-	if(TIM12->SR&0X0001) //Overflow interrupt //溢出中断
-	{    				   				     	    	
-	}				   
-	TIM12->SR&=~(1<<0); //Clear the interrupt flag bit //清除中断标志位  	 
+//void TIM8_BRK_TIM12_IRQHandler(void)
+//{
+//	if(TIM12->SR&0X0001) //Overflow interrupt //溢出中断
+//	{    				   				     	    	
+//	}				   
+//	TIM12->SR&=~(1<<0); //Clear the interrupt flag bit //清除中断标志位  	 
 
-}
+//}
