@@ -134,8 +134,8 @@ void Balance_task(void *pvParameters)
 //					Move_X=0, Move_Y=0, Move_Z=0;
 
 				if      (APP_ON_Flag)      Get_RC();         //Handle the APP remote commands //处理APP遥控命令
-				else if (Remote_ON_Flag)   Remote_Control(); //Handle model aircraft remote commands //处理航模遥控命令
-				else if (PS2_ON_Flag)      PS2_control();    //Handle PS2 controller commands //处理PS2手柄控制命令
+//				else if (Remote_ON_Flag)   Remote_Control(); //Handle model aircraft remote commands //处理航模遥控命令
+//				else if (PS2_ON_Flag)      PS2_control();    //Handle PS2 controller commands //处理PS2手柄控制命令
 				
 				//CAN, Usart 1, Usart 3, Uart5 control can directly get the three axis target speed, 
 				//without additional processing
@@ -554,6 +554,10 @@ void Get_RC(void)
 	Drive_Motor(Move_X,Move_Y,Move_Z);
 }
 
+
+
+
+
 /**************************************************************************
 Function: Handle PS2 controller control commands
 Input   : none
@@ -562,6 +566,8 @@ Output  : none
 入口参数：无
 返回  值：无
 **************************************************************************/
+
+/*
 void PS2_control(void)
 {
    	int LX,LY,RY;
@@ -617,6 +623,9 @@ void PS2_control(void)
 		Drive_Motor(Move_X,Move_Y,Move_Z);		 			
 } 
 
+
+*/
+
 /**************************************************************************
 Function: The remote control command of model aircraft is processed
 Input   : none
@@ -625,6 +634,8 @@ Output  : none
 入口参数：无
 返回  值：无
 **************************************************************************/
+/*
+
 void Remote_Control(void)
 {
 	  //Data within 1 second after entering the model control mode will not be processed
@@ -702,6 +713,13 @@ void Remote_Control(void)
 	  //得到控制目标值，进行运动学分析
 		Drive_Motor(Move_X,Move_Y,Move_Z);
 }
+
+
+ */
+
+
+
+
 /**************************************************************************
 Function: Click the user button to update gyroscope zero
 Input   : none
@@ -747,6 +765,9 @@ void Key(void)
 ////		Proc_Flag = 17;
 //	}
 }
+
+
+
 /**************************************************************************
 Function: Read the encoder value and calculate the wheel speed, unit m/s
 Input   : none

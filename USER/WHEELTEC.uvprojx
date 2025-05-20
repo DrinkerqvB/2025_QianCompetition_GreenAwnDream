@@ -459,6 +459,11 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\tracking.c</FilePath>
             </File>
+            <File>
+              <FileName>brushlessMotor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\brushlessMotor.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

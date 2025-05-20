@@ -75,5 +75,6 @@
 ..\obj\motor.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdbool.h
 ..\obj\motor.o: ..\HARDWARE\MPU6050\MPU6050.h
 ..\obj\motor.o: ..\HARDWARE\tracking.h
+..\obj\motor.o: ..\HARDWARE\brushlessMotor.h
 ..\obj\motor.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 ..\obj\motor.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h

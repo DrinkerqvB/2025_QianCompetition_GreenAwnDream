@@ -51,7 +51,7 @@
 #define Servo_PWM  TIM12->CCR2
 #define SERVO_INIT 1500  //Servo zero point //¶æ»úÁãµã
 
-void Enable_Pin(void);
+//void Enable_Pin(void);
 void Servo_PWM_Init(u16 arr,u16 psc);
 void TIM1_PWM_Init(u16 arr,u16 psc);
 void TIM9_PWM_Init(u16 arr,u16 psc);

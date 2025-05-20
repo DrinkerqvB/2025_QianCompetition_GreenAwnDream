@@ -34,6 +34,7 @@
 #include "I2C.h"
 #include "MPU6050.h"
 #include "tracking.h"
+#include "brushlessMotor.h"
 
 
 // Enumeration of car types

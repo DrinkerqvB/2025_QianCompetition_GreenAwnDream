@@ -27,12 +27,12 @@ int Incremental_PI_B (float Encoder,float Target);
 int Incremental_PI_C (float Encoder,float Target);
 int Incremental_PI_D (float Encoder,float Target);
 void Get_RC(void);
-void Remote_Control(void);
+//void Remote_Control(void);
 void Drive_Motor(float Vx,float Vy,float Vz);
 void Key(void);
 void Get_Velocity_Form_Encoder(void);
 void Smooth_control(float vx,float vy,float vz);
-void PS2_control(void);
+//void PS2_control(void);
 float float_abs(float insert);
 void robot_mode_check(void);
 #endif  

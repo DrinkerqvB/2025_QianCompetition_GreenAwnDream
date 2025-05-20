@@ -9,6 +9,7 @@ Output  : none
 入口参数：无
 返回  值：无 
 **************************************************************************/
+/*
 void Enable_Pin(void)
 {
 	GPIO_InitTypeDef  GPIO_InitStructure;
@@ -18,7 +19,7 @@ void Enable_Pin(void)
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;//100M
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;//上拉
   GPIO_Init(GPIOD, &GPIO_InitStructure);//初始化GPIOB14
-} 
+} */
 
 void TIM1_PWM_Init(u16 arr,u16 psc)
 {

@@ -13,6 +13,7 @@
 "..\obj\timer.o"
 "..\obj\usartx.o"
 "..\obj\tracking.o"
+"..\obj\brushlessmotor.o"
 "..\obj\delay.o"
 "..\obj\sys.o"
 "..\obj\usart.o"
