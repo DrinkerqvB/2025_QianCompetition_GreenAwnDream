@@ -655,14 +655,14 @@
               <FilePath>..\FWLIB\src\stm32f4xx_rtc.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f4xx_sai.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FWLIB\src\stm32f4xx_sai.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f4xx_sdio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\FWLIB\src\stm32f4xx_sdio.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_sai.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FWLIB\src\stm32f4xx_sai.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_spi.c</FileName>

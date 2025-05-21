@@ -16,7 +16,9 @@ extern short test_num;
 extern int robot_mode_check_flag;
 extern u8 command_lost_count; //串口、CAN控制命令丢失时间计数，丢失1秒后停止控制
 void Balance_task(void *pvParameters);
-void Set_Pwm(int motor_a,int motor_b,int motor_c,int motor_d,int servo);
+
+//void Set_Pwm(int motor_a,int motor_b,int motor_c,int motor_d,int servo);
+
 void Limit_Pwm(int amplitude);
 float target_limit_float(float insert,float low,float high);
 int target_limit_int(int insert,int low,int high);

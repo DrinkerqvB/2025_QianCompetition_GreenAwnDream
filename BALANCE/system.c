@@ -198,12 +198,12 @@ void systemInit(void)
 	//Encoder B is initialized to read the real time speed of motor D
   //编码器B初始化，用于读取电机D的实时速度	
 	  Encoder_Init_TIM3();   
-	//Encoder C is initialized to read the real time speed of motor B
-  //编码器C初始化，用于读取电机B的实时速度	
-	  Encoder_Init_TIM4(); 
-	//Encoder D is initialized to read the real time speed of motor A
-	//编码器D初始化，用于读取电机A的实时速度
-		Encoder_Init_TIM5(); 
+//	//Encoder C is initialized to read the real time speed of motor B
+//  //编码器C初始化，用于读取电机B的实时速度	
+//	  Encoder_Init_TIM4(); 
+//	//Encoder D is initialized to read the real time speed of motor A
+//	//编码器D初始化，用于读取电机A的实时速度
+//		Encoder_Init_TIM5(); 
 	
 	//定时器12用作舵机的PWM接口
 		TIM12_SERVO_Init(9999,84-1);  //APB1的时钟频率为84M , 频率=84M/((9999+1)*(83+1))=100Hz

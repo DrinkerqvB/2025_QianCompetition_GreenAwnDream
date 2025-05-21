@@ -1354,8 +1354,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\FWLIB\src\stm32f4xx_sai.c</PathWithFileName>
-      <FilenameWithoutPath>stm32f4xx_sai.c</FilenameWithoutPath>
+      <PathWithFileName>..\FWLIB\src\stm32f4xx_sdio.c</PathWithFileName>
+      <FilenameWithoutPath>stm32f4xx_sdio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1366,8 +1366,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\FWLIB\src\stm32f4xx_sdio.c</PathWithFileName>
-      <FilenameWithoutPath>stm32f4xx_sdio.c</FilenameWithoutPath>
+      <PathWithFileName>..\FWLIB\src\stm32f4xx_sai.c</PathWithFileName>
+      <FilenameWithoutPath>stm32f4xx_sai.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

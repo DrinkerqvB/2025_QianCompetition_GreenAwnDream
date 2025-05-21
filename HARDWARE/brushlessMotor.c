@@ -1,8 +1,27 @@
 #include "brushlessMotor.h"
 
+
+#define Ts        //一个脉冲的周期
+#define K ((SQRT3)*(Ts)/(V_power)) //系数
+#define PolePairs 7 //极对数
+
 // 全局变量
 FOC_HandleTypeDef motor1, motor2;
 PID_HandleTypeDef pid_current_q, pid_current_d;
+uint8_t Rotor_Angle;
+float V_power=12;//电源电压 V
+
+
+typedef struct{
+	float U1,U2,U3;//三个电压
+	uint16_t angle;//转子电角度
+	uint8_t RotorRegion;//所在扇区
+	float NowVelocity;//编码器转速 转/s
+	float TargetVelocity;//目标速度
+}BrushlessMotor;
+
+BrushlessMotor Motor_Left;
+BrushlessMotor Motor_Right;
 
 /**************************************************************************
 函数功能：使能开关引脚初始化
@@ -12,32 +31,119 @@ PID_HandleTypeDef pid_current_q, pid_current_d;
 void Enable_Pin(void)
 {
 	GPIO_InitTypeDef  GPIO_InitStructure;
-  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);//使能GPIOB时钟
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3; //KEY对应引脚
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;//普通输入模式
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;//100M
-  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;//上拉
-  GPIO_Init(GPIOD, &GPIO_InitStructure);//初始化GPIOB14
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);//使能GPIOB时钟
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3; //KEY对应引脚
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;//普通输入模式
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;//100M
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;//上拉
+	GPIO_Init(GPIOD, &GPIO_InitStructure);//初始化GPIOB14
 } 
-
-
 /**************************************************************************
-函数功能：ADC初始化
-入口参数：无
+函数功能：FOC核心算法
+入口参数：
 返回  值：无 
 **************************************************************************/
+void Motor_FOCCore(void)
+{
+	switch(Motor_Left.RotorRegion){
+		case 1:
+			
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 6:
+			break;
+	
+	}
+	
+	
+	
+}
 
 
+// 输入：Ualpha, Ubeta, 当前扇区
+// 输出：T1, T2（有效矢量时间），T0（零矢量时间）
+void Calculate_Time(float Ualpha, float Ubeta, uint8_t sector, float *T1, float *T2, float *T0)
+{
+    float X = Ubeta;
+    float Y = 0.5f * (sqrt(3.0f)) * Ualpha - 0.5f * Ubeta;
+    float Z = -0.5f * (sqrt(3.0f) * Ualpha) - 0.5f * Ubeta;
 
+    switch (sector) {
+        case 1: *T1 = -Z; *T2 = X;  break;
+        case 2: *T1 = Y;  *T2 = -Z; break;
+        case 3: *T1 = X;  *T2 = Y;  break;
+        case 4: *T1 = -X; *T2 = Z;  break;
+        case 5: *T1 = -Y; *T2 = -X; break;
+        case 0: *T1 = Z;  *T2 = -Y; break;
+    }
+    *T0 = 1 - (*T1 + *T2); // 零矢量时间
+}
 
+// 输入：T1, T2, T0, 当前扇区
+// 输出：三相PWM占空比（0~PWM_PERIOD）
+void Calculate_Duty(uint8_t sector, float T1, float T2, float T0, uint16_t *dutyU, uint16_t *dutyV, uint16_t *dutyW)
+{
+    float Ta, Tb, Tc;
 
+    switch (sector) {
+        case 1: Ta = T1 + T2 + T0/2; Tb = T2 + T0/2; Tc = T0/2; break;
+        case 2: Ta = T1 + T0/2;      Tb = T1 + T2 + T0/2; Tc = T0/2; break;
+        case 3: Ta = T0/2;           Tb = T1 + T2 + T0/2; Tc = T2 + T0/2; break;
+        case 4: Ta = T0/2;           Tb = T1 + T0/2;      Tc = T1 + T2 + T0/2; break;
+        case 5: Ta = T2 + T0/2;      Tb = T0/2;           Tc = T1 + T2 + T0/2; break;
+        case 0: Ta = T1 + T2 + T0/2; Tb = T0/2;           Tc = T1 + T0/2; break;
+    }
 
+    *dutyU = (uint16_t)(Ta * PWM_PERIOD);
+    *dutyV = (uint16_t)(Tb * PWM_PERIOD);
+    *dutyW = (uint16_t)(Tc * PWM_PERIOD);
+}
 
+//void Motor_SetDutyCycle(BrushlessMotor Motor,uint8_t DutyCycle)
+//{
+//	if(Motor==Motor_Left){
+//		
+//	}
+//}
 
+/**************************************************************************
+函数功能：通过编码器来读取电角度
+入口参数：LeftWheel 或 RightWheel
+返回  值：无 
+**************************************************************************/
+void  Motor_GetRotorAngle(void)
+{
+	uint16_t angle;
+	
+	
+	angle=PolePairs*360*TIM_GetCounter(TIM2)/ABZ_Resolution;
+	angle=angle%360;
+	Motor_Left.angle=target_limit_int(angle,0,359);
 
+	angle=PolePairs*360*TIM_GetCounter(TIM3)/ABZ_Resolution;
+	angle=angle%360;
+	Motor_Right.angle=target_limit_int(angle,0,359);
+	
+	
+}
 
-
-
+/**************************************************************************
+函数功能：通过转子角度来判断转子所在扇区
+入口参数：转子角度
+返回  值：1~6的整数
+**************************************************************************/
+void Motor_JudgeRotorRegion(void)
+{
+	Motor_Left.RotorRegion=target_limit_int(Motor_Left.angle/60+1,1,6);
+	Motor_Right.RotorRegion=target_limit_int(Motor_Right.angle/60+1,1,6);
+}
 
 /**************************************************************************
 函数功能：TIM4初始化
@@ -68,7 +174,7 @@ void TIM4_Init(void)
     
     
     // 4. 定时器时基配置
-    TIM_TimeBaseStructure.TIM_Prescaler = 0;
+    TIM_TimeBaseStructure.TIM_Prescaler = 0x0001;
     TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_CenterAligned1;
     TIM_TimeBaseStructure.TIM_Period = PWM_PERIOD - 1;
     TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
@@ -132,7 +238,7 @@ void TIM8_Init(void)
 	GPIO_PinAFConfig(GPIOC, GPIO_PinSource9, GPIO_AF_TIM8);
     
     // 4. 定时器时基配置
-    TIM_TimeBaseStructure.TIM_Prescaler = 0;
+    TIM_TimeBaseStructure.TIM_Prescaler = 0x0001;
     TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_CenterAligned1;
     TIM_TimeBaseStructure.TIM_Period = PWM_PERIOD - 1;
     TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;

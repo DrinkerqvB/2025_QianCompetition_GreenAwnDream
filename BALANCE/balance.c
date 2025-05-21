@@ -165,15 +165,15 @@ void Balance_task(void *pvParameters)
 					 {
 							//case Mec_Car:       Set_Pwm( MOTOR_A.Motor_Pwm, -MOTOR_B.Motor_Pwm, -MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm, 0    ); break; //Mecanum wheel car       //麦克纳姆轮小车
 							//case Omni_Car:      Set_Pwm(-MOTOR_A.Motor_Pwm,  MOTOR_B.Motor_Pwm, -MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm, 0    ); break; //Omni car                //全向轮小车
-							case Akm_Car:       Set_Pwm( MOTOR_A.Motor_Pwm,  MOTOR_B.Motor_Pwm,  MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm, Servo); break; //Ackermann structure car //阿克曼小车
+							case Akm_Car:       //Set_Pwm( MOTOR_A.Motor_Pwm,  MOTOR_B.Motor_Pwm,  MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm, Servo); break; //Ackermann structure car //阿克曼小车
 							//case Diff_Car:      Set_Pwm( MOTOR_A.Motor_Pwm,  MOTOR_B.Motor_Pwm,  MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm, 0    ); break; //Differential car        //两轮差速小车
-							case FourWheel_Car: Set_Pwm( MOTOR_A.Motor_Pwm, -MOTOR_B.Motor_Pwm, -MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm, 0    ); break; //FourWheel car           //四驱车 
+							case FourWheel_Car: ;//Set_Pwm( MOTOR_A.Motor_Pwm, -MOTOR_B.Motor_Pwm, -MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm, 0    ); break; //FourWheel car           //四驱车 
 							//case Tank_Car:      Set_Pwm( MOTOR_A.Motor_Pwm,  MOTOR_B.Motor_Pwm,  MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm, 0    ); break; //Tank Car                //履带车
 					 }
 				 }
 				 //If Turn_Off(Voltage) returns to 1, the car is not allowed to move, and the PWM value is set to 0
 				 //如果Turn_Off(Voltage)返回值为1，不允许控制小车进行运动，PWM值设置为0
-				 else	Set_Pwm(0,0,0,0,0); 
+				 else;	//Set_Pwm(0,0,0,0,0); 
 			 }
 			
 			 //以下else为自检程序代码
@@ -195,19 +195,19 @@ void Balance_task(void *pvParameters)
 
 					 switch(Car_Mode)
 					 {
-							case Mec_Car:       Set_Pwm( Full_rotation, -Full_rotation, -Full_rotation, Full_rotation, 0    ); break; //Mecanum wheel car       //麦克纳姆轮小车
-							case Omni_Car:      Set_Pwm(-Full_rotation,  Full_rotation, -Full_rotation, Full_rotation, 0    ); break; //Omni car                //全向轮小车
-							case Akm_Car:       Set_Pwm( Full_rotation,  Full_rotation,  Full_rotation, Full_rotation, 0    ); break; //Ackermann structure car //阿克曼小车
-							case Diff_Car:      Set_Pwm( Full_rotation,  Full_rotation,  Full_rotation, Full_rotation, 0    ); break; //Differential car        //两轮差速小车
-							case FourWheel_Car: Set_Pwm( Full_rotation, -Full_rotation, -Full_rotation, Full_rotation, 0    ); break; //FourWheel car           //四驱车 
-							case Tank_Car:      Set_Pwm( Full_rotation,  Full_rotation,  Full_rotation, Full_rotation, 0    ); break; //Tank Car                //履带车
+//							case Mec_Car:       Set_Pwm( Full_rotation, -Full_rotation, -Full_rotation, Full_rotation, 0    ); break; //Mecanum wheel car       //麦克纳姆轮小车
+//							case Omni_Car:      Set_Pwm(-Full_rotation,  Full_rotation, -Full_rotation, Full_rotation, 0    ); break; //Omni car                //全向轮小车
+//							case Akm_Car:       Set_Pwm( Full_rotation,  Full_rotation,  Full_rotation, Full_rotation, 0    ); break; //Ackermann structure car //阿克曼小车
+//							case Diff_Car:      Set_Pwm( Full_rotation,  Full_rotation,  Full_rotation, Full_rotation, 0    ); break; //Differential car        //两轮差速小车
+//							case FourWheel_Car: Set_Pwm( Full_rotation, -Full_rotation, -Full_rotation, Full_rotation, 0    ); break; //FourWheel car           //四驱车 
+//							case Tank_Car:      Set_Pwm( Full_rotation,  Full_rotation,  Full_rotation, Full_rotation, 0    ); break; //Tank Car                //履带车
 					 } 
 					 if(!(check_time_count_motor_retreat>0) && !(check_time_count_motor_forward>0))
 					 {	 
-						 Set_Pwm(0,0,0,0,0);		 
+						 //Set_Pwm(0,0,0,0,0);		 
 					 }
 				}
-				if(Proc_Flag==4)		Set_Pwm(0,0,0,0,0);
+				if(Proc_Flag==4)		//Set_Pwm(0,0,0,0,0);
 				if(Proc_Flag==6)		TIM8_SERVO_Init(9999,168-1);					//六路舵机
 				if(Proc_Flag==7)																					//控制舵机
 				{
@@ -310,33 +310,44 @@ Output  : none
 入口参数：PWM
 返回  值：无
 **************************************************************************/
-void Set_Pwm(int motor_a,int motor_b,int motor_c,int motor_d,int servo)
+void Set_Pwm(uint16_t *dutyU, uint16_t *dutyV, uint16_t *dutyW)
 {
-	//Forward and reverse control of motor
-	//电机正反转控制
-	if(motor_a<0)			PWMA1=16799,PWMA2=16799+motor_a;
-	else 	            PWMA2=16799,PWMA1=16799-motor_a;
+	TIM_SetCompare1(TIM4, *dutyU); // CH1 = U
+    TIM_SetCompare2(TIM4, *dutyV); // CH2 = V
+    TIM_SetCompare4(TIM8, *dutyW); // CH3 = W
 	
-	//Forward and reverse control of motor
-	//电机正反转控制	
-	if(motor_b<0)			PWMB1=16799,PWMB2=16799+motor_b;
-	else 	            PWMB2=16799,PWMB1=16799-motor_b;
-//  PWMB1=10000,PWMB2=5000;
-
-	//Forward and reverse control of motor
-	//电机正反转控制	
-	if(motor_c<0)			PWMC1=16799,PWMC2=16799+motor_c;
-	else 	            PWMC2=16799,PWMC1=16799-motor_c;
-	
-	//Forward and reverse control of motor
-	//电机正反转控制
-	if(motor_d<0)			PWMD1=16799,PWMD2=16799+motor_d;
-	else 	            PWMD2=16799,PWMD1=16799-motor_d;
-	
-	//Servo control
-	//舵机控制
-	Servo_PWM =servo;
+	TIM_SetCompare1(TIM8, *dutyU); // CH1 = U
+    TIM_SetCompare2(TIM8, *dutyV); // CH2 = V
+    TIM_SetCompare3(TIM8, *dutyW); // CH3 = W
 }
+
+//void Set_Pwm(int motor_a,int motor_b,int motor_c,int motor_d,int servo)
+//{
+//	//Forward and reverse control of motor
+//	//电机正反转控制
+//	if(motor_a<0)			PWMA1=16799,PWMA2=16799+motor_a;
+//	else 	            PWMA2=16799,PWMA1=16799-motor_a;
+//	
+//	//Forward and reverse control of motor
+//	//电机正反转控制	
+//	if(motor_b<0)			PWMB1=16799,PWMB2=16799+motor_b;
+//	else 	            PWMB2=16799,PWMB1=16799-motor_b;
+////  PWMB1=10000,PWMB2=5000;
+
+//	//Forward and reverse control of motor
+//	//电机正反转控制	
+//	if(motor_c<0)			PWMC1=16799,PWMC2=16799+motor_c;
+//	else 	            PWMC2=16799,PWMC1=16799-motor_c;
+//	
+//	//Forward and reverse control of motor
+//	//电机正反转控制
+//	if(motor_d<0)			PWMD1=16799,PWMD2=16799+motor_d;
+//	else 	            PWMD2=16799,PWMD1=16799-motor_d;
+//	
+//	//Servo control
+//	//舵机控制
+//	Servo_PWM =servo;
+//}
 
 /**************************************************************************
 Function: Limit PWM value
