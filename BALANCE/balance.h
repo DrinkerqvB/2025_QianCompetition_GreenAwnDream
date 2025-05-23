@@ -37,5 +37,6 @@ void Smooth_control(float vx,float vy,float vz);
 //void PS2_control(void);
 float float_abs(float insert);
 void robot_mode_check(void);
+
 #endif  
 

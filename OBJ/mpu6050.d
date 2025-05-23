@@ -65,7 +65,6 @@
 ..\obj\mpu6050.o: ..\HARDWARE\usartx.h
 ..\obj\mpu6050.o: ..\HARDWARE\adc.h
 ..\obj\mpu6050.o: ..\HARDWARE\can.h
-..\obj\mpu6050.o: ..\HARDWARE\motor.h
 ..\obj\mpu6050.o: ..\HARDWARE\timer.h
 ..\obj\mpu6050.o: ..\HARDWARE\encoder.h
 ..\obj\mpu6050.o: ..\BALANCE\show.h

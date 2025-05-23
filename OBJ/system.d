@@ -63,7 +63,6 @@
 ..\obj\system.o: ..\HARDWARE\usartx.h
 ..\obj\system.o: ..\HARDWARE\adc.h
 ..\obj\system.o: ..\HARDWARE\can.h
-..\obj\system.o: ..\HARDWARE\motor.h
 ..\obj\system.o: ..\HARDWARE\timer.h
 ..\obj\system.o: ..\HARDWARE\encoder.h
 ..\obj\system.o: ..\BALANCE\show.h

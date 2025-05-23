@@ -64,7 +64,6 @@
 ..\obj\encoder.o: ..\HARDWARE\usartx.h
 ..\obj\encoder.o: ..\HARDWARE\adc.h
 ..\obj\encoder.o: ..\HARDWARE\can.h
-..\obj\encoder.o: ..\HARDWARE\motor.h
 ..\obj\encoder.o: ..\HARDWARE\timer.h
 ..\obj\encoder.o: ..\HARDWARE\encoder.h
 ..\obj\encoder.o: ..\BALANCE\show.h

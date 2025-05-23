@@ -52,8 +52,8 @@ void Drive_Motor(float Vx,float Vy,float Vz)
 			}
 			// The PWM value of the servo controls the steering Angle of the front wheel
 			//舵机PWM值，舵机控制前轮转向角度
-			Angle_Servo    =  -0.628f*pow(AngleR, 3) + 1.269f*pow(AngleR, 2) - 1.772f*AngleR + 1.573f;
-			Servo=SERVO_INIT + (Angle_Servo - 1.572f)*Ratio;
+//			Angle_Servo    =  -0.628f*pow(AngleR, 3) + 1.269f*pow(AngleR, 2) - 1.772f*AngleR + 1.573f;
+//			Servo=SERVO_INIT + (Angle_Servo - 1.572f)*Ratio;
 
 			
 			//Wheel (motor) target speed limit //车轮(电机)目标速度限幅
@@ -401,13 +401,16 @@ Output  : Whether control is allowed, 1: not allowed, 0 allowed
 u8 Turn_Off( int voltage)
 {
 	    u8 temp;
-			if(voltage<10||EN==0||Flag_Stop==1)
+			if(voltage<10||Flag_Stop==1)
 			{	                                                
-				temp=1;      
-				PWMA1=0;PWMA2=0;
-				PWMB1=0;PWMB2=0;		
-				PWMC1=0;PWMC1=0;	
-				PWMD1=0;PWMD2=0;					
+				temp=1;    
+					TIM4->CCR1=0;
+				TIM4->CCR2=0;
+				TIM8->CCR1=0;
+				TIM8->CCR2=0;
+				TIM8->CCR3=0;
+				TIM8->CCR4=0;
+							
       }
 			else
 			temp=0;
@@ -868,6 +871,7 @@ Output  : none
 入口参数：无
 返回  值：无
 **************************************************************************/
+/*
 void robot_mode_check(void)
 {
 	static u8 error=0;
@@ -877,3 +881,4 @@ void robot_mode_check(void)
 	//如果连续6次接近满幅输出，判断为电机乱转，让电机失能	
 	if(error>6) EN=0,Flag_Stop=1,robot_mode_check_flag=1;  
 }
+*/

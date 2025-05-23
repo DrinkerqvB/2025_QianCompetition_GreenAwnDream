@@ -64,7 +64,6 @@
 ..\obj\led.o: ..\HARDWARE\usartx.h
 ..\obj\led.o: ..\HARDWARE\adc.h
 ..\obj\led.o: ..\HARDWARE\can.h
-..\obj\led.o: ..\HARDWARE\motor.h
 ..\obj\led.o: ..\HARDWARE\timer.h
 ..\obj\led.o: ..\HARDWARE\encoder.h
 ..\obj\led.o: ..\BALANCE\show.h

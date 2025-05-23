@@ -16,6 +16,46 @@
 #define _2PI              6.28318530718f
 #define _3PI_2            4.71238898038f
 
+
+#define Ts        //一个脉冲的周期
+#define K ((SQRT3)*(Ts)/(V_power)) //系数
+#define PolePairs 7 //极对数
+
+//#define PWM_PERIOD 3600
+#define SQRT3 1.73205080757f
+
+// 全局变量
+//FOC_HandleTypeDef motor1, motor2;
+
+
+
+
+
+
+//typedef struct{
+//	float U1,U2,U3;//三个电压
+//	uint16_t angle;//转子电角度
+//	uint8_t RotorRegion;//所在扇区
+//	uint16_t dutyA,dutyB,dutyC;
+//	
+//	float NowVelocity;//编码器转速 转/s
+//	float TargetVelocity;//目标速度
+//}BrushlessMotor;
+
+
+// PID控制器
+typedef struct {
+    float Kp, Ki, Kd;
+    float integral;
+    float prev_error;
+    float output;
+    float max_output;
+} PID_HandleTypeDef;
+
+
+
+
+
 typedef enum{
 	LeftWheel=0,
 	RightWheel=1
@@ -30,60 +70,43 @@ typedef enum{
 	Region_6=6
 }Rotor_Region;
 
-// FOC控制结构体
-typedef struct {
-//    // 电流值
-//    float Ialpha, Ibeta;
-//    float Id, Iq;
-//    float Ia, Ib, Ic;
-    
-    // 电压值
-    float Valpha, Vbeta;
-    float Vd, Vq;
-    
-    // 角度与速度
-    float electrical_angle;
-    float mechanical_angle;
-    float shaft_velocity;
-    
-    // 控制目标
-    float target_current;
-} FOC_HandleTypeDef;
-
-// PID控制器
-typedef struct {
-    float Kp, Ki, Kd;
-    float integral;
-    float prev_error;
-    float output;
-    float max_output;
-} PID_HandleTypeDef;
 
 
 
 
-/*--------Motor_A control pins--------*/
 
-/*------------------------------------*/
-
-
-/*--------Motor_B control pins--------*/
-
-/*------------------------------------*/
-
-
-/*--------Motor_C control pins--------*/
-
-/*------------------------------------*/
-
-
-/*--------Motor_D control pins--------*/
-
-/*------------------------------------*/
+void FOC_Init(void);
+void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);
 			
 void Enable_Pin(void);
 void TIM4_Init(void);
 void TIM8_Init(void);
+
+
+
+// FOC控制结构体
+//typedef struct {
+////    // 电流值
+////    float Ialpha, Ibeta;
+////    float Id, Iq;
+////    float Ia, Ib, Ic;
+//    
+//    // 电压值
+//    float Valpha, Vbeta;
+//    float Vd, Vq;
+//    
+//    // 角度与速度
+//    float electrical_angle;
+//    float mechanical_angle;
+//    float shaft_velocity;
+//    
+//    // 控制目标
+//    float target_current;
+//} FOC_HandleTypeDef;
+
+
+
+
 
 
 #endif

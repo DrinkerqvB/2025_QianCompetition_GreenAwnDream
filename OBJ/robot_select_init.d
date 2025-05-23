@@ -64,7 +64,6 @@
 ..\obj\robot_select_init.o: ..\HARDWARE\usartx.h
 ..\obj\robot_select_init.o: ..\HARDWARE\adc.h
 ..\obj\robot_select_init.o: ..\HARDWARE\can.h
-..\obj\robot_select_init.o: ..\HARDWARE\motor.h
 ..\obj\robot_select_init.o: ..\HARDWARE\timer.h
 ..\obj\robot_select_init.o: ..\HARDWARE\encoder.h
 ..\obj\robot_select_init.o: ..\BALANCE\show.h

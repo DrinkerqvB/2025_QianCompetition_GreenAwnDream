@@ -1,27 +1,16 @@
 #include "brushlessMotor.h"
+#include <math.h>
 
-
-#define Ts        //一个脉冲的周期
-#define K ((SQRT3)*(Ts)/(V_power)) //系数
-#define PolePairs 7 //极对数
-
-// 全局变量
-FOC_HandleTypeDef motor1, motor2;
 PID_HandleTypeDef pid_current_q, pid_current_d;
-uint8_t Rotor_Angle;
-float V_power=12;//电源电压 V
-
-
-typedef struct{
-	float U1,U2,U3;//三个电压
-	uint16_t angle;//转子电角度
-	uint8_t RotorRegion;//所在扇区
-	float NowVelocity;//编码器转速 转/s
-	float TargetVelocity;//目标速度
-}BrushlessMotor;
-
 BrushlessMotor Motor_Left;
 BrushlessMotor Motor_Right;
+
+uint8_t Rotor_Angle;
+
+
+// 正弦表（预生成360点，幅值0-1）
+static float SinTable[360];
+static float Phase = 0.0f;
 
 /**************************************************************************
 函数功能：使能开关引脚初始化
@@ -41,30 +30,66 @@ void Enable_Pin(void)
 /**************************************************************************
 函数功能：FOC核心算法
 入口参数：
-返回  值：无 
+返回  值：
 **************************************************************************/
-void Motor_FOCCore(void)
-{
-	switch(Motor_Left.RotorRegion){
-		case 1:
-			
-			break;
-		case 2:
-			break;
-		case 3:
-			break;
-		case 4:
-			break;
-		case 5:
-			break;
-		case 6:
-			break;
-	
-	}
-	
-	
-	
+void FOC_Init(void) {
+    // 生成正弦表
+    for (int i = 0; i < 360; i++) {
+        SinTable[i] = sinf(i * 3.1415926f / 180.0f);
+    }
 }
+
+// 更新开环FOC输出（freq: 电频率Hz）
+void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq) {
+	volatile static uint32_t count=0;
+    volatile static uint32_t last_time = 0;
+	(void)last_time;
+    uint32_t current_time = SysTick->VAL;
+	
+	
+    
+    // 计算相位增量（每1ms更新一次）
+    if ( 1) {
+		count-=72000;
+        //Phase += 0.0036f * freq; // 0.36 = 360° / 1000ms
+		Phase += 0.0018f * freq;
+        if (Phase >= 360.0f) Phase -= 360.0f;
+        last_time = current_time;
+    }
+    
+    // 生成三相正弦波
+    float Ua = SinTable[(int)Phase % 360];
+    float Ub = SinTable[(int)(Phase + 120) % 360];
+    float Uc = SinTable[(int)(Phase + 240) % 360];
+    
+    // 转换为PWM占空比（幅值设为50%）
+    uint16_t DutyA = (uint16_t)((Ua + 1.0f) * PWM_PERIOD / 2);
+    uint16_t DutyB = (uint16_t)((Ub + 1.0f) * PWM_PERIOD / 2);
+    uint16_t DutyC = (uint16_t)((Uc + 1.0f) * PWM_PERIOD / 2);
+    
+	
+	motor->dutyA=DutyA;
+	motor->dutyB=DutyB;
+	motor->dutyC=DutyC;
+	
+	
+	
+//	TIM1->CCR1 = (uint16_t)((Ua + 1.0f) * 0.4f * PWM_PERIOD + 0.1f * PWM_PERIOD);
+//    TIM1->CCR2 = (uint16_t)((Ub + 1.0f) * 0.4f * PWM_PERIOD + 0.1f * PWM_PERIOD);
+//    TIM1->CCR3 = (uint16_t)((Uc + 1.0f) * 0.4f * PWM_PERIOD + 0.1f * PWM_PERIOD);
+	
+	count++;
+	
+    // 更新PWM寄存器
+//    TIM1->CCR1 = DutyA;
+//    TIM1->CCR2 = DutyB;
+//    TIM1->CCR3 = DutyC;
+}
+
+
+
+
+/////////////////////////////////////////////////////
 
 
 // 输入：Ualpha, Ubeta, 当前扇区
@@ -172,9 +197,10 @@ void TIM4_Init(void)
     GPIO_PinAFConfig(GPIOB, GPIO_PinSource6, GPIO_AF_TIM4);
     GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_TIM4);
     
-    
+    TIM_InternalClockConfig(TIM4);
+	
     // 4. 定时器时基配置
-    TIM_TimeBaseStructure.TIM_Prescaler = 0x0001;
+    TIM_TimeBaseStructure.TIM_Prescaler = 0x0000;
     TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_CenterAligned1;
     TIM_TimeBaseStructure.TIM_Period = PWM_PERIOD - 1;
     TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
@@ -236,9 +262,11 @@ void TIM8_Init(void)
     GPIO_PinAFConfig(GPIOC, GPIO_PinSource7, GPIO_AF_TIM8);
     GPIO_PinAFConfig(GPIOC, GPIO_PinSource8, GPIO_AF_TIM8);
 	GPIO_PinAFConfig(GPIOC, GPIO_PinSource9, GPIO_AF_TIM8);
+	
+	TIM_InternalClockConfig(TIM8);
     
     // 4. 定时器时基配置
-    TIM_TimeBaseStructure.TIM_Prescaler = 0x0001;
+    TIM_TimeBaseStructure.TIM_Prescaler = 0x0000;
     TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_CenterAligned1;
     TIM_TimeBaseStructure.TIM_Period = PWM_PERIOD - 1;
     TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
@@ -254,6 +282,17 @@ void TIM8_Init(void)
     TIM_OCInitStructure.TIM_OCNPolarity = TIM_OCNPolarity_High;
     TIM_OCInitStructure.TIM_OCIdleState = TIM_OCIdleState_Set;
     TIM_OCInitStructure.TIM_OCNIdleState = TIM_OCNIdleState_Reset;
+	
+	TIM_BDTRInitTypeDef TIM_BDTRInitStructure;
+	TIM_BDTRStructInit(&TIM_BDTRInitStructure);
+	TIM_BDTRInitStructure.TIM_DeadTime=0x1F;
+	TIM_BDTRInitStructure.TIM_OSSRState=TIM_OSSRState_Enable;
+	TIM_BDTRInitStructure.TIM_OSSIState=TIM_OSSIState_Enable;
+	TIM_BDTRInitStructure.TIM_LOCKLevel=TIM_LOCKLevel_1;
+	TIM_BDTRInitStructure.TIM_Break=TIM_Break_Disable;
+	TIM_BDTRConfig(TIM8,&TIM_BDTRInitStructure);
+	
+	
     
     // 通道1-3配置
     TIM_OC1Init(TIM8, &TIM_OCInitStructure);

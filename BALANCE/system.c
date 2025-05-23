@@ -54,7 +54,7 @@ Smooth_Control smooth_control;
 
 //The parameter structure of the motor
 //电机的参数结构体
-Motor_parameter MOTOR_A,MOTOR_B,MOTOR_C,MOTOR_D;  
+BrushlessMotor MOTOR_A,MOTOR_B,MOTOR_C,MOTOR_D;  
 
 /************ 小车型号相关变量 **************************/
 /************ Variables related to car model ************/
@@ -217,10 +217,13 @@ void systemInit(void)
   //Initialize motor speed control and, for controlling motor speed, PWM frequency 10kHz
   //初始化电机速度控制以及，用于控制电机速度，PWM频率10KHZ
   //APB2时钟频率为168M，满PWM为16799，频率=168M/((16799+1)*(0+1))=10k
-		TIM1_PWM_Init(16799,0);
-		TIM9_PWM_Init(16799,0);
-		TIM10_PWM_Init(16799,0);
-		TIM11_PWM_Init(16799,0);
+//		TIM1_PWM_Init(16799,0);
+//		TIM9_PWM_Init(16799,0);
+//		TIM10_PWM_Init(16799,0);
+//		TIM11_PWM_Init(16799,0);
+	 FOC_Init();
+	 TIM4_Init();
+	 TIM8_Init();
 		
   //IIC initialization for MPU6050 
   //IIC初始化，用于MPU6050  

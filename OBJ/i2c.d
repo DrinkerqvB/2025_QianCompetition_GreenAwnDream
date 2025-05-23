@@ -64,7 +64,6 @@
 ..\obj\i2c.o: ..\HARDWARE\usartx.h
 ..\obj\i2c.o: ..\HARDWARE\adc.h
 ..\obj\i2c.o: ..\HARDWARE\can.h
-..\obj\i2c.o: ..\HARDWARE\motor.h
 ..\obj\i2c.o: ..\HARDWARE\timer.h
 ..\obj\i2c.o: ..\HARDWARE\encoder.h
 ..\obj\i2c.o: ..\BALANCE\show.h

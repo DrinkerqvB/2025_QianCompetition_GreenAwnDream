@@ -64,7 +64,6 @@
 ..\obj\brushlessmotor.o: ..\HARDWARE\usartx.h
 ..\obj\brushlessmotor.o: ..\HARDWARE\adc.h
 ..\obj\brushlessmotor.o: ..\HARDWARE\can.h
-..\obj\brushlessmotor.o: ..\HARDWARE\motor.h
 ..\obj\brushlessmotor.o: ..\HARDWARE\timer.h
 ..\obj\brushlessmotor.o: ..\HARDWARE\encoder.h
 ..\obj\brushlessmotor.o: ..\BALANCE\show.h

@@ -64,7 +64,6 @@
 ..\obj\oled.o: ..\HARDWARE\usartx.h
 ..\obj\oled.o: ..\HARDWARE\adc.h
 ..\obj\oled.o: ..\HARDWARE\can.h
-..\obj\oled.o: ..\HARDWARE\motor.h
 ..\obj\oled.o: ..\HARDWARE\timer.h
 ..\obj\oled.o: ..\HARDWARE\encoder.h
 ..\obj\oled.o: ..\BALANCE\show.h
