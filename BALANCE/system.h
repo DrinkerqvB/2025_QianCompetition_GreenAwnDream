@@ -39,6 +39,8 @@
 
 #define EN     PDin(3)
 
+//typedef struct BrushlessMotor BrushlessMotor;
+
 // Enumeration of car types
 //小车型号的枚举定义
 typedef enum 
@@ -53,22 +55,7 @@ typedef enum
 
 //Motor speed control related parameters of the structure
 //电机速度控制相关参数结构体
-typedef struct  
-{
-	float U1,U2,U3;//三个电压
-	uint16_t angle;//转子电角度
-	uint8_t RotorRegion;//所在扇区
-	uint16_t dutyA,dutyB,dutyC;
-	
-	
-	float Encoder;     //Read the real time speed of the motor by encoder //编码器数值，读取电机实时速度
-	
-	
-//	float Motor_Pwm;   //Motor PWM value, control the real-time speed of the motor //电机PWM数值，控制电机实时速度
-	float Target;      //Control the target speed of the motor //电机目标速度值，控制电机目标速度
-	float Velocity_KP; //Speed control PID parameters //速度控制PID参数
-	float	Velocity_KI; //Speed control PID parameters //速度控制PID参数
-}BrushlessMotor;
+
 
 //Smoothed the speed of the three axes
 //平滑处理后的三轴速度
@@ -90,7 +77,7 @@ extern float RC_Velocity;
 extern float Move_X, Move_Y, Move_Z; 
 extern float Velocity_KP, Velocity_KI;	
 extern Smooth_Control smooth_control;
-extern BrushlessMotor MOTOR_A, MOTOR_B, MOTOR_C, MOTOR_D;
+//extern BrushlessMotor MOTOR_A, MOTOR_B, MOTOR_C, MOTOR_D;
 extern BrushlessMotor Motor_Left,Motor_Right;
 extern float Encoder_precision;
 extern float Wheel_perimeter;

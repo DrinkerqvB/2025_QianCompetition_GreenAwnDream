@@ -70,10 +70,23 @@ typedef enum{
 	Region_6=6
 }Rotor_Region;
 
+typedef struct  
+{
+	float U1,U2,U3;//三个电压
+	uint16_t angle;//转子电角度
+	uint8_t RotorRegion;//所在扇区
+	uint16_t dutyA,dutyB,dutyC;
+	
+	float Encoder;     //Read the real time speed of the motor by encoder //编码器数值，读取电机实时速度
+	
+	
+//	float Motor_Pwm;   //Motor PWM value, control the real-time speed of the motor //电机PWM数值，控制电机实时速度
+	float Target;      //Control the target speed of the motor //电机目标速度值，控制电机目标速度
+	float Velocity_KP; //Speed control PID parameters //速度控制PID参数
+	float	Velocity_KI; //Speed control PID parameters //速度控制PID参数
+}BrushlessMotor;
 
-
-
-
+//typedef struct BrushlessMotor BrushlessMotor;
 
 void FOC_Init(void);
 void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);

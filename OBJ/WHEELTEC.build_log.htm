@@ -26,117 +26,182 @@ Project File Date:  05/22/2025
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Keil_v5\ARM\ARMCOMPLIER506\Bin'
-Build target 'FreeRTOS'
-compiling main.c...
-..\HARDWARE\brushlessMotor.h(79): error:  #20: identifier "BrushlessMotor" is undefined
-  void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);
-main.c: 0 warnings, 1 error
-compiling encoder.c...
-..\HARDWARE\brushlessMotor.h(79): error:  #20: identifier "BrushlessMotor" is undefined
-  void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);
-..\HARDWARE\encoder.c: 0 warnings, 1 error
-compiling adc.c...
-..\HARDWARE\brushlessMotor.h(79): error:  #20: identifier "BrushlessMotor" is undefined
-  void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);
-..\HARDWARE\adc.c: 0 warnings, 1 error
-compiling pstwo.c...
-..\HARDWARE\brushlessMotor.h(79): error:  #20: identifier "BrushlessMotor" is undefined
-  void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);
-..\HARDWARE\pstwo.c: 0 warnings, 1 error
-compiling key.c...
-..\HARDWARE\brushlessMotor.h(79): error:  #20: identifier "BrushlessMotor" is undefined
-  void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);
-..\HARDWARE\key.c: 0 warnings, 1 error
-compiling oled.c...
-..\HARDWARE\brushlessMotor.h(79): error:  #20: identifier "BrushlessMotor" is undefined
-  void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);
-..\HARDWARE\oled.c: 0 warnings, 1 error
-compiling system.c...
-..\HARDWARE\brushlessMotor.h(79): error:  #20: identifier "BrushlessMotor" is undefined
-  void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);
-..\BALANCE\system.c: 0 warnings, 1 error
-compiling usartx.c...
-..\HARDWARE\brushlessMotor.h(79): error:  #20: identifier "BrushlessMotor" is undefined
-  void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);
-..\HARDWARE\usartx.c: 0 warnings, 1 error
-compiling tracking.c...
-..\HARDWARE\brushlessMotor.h(79): error:  #20: identifier "BrushlessMotor" is undefined
-  void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);
-..\HARDWARE\tracking.c: 0 warnings, 1 error
-compiling can.c...
-..\HARDWARE\brushlessMotor.h(79): error:  #20: identifier "BrushlessMotor" is undefined
-  void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);
-..\HARDWARE\can.c: 0 warnings, 1 error
-compiling show.c...
-..\HARDWARE\brushlessMotor.h(79): error:  #20: identifier "BrushlessMotor" is undefined
-  void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);
-..\BALANCE\show.c(262): error:  #136: struct "<unnamed>"  has no field "Motor_Pwm"
-  			 if( MOTOR_A.Motor_Pwm<0)OLED_ShowString(20,40,"-"),
-..\BALANCE\show.c(263): error:  #136: struct "<unnamed>"  has no field "Motor_Pwm"
-  															 OLED_ShowNumber(30,40,-MOTOR_A.Motor_Pwm,4,12);
-..\BALANCE\show.c(265): error:  #136: struct "<unnamed>"  has no field "Motor_Pwm"
-  															 OLED_ShowNumber(30,40, MOTOR_A.Motor_Pwm,4,12); 
-..\BALANCE\show.c(267): error:  #136: struct "<unnamed>"  has no field "Motor_Pwm"
-  			 if(MOTOR_B.Motor_Pwm<0) OLED_ShowString(80,40,"-"),
-..\BALANCE\show.c(268): error:  #136: struct "<unnamed>"  has no field "Motor_Pwm"
-  															 OLED_ShowNumber(90,40,-MOTOR_B.Motor_Pwm,4,12);
-..\BALANCE\show.c(270): error:  #136: struct "<unnamed>"  has no field "Motor_Pwm"
-  															 OLED_ShowNumber(90,40, MOTOR_B.Motor_Pwm,4,12);
-..\BALANCE\show.c: 0 warnings, 7 errors
+Rebuild target 'FreeRTOS'
+compiling motor.c...
 compiling timer.c...
-..\HARDWARE\brushlessMotor.h(79): error:  #20: identifier "BrushlessMotor" is undefined
-  void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);
-..\HARDWARE\timer.c: 0 warnings, 1 error
-compiling robot_select_init.c...
-..\HARDWARE\brushlessMotor.h(79): error:  #20: identifier "BrushlessMotor" is undefined
-  void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);
-..\BALANCE\robot_select_init.c: 0 warnings, 1 error
+compiling key.c...
+compiling brushlessMotor.c...
+..\BALANCE\system.h(81): error:  #20: identifier "BrushlessMotor" is undefined
+  extern BrushlessMotor Motor_Left,Motor_Right;
+..\HARDWARE\brushlessMotor.c: 0 warnings, 1 error
+compiling pstwo.c...
+compiling stm32f4xx_it.c...
+compiling usartx.c...
+..\HARDWARE\usartx.c(54): error:  #20: identifier "MOTOR_A" is undefined
+  			Send_Data.Sensor_Str.X_speed = ((MOTOR_A.Encoder+MOTOR_B.Encoder+MOTOR_C.Encoder+MOTOR_D.Encoder)/4)*1000;
+..\HARDWARE\usartx.c(54): error:  #20: identifier "MOTOR_B" is undefined
+  			Send_Data.Sensor_Str.X_speed = ((MOTOR_A.Encoder+MOTOR_B.Encoder+MOTOR_C.Encoder+MOTOR_D.Encoder)/4)*1000;
+..\HARDWARE\usartx.c(54): error:  #20: identifier "MOTOR_C" is undefined
+  			Send_Data.Sensor_Str.X_speed = ((MOTOR_A.Encoder+MOTOR_B.Encoder+MOTOR_C.Encoder+MOTOR_D.Encoder)/4)*1000;
+..\HARDWARE\usartx.c(54): error:  #20: identifier "MOTOR_D" is undefined
+  			Send_Data.Sensor_Str.X_speed = ((MOTOR_A.Encoder+MOTOR_B.Encoder+MOTOR_C.Encoder+MOTOR_D.Encoder)/4)*1000;
+..\HARDWARE\usartx.c: 0 warnings, 4 errors
+compiling system_stm32f4xx.c...
+compiling delay.c...
+assembling startup_stm32f40_41xxx.s...
+compiling tracking.c...
+compiling LED.C...
+compiling sys.c...
+compiling main.c...
+compiling encoder.c...
+compiling can.c...
+compiling oled.c...
+compiling adc.c...
+compiling usart.c...
+compiling stm32f4xx_gpio.c...
+compiling misc.c...
+compiling stm32f4xx_syscfg.c...
+compiling stm32f4xx_usart.c...
+compiling stm32f4xx_can.c...
+compiling stm32f4xx_adc.c...
+compiling stm32f4xx_rcc.c...
+compiling stm32f4xx_tim.c...
+compiling stm32f4xx_pwr.c...
+compiling stm32f4xx_crc.c...
+compiling stm32f4xx_cryp_des.c...
+compiling stm32f4xx_dac.c...
+compiling stm32f4xx_cryp_tdes.c...
+compiling stm32f4xx_cryp.c...
+compiling stm32f4xx_dbgmcu.c...
+compiling stm32f4xx_cryp_aes.c...
+compiling stm32f4xx_dcmi.c...
+compiling stm32f4xx_dma.c...
+compiling stm32f4xx_dma2d.c...
+compiling stm32f4xx_exti.c...
+compiling stm32f4xx_flash_ramfunc.c...
+compiling stm32f4xx_flash.c...
+compiling stm32f4xx_fsmc.c...
+compiling stm32f4xx_hash.c...
+compiling stm32f4xx_hash_md5.c...
+compiling stm32f4xx_hash_sha1.c...
+compiling stm32f4xx_iwdg.c...
+compiling stm32f4xx_i2c.c...
+compiling stm32f4xx_rng.c...
+compiling stm32f4xx_ltdc.c...
+compiling stm32f4xx_sdio.c...
+compiling stm32f4xx_sai.c...
+compiling stm32f4xx_rtc.c...
+compiling stm32f4xx_spi.c...
+compiling stm32f4xx_wwdg.c...
+compiling croutine.c...
+compiling event_groups.c...
+compiling list.c...
+compiling queue.c...
+compiling port.c...
+compiling timers.c...
+compiling tasks.c...
+compiling heap_4.c...
 compiling balance.c...
-..\HARDWARE\brushlessMotor.h(79): error:  #20: identifier "BrushlessMotor" is undefined
-  void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);
+..\BALANCE\balance.c(45): error:  #20: identifier "MOTOR_A" is undefined
+  				MOTOR_A.Target = Vx*(R-0.5f*Wheel_spacing)/R;
+..\BALANCE\balance.c(46): error:  #20: identifier "MOTOR_B" is undefined
+  				MOTOR_B.Target = Vx*(R+0.5f*Wheel_spacing)/R;			
+..\BALANCE\balance.c(50): error:  #20: identifier "MOTOR_A" is undefined
+  				MOTOR_A.Target = Vx;
+..\BALANCE\balance.c(51): error:  #20: identifier "MOTOR_B" is undefined
+  				MOTOR_B.Target = Vx;
+..\BALANCE\balance.c(60): error:  #20: identifier "MOTOR_A" is undefined
+  			MOTOR_A.Target=target_limit_float(MOTOR_A.Target,-amplitude,amplitude); 
+..\BALANCE\balance.c(61): error:  #20: identifier "MOTOR_B" is undefined
+  			MOTOR_B.Target=target_limit_float(MOTOR_B.Target,-amplitude,amplitude); 
+..\BALANCE\balance.c(62): error:  #20: identifier "MOTOR_C" is undefined
+  			MOTOR_C.Target=0; //Out of use //没有使用到
+..\BALANCE\balance.c(63): error:  #20: identifier "MOTOR_D" is undefined
+  			MOTOR_D.Target=0; //Out of use //没有使用到
 ..\BALANCE\balance.c(31): warning:  #177-D: variable "Ratio"  was declared but never referenced
   			float R, Ratio=636.56, AngleR, Angle_Servo;
 ..\BALANCE\balance.c(31): warning:  #177-D: variable "Angle_Servo"  was declared but never referenced
   			float R, Ratio=636.56, AngleR, Angle_Servo;
-..\BALANCE\balance.c(155): error:  #136: struct "<unnamed>"  has no field "Motor_Pwm"
+..\BALANCE\balance.c(87): error:  #20: identifier "MOTOR_A" is undefined
+  			MOTOR_A.Target  = Vx - Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出左轮的目标速度
+..\BALANCE\balance.c(88): error:  #20: identifier "MOTOR_B" is undefined
+  			MOTOR_B.Target  = Vx - Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出左轮的目标速度
+..\BALANCE\balance.c(89): error:  #20: identifier "MOTOR_C" is undefined
+  			MOTOR_C.Target  = Vx + Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出右轮的目标速度
+..\BALANCE\balance.c(90): error:  #20: identifier "MOTOR_D" is undefined
+  			MOTOR_D.Target  = Vx + Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出右轮的目标速度
+..\BALANCE\balance.c(155): error:  #20: identifier "MOTOR_A" is undefined
   					 MOTOR_A.Motor_Pwm=Incremental_PI_A(MOTOR_A.Encoder, MOTOR_A.Target);
-..\BALANCE\balance.c(156): error:  #136: struct "<unnamed>"  has no field "Motor_Pwm"
+..\BALANCE\balance.c(156): error:  #20: identifier "MOTOR_B" is undefined
   					 MOTOR_B.Motor_Pwm=Incremental_PI_B(MOTOR_B.Encoder, MOTOR_B.Target);
-..\BALANCE\balance.c(157): error:  #136: struct "<unnamed>"  has no field "Motor_Pwm"
+..\BALANCE\balance.c(157): error:  #20: identifier "MOTOR_C" is undefined
   					 MOTOR_C.Motor_Pwm=Incremental_PI_C(MOTOR_C.Encoder, MOTOR_C.Target);
-..\BALANCE\balance.c(158): error:  #136: struct "<unnamed>"  has no field "Motor_Pwm"
+..\BALANCE\balance.c(158): error:  #20: identifier "MOTOR_D" is undefined
   					 MOTOR_D.Motor_Pwm=Incremental_PI_D(MOTOR_D.Encoder, MOTOR_D.Target);
-..\BALANCE\balance.c(362): error:  #136: struct "<unnamed>"  has no field "Motor_Pwm"
+..\BALANCE\balance.c(362): error:  #20: identifier "MOTOR_A" is undefined
   	    MOTOR_A.Motor_Pwm=target_limit_float(MOTOR_A.Motor_Pwm,-amplitude,amplitude);
-..\BALANCE\balance.c(362): error:  #136: struct "<unnamed>"  has no field "Motor_Pwm"
-  	    MOTOR_A.Motor_Pwm=target_limit_float(MOTOR_A.Motor_Pwm,-amplitude,amplitude);
-..\BALANCE\balance.c(363): error:  #136: struct "<unnamed>"  has no field "Motor_Pwm"
+..\BALANCE\balance.c(363): error:  #20: identifier "MOTOR_B" is undefined
   	    MOTOR_B.Motor_Pwm=target_limit_float(MOTOR_B.Motor_Pwm,-amplitude,amplitude);
-..\BALANCE\balance.c(363): error:  #136: struct "<unnamed>"  has no field "Motor_Pwm"
-  	    MOTOR_B.Motor_Pwm=target_limit_float(MOTOR_B.Motor_Pwm,-amplitude,amplitude);
-..\BALANCE\balance.c(364): error:  #136: struct "<unnamed>"  has no field "Motor_Pwm"
+..\BALANCE\balance.c(364): error:  #20: identifier "MOTOR_C" is undefined
   		  MOTOR_C.Motor_Pwm=target_limit_float(MOTOR_C.Motor_Pwm,-amplitude,amplitude);
-..\BALANCE\balance.c(364): error:  #136: struct "<unnamed>"  has no field "Motor_Pwm"
-  		  MOTOR_C.Motor_Pwm=target_limit_float(MOTOR_C.Motor_Pwm,-amplitude,amplitude);
-..\BALANCE\balance.c(365): error:  #136: struct "<unnamed>"  has no field "Motor_Pwm"
+..\BALANCE\balance.c(365): error:  #20: identifier "MOTOR_D" is undefined
   	    MOTOR_D.Motor_Pwm=target_limit_float(MOTOR_D.Motor_Pwm,-amplitude,amplitude);
-..\BALANCE\balance.c(365): error:  #136: struct "<unnamed>"  has no field "Motor_Pwm"
-  	    MOTOR_D.Motor_Pwm=target_limit_float(MOTOR_D.Motor_Pwm,-amplitude,amplitude);
-..\BALANCE\balance.c: 2 warnings, 13 errors
-compiling LED.C...
-..\HARDWARE\brushlessMotor.h(79): error:  #20: identifier "BrushlessMotor" is undefined
-  void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);
-..\HARDWARE\LED.C: 0 warnings, 1 error
+..\BALANCE\balance.c(820): error:  #20: identifier "MOTOR_A" is undefined
+  		MOTOR_A.Encoder= Encoder_A_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;  
+..\BALANCE\balance.c(821): error:  #20: identifier "MOTOR_B" is undefined
+  		MOTOR_B.Encoder= Encoder_B_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;  
+..\BALANCE\balance.c(822): error:  #20: identifier "MOTOR_C" is undefined
+  		MOTOR_C.Encoder= Encoder_C_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision; 
+..\BALANCE\balance.c(823): error:  #20: identifier "MOTOR_D" is undefined
+  		MOTOR_D.Encoder= Encoder_D_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision; 
+..\BALANCE\balance.c: 2 warnings, 24 errors
+compiling show.c...
+..\BALANCE\show.c(122): error:  #20: identifier "MOTOR_A" is undefined
+  			if( MOTOR_A.Target<0)	OLED_ShowString(15,10,"-"),
+..\BALANCE\show.c(127): error:  #20: identifier "MOTOR_A" is undefined
+  			if( MOTOR_A.Encoder<0)OLED_ShowString(60,10,"-"),
+..\BALANCE\show.c(152): error:  #20: identifier "MOTOR_B" is undefined
+  			if( MOTOR_B.Target<0)	OLED_ShowString(15,20,"-"),
+..\BALANCE\show.c(157): error:  #20: identifier "MOTOR_B" is undefined
+  			if( MOTOR_B.Encoder<0)OLED_ShowString(60,20,"-"),
+..\BALANCE\show.c(165): error:  #20: identifier "MOTOR_C" is undefined
+  			if( MOTOR_C.Target<0)	OLED_ShowString(15,30,"-"),
+..\BALANCE\show.c(170): error:  #20: identifier "MOTOR_C" is undefined
+  			if( MOTOR_C.Encoder<0)OLED_ShowString(60,30,"-"),
+..\BALANCE\show.c(180): error:  #20: identifier "MOTOR_A" is undefined
+  			 if( MOTOR_A.Target<0)	OLED_ShowString(15,20,"-"),
+..\BALANCE\show.c(184): error:  #20: identifier "MOTOR_A" is undefined
+  			 if( MOTOR_A.Encoder<0)	OLED_ShowString(60,20,"-"),
+..\BALANCE\show.c(191): error:  #20: identifier "MOTOR_B" is undefined
+  			 if( MOTOR_B.Target<0)	OLED_ShowString(15,30,"-"),
+..\BALANCE\show.c(196): error:  #20: identifier "MOTOR_B" is undefined
+  			 if( MOTOR_B.Encoder<0)	OLED_ShowString(60,30,"-"),
+..\BALANCE\show.c(228): error:  #20: identifier "MOTOR_D" is undefined
+  				if( MOTOR_D.Target<0)	OLED_ShowString(15,40,"-"),
+..\BALANCE\show.c(232): error:  #20: identifier "MOTOR_D" is undefined
+  				if( MOTOR_D.Encoder<0)	OLED_ShowString(60,40,"-"),
+..\BALANCE\show.c(262): error:  #20: identifier "MOTOR_A" is undefined
+  			 if( MOTOR_A.Motor_Pwm<0)OLED_ShowString(20,40,"-"),
+..\BALANCE\show.c(267): error:  #20: identifier "MOTOR_B" is undefined
+  			 if(MOTOR_B.Motor_Pwm<0) OLED_ShowString(80,40,"-"),
+..\BALANCE\show.c(330): error:  #20: identifier "MOTOR_A" is undefined
+  				if( MOTOR_A.Encoder<0)	OLED_ShowString(00,5,"A-"),
+..\BALANCE\show.c(335): error:  #20: identifier "MOTOR_B" is undefined
+  				if( MOTOR_B.Encoder<0)	OLED_ShowString(70,5,"B-"),
+..\BALANCE\show.c(340): error:  #20: identifier "MOTOR_C" is undefined
+  				if( MOTOR_C.Encoder<0)	OLED_ShowString(00,20,"C-"),
+..\BALANCE\show.c(345): error:  #20: identifier "MOTOR_D" is undefined
+  				if( MOTOR_D.Encoder<0)	OLED_ShowString(70,20,"D-"),
+..\BALANCE\show.c(530): error:  #20: identifier "MOTOR_A" is undefined
+  	 Left_Figure=MOTOR_A.Encoder*100;  if(Left_Figure<0)Left_Figure=-Left_Figure;	
+..\BALANCE\show.c(531): error:  #20: identifier "MOTOR_B" is undefined
+  	 Right_Figure=MOTOR_B.Encoder*100; if(Right_Figure<0)Right_Figure=-Right_Figure;
+..\BALANCE\show.c: 0 warnings, 20 errors
+compiling system.c...
+compiling robot_select_init.c...
 compiling MPU6050.c...
-..\HARDWARE\brushlessMotor.h(79): error:  #20: identifier "BrushlessMotor" is undefined
-  void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);
-..\HARDWARE\MPU6050\MPU6050.c: 0 warnings, 1 error
-compiling brushlessMotor.c...
 compiling I2C.c...
-..\HARDWARE\brushlessMotor.h(79): error:  #20: identifier "BrushlessMotor" is undefined
-  void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq);
-..\HARDWARE\MPU6050\I2C.c: 0 warnings, 1 error
-"..\OBJ\WHEELTEC.axf" - 35 Error(s), 2 Warning(s).
+"..\OBJ\WHEELTEC.axf" - 49 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -149,7 +214,7 @@ Package Vendor: Keil
 
 <h2>Collection of Component Files used:</h2>
 Target not created.
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>
