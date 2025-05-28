@@ -39,6 +39,7 @@ extern u8 command_lost_count; //串口、CAN控制命令丢失时间计数，丢失1秒后停止控制
 void Balance_task(void *pvParameters);
 
 //void Set_Pwm(int motor_a,int motor_b,int motor_c,int motor_d,int servo);
+void FOCLoop_task(void *pvParameters);
 void Set_Pwm(void);
 void FOC_Init(void);
 void FOC_duty_Update(BrushlessMotor* motor,float freq);

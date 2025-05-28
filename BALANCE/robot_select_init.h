@@ -36,7 +36,7 @@ typedef struct
 #define MEC_wheelspacing         0.0930 //修正2021.03.30
 #define Akm_wheelspacing         0.162f
 #define Diff_wheelSpacing        0.177f
-#define Four_Mortor_wheelSpacing 0.187f
+#define Four_Mortor_wheelSpacing 0.136f//四驱车
 #define Tank_wheelSpacing        0.235f
 
 //Axlespacing, Mec_Car is half axlespacing
@@ -44,12 +44,12 @@ typedef struct
 #define MEC_axlespacing           0.085
 #define Akm_axlespacing           0.144f
 #define Diff_axlespacing          0.155f
-#define Four_Mortor__axlespacing  0.173f
+#define Four_Mortor__axlespacing  0.166f//四驱车
 #define Tank_axlespacing          0.222f
 
 //Motor_gear_ratio
 //电机减速比
-#define   HALL_30F    30
+#define   HALL_30F    1
 #define   MD36N_5_18  5.18
 #define   MD36N_27    27
 #define   MD36N_51    51
@@ -59,8 +59,8 @@ typedef struct
 
 //Number_of_encoder_lines
 //编码器精度
-#define		Photoelectric_500 500
-#define	  Hall_13           13
+#define		Photoelectric_500 1024
+#define	  Hall_13           1024
 
 //Mecanum wheel tire diameter series
 //麦轮轮胎直径
@@ -81,7 +81,7 @@ typedef struct
 
 //Black tire, tank_car wheel diameter
 //黑色轮胎、履带车轮直径
-#define	  Black_WheelDiameter   0.065
+#define	  Black_WheelDiameter   0.060f
 //#define	  Tank_WheelDiameter 0.047
 #define	  Tank_WheelDiameter 0.043
 

@@ -11,8 +11,8 @@ Output  : none
 void Encoder_Init_TIM2(void)
 {
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;  
-  TIM_ICInitTypeDef TIM_ICInitStructure;  
-  GPIO_InitTypeDef GPIO_InitStructure;
+	TIM_ICInitTypeDef TIM_ICInitStructure;  
+	GPIO_InitTypeDef GPIO_InitStructure;
 	
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);   //使能定时器
   RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA|RCC_AHB1Periph_GPIOB, ENABLE);  //使用A B口

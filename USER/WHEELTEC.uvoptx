@@ -589,7 +589,7 @@
         <Bp>
           <Number>27</Number>
           <Type>0</Type>
-          <LineNumber>201</LineNumber>
+          <LineNumber>202</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -605,7 +605,7 @@
         <Bp>
           <Number>28</Number>
           <Type>0</Type>
-          <LineNumber>202</LineNumber>
+          <LineNumber>203</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -621,7 +621,7 @@
         <Bp>
           <Number>29</Number>
           <Type>0</Type>
-          <LineNumber>203</LineNumber>
+          <LineNumber>204</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -637,7 +637,7 @@
         <Bp>
           <Number>30</Number>
           <Type>0</Type>
-          <LineNumber>204</LineNumber>
+          <LineNumber>205</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -653,7 +653,7 @@
         <Bp>
           <Number>31</Number>
           <Type>0</Type>
-          <LineNumber>205</LineNumber>
+          <LineNumber>206</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -669,7 +669,7 @@
         <Bp>
           <Number>32</Number>
           <Type>0</Type>
-          <LineNumber>206</LineNumber>
+          <LineNumber>207</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -1468,7 +1468,7 @@
 
   <Group>
     <GroupName>FreeRTOS_CORE</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
