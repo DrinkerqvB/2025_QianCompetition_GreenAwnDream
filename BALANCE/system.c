@@ -54,7 +54,7 @@ Smooth_Control smooth_control;
 
 //The parameter structure of the motor
 //电机的参数结构体
-BrushlessMotor MOTOR_A,MOTOR_B,MOTOR_C,MOTOR_D;  
+//BrushlessMotor MOTOR_A,MOTOR_B,MOTOR_C,MOTOR_D;  
 
 /************ 小车型号相关变量 **************************/
 /************ Variables related to car model ************/

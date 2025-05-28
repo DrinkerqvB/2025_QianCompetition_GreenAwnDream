@@ -58,6 +58,7 @@ void start_task(void *pvParameters)
     xTaskCreate(led_task,      "led_task",      LED_STK_SIZE,      NULL, LED_TASK_PRIO,      NULL);	//LED light flashing task //LED灯闪烁任务
     xTaskCreate(pstwo_task,    "PSTWO_task",    PS2_STK_SIZE,      NULL, PS2_TASK_PRIO,      NULL);	//Read the PS2 controller task //读取PS2手柄任务
     xTaskCreate(data_task,     "DATA_task",     DATA_STK_SIZE,     NULL, DATA_TASK_PRIO,     NULL);	//Usartx3, Usartx1 and CAN send data task //串口3、串口1、CAN发送数据任务
+	xTaskCreate(FOCLoop_task, "FOCLoop_task"  , 256              ,NULL,  4,                 NULL);
 	
     vTaskDelete(StartTask_Handler); //Delete the start task //删除开始任务
 

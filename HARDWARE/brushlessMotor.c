@@ -2,15 +2,12 @@
 #include <math.h>
 
 PID_HandleTypeDef pid_current_q, pid_current_d;
-BrushlessMotor Motor_Left;
-BrushlessMotor Motor_Right;
+
 
 uint8_t Rotor_Angle;
 
 
-// 正弦表（预生成360点，幅值0-1）
-static float SinTable[360];
-static float Phase = 0.0f;
+
 
 /**************************************************************************
 函数功能：使能开关引脚初始化
@@ -27,64 +24,6 @@ void Enable_Pin(void)
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;//上拉
 	GPIO_Init(GPIOD, &GPIO_InitStructure);//初始化GPIOB14
 } 
-/**************************************************************************
-函数功能：FOC核心算法
-入口参数：
-返回  值：
-**************************************************************************/
-void FOC_Init(void) {
-    // 生成正弦表
-    for (int i = 0; i < 360; i++) {
-        SinTable[i] = sinf(i * 3.1415926f / 180.0f);
-    }
-}
-
-// 更新开环FOC输出（freq: 电频率Hz）
-void FOC_OpenLoop_Update(BrushlessMotor* motor,float freq) {
-	volatile static uint32_t count=0;
-    volatile static uint32_t last_time = 0;
-	(void)last_time;
-    uint32_t current_time = SysTick->VAL;
-	
-	
-    
-    // 计算相位增量（每1ms更新一次）
-    if ( 1) {
-		count-=72000;
-        //Phase += 0.0036f * freq; // 0.36 = 360° / 1000ms
-		Phase += 0.0018f * freq;
-        if (Phase >= 360.0f) Phase -= 360.0f;
-        last_time = current_time;
-    }
-    
-    // 生成三相正弦波
-    float Ua = SinTable[(int)Phase % 360];
-    float Ub = SinTable[(int)(Phase + 120) % 360];
-    float Uc = SinTable[(int)(Phase + 240) % 360];
-    
-    // 转换为PWM占空比（幅值设为50%）
-    uint16_t DutyA = (uint16_t)((Ua + 1.0f) * PWM_PERIOD / 2);
-    uint16_t DutyB = (uint16_t)((Ub + 1.0f) * PWM_PERIOD / 2);
-    uint16_t DutyC = (uint16_t)((Uc + 1.0f) * PWM_PERIOD / 2);
-    
-	
-	motor->dutyA=DutyA;
-	motor->dutyB=DutyB;
-	motor->dutyC=DutyC;
-	
-	
-	
-//	TIM1->CCR1 = (uint16_t)((Ua + 1.0f) * 0.4f * PWM_PERIOD + 0.1f * PWM_PERIOD);
-//    TIM1->CCR2 = (uint16_t)((Ub + 1.0f) * 0.4f * PWM_PERIOD + 0.1f * PWM_PERIOD);
-//    TIM1->CCR3 = (uint16_t)((Uc + 1.0f) * 0.4f * PWM_PERIOD + 0.1f * PWM_PERIOD);
-	
-	count++;
-	
-    // 更新PWM寄存器
-//    TIM1->CCR1 = DutyA;
-//    TIM1->CCR2 = DutyB;
-//    TIM1->CCR3 = DutyC;
-}
 
 
 

@@ -48,6 +48,11 @@ void data_transition(void)
 	//According to different vehicle types, different kinematics algorithms were selected to carry out the forward kinematics solution, 
 	//and the three-axis velocity was obtained from each wheel velocity
 	//根据不同车型选择不同运动学算法进行运动学正解，从各车轮速度求出三轴速度
+	
+	Send_Data.Sensor_Str.X_speed = ((Motor_Left.Encoder+Motor_Right.Encoder)/2)*1000; 
+	Send_Data.Sensor_Str.Y_speed = 0;
+	Send_Data.Sensor_Str.Z_speed = ((-Motor_Left.Encoder+Motor_Right.Encoder)/(Axle_spacing+Wheel_spacing))*1000;
+	/*
 	switch(Car_Mode)
 	{	
 		case Mec_Car:      
@@ -85,7 +90,9 @@ void data_transition(void)
 			Send_Data.Sensor_Str.Y_speed = 0;
 			Send_Data.Sensor_Str.Z_speed = ((MOTOR_B.Encoder-MOTOR_A.Encoder)/(Wheel_spacing)*1000);
 			break; 
+			
 	}
+	*/
 	
 	//The acceleration of the triaxial acceleration //加速度计三轴加速度
 	Send_Data.Sensor_Str.Accelerometer.X_data= accel[1]; //The accelerometer Y-axis is converted to the ros coordinate X axis //加速度计Y轴转换到ROS坐标X轴

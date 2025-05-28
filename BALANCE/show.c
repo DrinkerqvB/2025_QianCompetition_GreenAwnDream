@@ -111,7 +111,33 @@ void oled_show(void)
 		 //The first line of the display displays the content//
 		 //显示屏第1行显示内容//
 		 
+		 //左轮目标速度和实际速度
+			OLED_ShowString(0,10,"L");
+			if( Motor_Left.Target<0)	OLED_ShowString(15,10,"-"),
+														OLED_ShowNumber(20,10,-Motor_Left.Target*1000,5,12);
+			else                 	OLED_ShowString(15,10,"+"),
+														OLED_ShowNumber(20,10, Motor_Left.Target*1000,5,12); 
+			
+			if( Motor_Left.Encoder<0)OLED_ShowString(60,10,"-"),
+														OLED_ShowNumber(75,10,-Motor_Left.Encoder*1000,5,12);
+			else                 	OLED_ShowString(60,10,"+"),
+														OLED_ShowNumber(75,10, Motor_Left.Encoder*1000,5,12);
+		 
+		 //右轮目标速度和实际速度			
+			OLED_ShowString(0,20,"R");		
+			if( Motor_Right.Target<0)	OLED_ShowString(15,20,"-"),
+														OLED_ShowNumber(20,20,-Motor_Right.Target*1000,5,12);
+			else                 	OLED_ShowString(15,20,"+"),
+														OLED_ShowNumber(20,20, Motor_Right.Target*1000,5,12); 
+			
+			if( Motor_Right.Encoder<0)OLED_ShowString(60,20,"-"),
+														OLED_ShowNumber(75,20,-Motor_Right.Encoder*1000,5,12);
+			else                 	OLED_ShowString(60,20,"+"),
+														OLED_ShowNumber(75,20, Motor_Right.Encoder*1000,5,12);
+		 
 
+		 /*
+		 
 		 //The second line of the display displays the content//
 		 //显示屏第2行显示内容//
 		 if(Car_Mode==Mec_Car||Car_Mode==Omni_Car||Car_Mode==FourWheel_Car)
@@ -141,6 +167,10 @@ void oled_show(void)
 		 }	 
 		 //The second line of the display displays the content//
 		 //显示屏第2行显示内容//
+		 
+		 
+		 
+		 
 		 
 		 //Lines 3 and 4 of the display screen display content//
 		 //显示屏第3、4行显示内容//
@@ -269,6 +299,10 @@ void oled_show(void)
 			 else                 	 OLED_ShowString(80,40,"+"),
 															 OLED_ShowNumber(90,40, MOTOR_B.Motor_Pwm,4,12);
 		 }
+		 
+		 */
+		 
+		 
 		 //Line 5 of the display displays the content//
 		 //显示屏第5行显示内容//
 			 
@@ -291,6 +325,9 @@ void oled_show(void)
 			                          OLED_ShowString(110,50,"V");
 		 if(Voltage_Show%100<10) 	OLED_ShowNumber(92,50,0,2,12);
 		}	
+	 
+		
+		/*
 	 else if(Check==1)
 	 {
 		if(Proc_Flag==0)							//用户自检代码
@@ -504,6 +541,7 @@ void oled_show(void)
 		 }
 		 OLED_ShowCHinese12(00, 50, "单击继续双击退出");
 	 }
+	 */
 	 
 		OLED_Refresh_Gram();
 }
@@ -527,8 +565,8 @@ void APP_Show(void)
 	
 	 //Wheel speed unit is converted to 0.01m/s for easy display in APP
 	 //车轮速度单位转换为0.01m/s，方便在APP显示
-	 Left_Figure=MOTOR_A.Encoder*100;  if(Left_Figure<0)Left_Figure=-Left_Figure;	
-	 Right_Figure=MOTOR_B.Encoder*100; if(Right_Figure<0)Right_Figure=-Right_Figure;
+	 Left_Figure=Motor_Left.Encoder*100;  if(Left_Figure<0)Left_Figure=-Left_Figure;	
+	 Right_Figure=Motor_Right.Encoder*100; if(Right_Figure<0)Right_Figure=-Right_Figure;
 	
 	 //Used to alternately print APP data and display waveform
 	 //用于交替打印APP数据和显示波形

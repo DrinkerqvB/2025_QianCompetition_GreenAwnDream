@@ -8,6 +8,12 @@ int robot_mode_check_flag=0;
 
 short test_num;
 
+// 正弦表（预生成360点，幅值0-1）
+static float SinTable[360];
+static float Phase = 0.0f;
+
+
+
 Encoder OriginalEncoder; //Encoder raw data //编码器原始数据
 
 u8 command_lost_count=0; //串口、CAN控制命令丢失时间计数，丢失1秒后停止控制
@@ -23,6 +29,7 @@ void Drive_Motor(float Vx,float Vy,float Vz)
 {
 		float amplitude=3.5; //Wheel target speed limit //车轮目标速度限幅
 		
+	/*
 		//Ackermann structure car
 		//阿克曼小车
 		 if (Car_Mode==Akm_Car) 
@@ -63,6 +70,7 @@ void Drive_Motor(float Vx,float Vy,float Vz)
 			MOTOR_D.Target=0; //Out of use //没有使用到
 			Servo=target_limit_int(Servo,800,2200);	//Servo PWM value limit //舵机PWM值限幅
 		}
+		*/
 		
 		//Differential car
 		//差速小车
@@ -81,19 +89,19 @@ void Drive_Motor(float Vx,float Vy,float Vz)
 		
 		//FourWheel car
 		//四驱车
-		else if(Car_Mode==FourWheel_Car) 
+		if(Car_Mode==FourWheel_Car) 
 		{	
 			//Inverse kinematics //运动学逆解
-			MOTOR_A.Target  = Vx - Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出左轮的目标速度
-			MOTOR_B.Target  = Vx - Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出左轮的目标速度
-			MOTOR_C.Target  = Vx + Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出右轮的目标速度
-			MOTOR_D.Target  = Vx + Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出右轮的目标速度
+			Motor_Left.Target  = Vx - Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出左轮的目标速度
+			Motor_Right.Target  = Vx - Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出左轮的目标速度
+//			MOTOR_C.Target  = Vx + Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出右轮的目标速度
+//			MOTOR_D.Target  = Vx + Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出右轮的目标速度
 					
 			//Wheel (motor) target speed limit //车轮(电机)目标速度限幅
-			MOTOR_A.Target=target_limit_float( MOTOR_A.Target,-amplitude,amplitude); 
-			MOTOR_B.Target=target_limit_float( MOTOR_B.Target,-amplitude,amplitude); 
-			MOTOR_C.Target=target_limit_float( MOTOR_C.Target,-amplitude,amplitude); 
-			MOTOR_D.Target=target_limit_float( MOTOR_D.Target,-amplitude,amplitude); 	
+			Motor_Left.Target=target_limit_float( Motor_Left.Target,-amplitude,amplitude); 
+			Motor_Right.Target=target_limit_float( Motor_Right.Target,-amplitude,amplitude); 
+//			MOTOR_C.Target=target_limit_float( MOTOR_C.Target,-amplitude,amplitude); 
+//			MOTOR_D.Target=target_limit_float( MOTOR_D.Target,-amplitude,amplitude); 	
 		}
 		
 
@@ -152,10 +160,10 @@ void Balance_task(void *pvParameters)
            //Speed closed-loop control to calculate the PWM value of each motor, 
 					 //PWM represents the actual wheel speed					 
 					 //速度闭环控制计算各电机PWM值，PWM代表车轮实际转速
-					 MOTOR_A.Motor_Pwm=Incremental_PI_A(MOTOR_A.Encoder, MOTOR_A.Target);
-					 MOTOR_B.Motor_Pwm=Incremental_PI_B(MOTOR_B.Encoder, MOTOR_B.Target);
-					 MOTOR_C.Motor_Pwm=Incremental_PI_C(MOTOR_C.Encoder, MOTOR_C.Target);
-					 MOTOR_D.Motor_Pwm=Incremental_PI_D(MOTOR_D.Encoder, MOTOR_D.Target);
+					 Motor_Left.FOC_freq=Incremental_PI_A(Motor_Left.Encoder, Motor_Left.Target);
+					 Motor_Right.FOC_freq=Incremental_PI_B(Motor_Right.Encoder, Motor_Right.Target);
+//					 MOTOR_C.Motor_Pwm=Incremental_PI_C(MOTOR_C.Encoder, MOTOR_C.Target);
+//					 MOTOR_D.Motor_Pwm=Incremental_PI_D(MOTOR_D.Encoder, MOTOR_D.Target);
 						 
 					 Limit_Pwm(16700);
 					 
@@ -167,7 +175,10 @@ void Balance_task(void *pvParameters)
 							//case Omni_Car:      Set_Pwm(-MOTOR_A.Motor_Pwm,  MOTOR_B.Motor_Pwm, -MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm, 0    ); break; //Omni car                //全向轮小车
 							case Akm_Car:       //Set_Pwm( MOTOR_A.Motor_Pwm,  MOTOR_B.Motor_Pwm,  MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm, Servo); break; //Ackermann structure car //阿克曼小车
 							//case Diff_Car:      Set_Pwm( MOTOR_A.Motor_Pwm,  MOTOR_B.Motor_Pwm,  MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm, 0    ); break; //Differential car        //两轮差速小车
-							case FourWheel_Car: ;//Set_Pwm( MOTOR_A.Motor_Pwm, -MOTOR_B.Motor_Pwm, -MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm, 0    ); break; //FourWheel car           //四驱车 
+							case FourWheel_Car: 
+								;
+							
+							//Set_Pwm( MOTOR_A.Motor_Pwm, -MOTOR_B.Motor_Pwm, -MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm, 0    ); break; //FourWheel car           //四驱车 
 							//case Tank_Car:      Set_Pwm( MOTOR_A.Motor_Pwm,  MOTOR_B.Motor_Pwm,  MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm, 0    ); break; //Tank Car                //履带车
 					 }
 				 }
@@ -177,6 +188,7 @@ void Balance_task(void *pvParameters)
 			 }
 			
 			 //以下else为自检程序代码
+			 /*
 			 
 				else
 				{
@@ -300,8 +312,34 @@ void Balance_task(void *pvParameters)
 					}
 				}
 				}
+				*/
 		 }  
+		 
 }
+
+
+/**************************************************************************
+函数功能：用于FOC循环的FreeRTOS任务
+入口参数：
+返回  值：无
+**************************************************************************/
+void FOCLoop_task(void *pvParameters)
+{
+	u32 lastWakeTime = getSysTickCnt();
+
+    while(1)
+    {	
+			// This task runs at a frequency of 100Hz (10ms control once)
+			//此任务以1000Hz的频率运行（1ms控制一次）
+		vTaskDelayUntil(&lastWakeTime, F2T(RATE_1000_HZ)); 
+		FOC_duty_Update(&Motor_Left, Motor_Left.FOC_freq);
+		FOC_duty_Update(&Motor_Right, Motor_Right.FOC_freq);
+		Set_Pwm();
+		
+	}
+
+}
+
 /**************************************************************************
 Function: Assign a value to the PWM register to control wheel speed and direction
 Input   : PWM
@@ -310,16 +348,83 @@ Output  : none
 入口参数：PWM
 返回  值：无
 **************************************************************************/
-void Set_Pwm(uint16_t *dutyU, uint16_t *dutyV, uint16_t *dutyW)
+void Set_Pwm(void)
 {
-	TIM_SetCompare1(TIM4, *dutyU); // CH1 = U
-    TIM_SetCompare2(TIM4, *dutyV); // CH2 = V
-    TIM_SetCompare4(TIM8, *dutyW); // CH3 = W
+	TIM_SetCompare1(TIM4, Motor_Left.dutyA); // CH1 = U
+    TIM_SetCompare2(TIM4, Motor_Left.dutyB); // CH2 = V
+    TIM_SetCompare4(TIM8, Motor_Left.dutyC); // CH3 = W
 	
-	TIM_SetCompare1(TIM8, *dutyU); // CH1 = U
-    TIM_SetCompare2(TIM8, *dutyV); // CH2 = V
-    TIM_SetCompare3(TIM8, *dutyW); // CH3 = W
+	TIM_SetCompare1(TIM8, Motor_Right.dutyA); // CH1 = U
+    TIM_SetCompare2(TIM8, Motor_Right.dutyB); // CH2 = V
+    TIM_SetCompare3(TIM8, Motor_Right.dutyC); // CH3 = W
 }
+
+
+
+
+/**************************************************************************
+函数功能：FOC核心算法
+入口参数：
+返回  值：
+**************************************************************************/
+void FOC_Init(void) {
+    // 生成正弦表
+    for (int i = 0; i < 360; i++) {
+        SinTable[i] = sinf(i * 3.1415926f / 180.0f);
+    }
+}
+
+// 更新开环FOC输出（freq: 电频率Hz）
+void FOC_duty_Update(BrushlessMotor* motor,float freq) {
+	volatile static uint32_t count=0;
+    volatile static uint32_t last_time = 0;
+	(void)last_time;
+    uint32_t current_time = SysTick->VAL;
+	
+	
+    
+    // 计算相位增量（每1ms更新一次）
+    if ( 1) {
+		
+        Phase += 0.0036f * freq; // 0.36 = 360° / 1000ms
+		//Phase += 0.0018f * freq;
+        if (Phase >= 360.0f) Phase -= 360.0f;
+        last_time = current_time;
+    }
+    
+    // 生成三相正弦波
+    float Ua = SinTable[(int)Phase % 360];
+    float Ub = SinTable[(int)(Phase + 120) % 360];
+    float Uc = SinTable[(int)(Phase + 240) % 360];
+    
+    // 转换为PWM占空比（幅值设为50%）
+    uint16_t DutyA = (uint16_t)((Ua + 1.0f) * PWM_PERIOD / 2);
+    uint16_t DutyB = (uint16_t)((Ub + 1.0f) * PWM_PERIOD / 2);
+    uint16_t DutyC = (uint16_t)((Uc + 1.0f) * PWM_PERIOD / 2);
+    
+	
+	motor->dutyA=DutyA;
+	motor->dutyB=DutyB;
+	motor->dutyC=DutyC;
+	
+	
+	
+//	TIM1->CCR1 = (uint16_t)((Ua + 1.0f) * 0.4f * PWM_PERIOD + 0.1f * PWM_PERIOD);
+//    TIM1->CCR2 = (uint16_t)((Ub + 1.0f) * 0.4f * PWM_PERIOD + 0.1f * PWM_PERIOD);
+//    TIM1->CCR3 = (uint16_t)((Uc + 1.0f) * 0.4f * PWM_PERIOD + 0.1f * PWM_PERIOD);
+	
+	
+	
+    // 更新PWM寄存器
+//    TIM1->CCR1 = DutyA;
+//    TIM1->CCR2 = DutyB;
+//    TIM1->CCR3 = DutyC;
+}
+
+
+
+
+
 
 //void Set_Pwm(int motor_a,int motor_b,int motor_c,int motor_d,int servo)
 //{
@@ -359,10 +464,14 @@ Output  : none
 **************************************************************************/
 void Limit_Pwm(int amplitude)
 {	
-	    MOTOR_A.Motor_Pwm=target_limit_float(MOTOR_A.Motor_Pwm,-amplitude,amplitude);
-	    MOTOR_B.Motor_Pwm=target_limit_float(MOTOR_B.Motor_Pwm,-amplitude,amplitude);
-		  MOTOR_C.Motor_Pwm=target_limit_float(MOTOR_C.Motor_Pwm,-amplitude,amplitude);
-	    MOTOR_D.Motor_Pwm=target_limit_float(MOTOR_D.Motor_Pwm,-amplitude,amplitude);
+	Motor_Left.dutyA=target_limit_float(Motor_Left.dutyA,-amplitude,amplitude);
+	Motor_Left.dutyB=target_limit_float(Motor_Left.dutyB,-amplitude,amplitude);
+	Motor_Left.dutyC=target_limit_float(Motor_Left.dutyC,-amplitude,amplitude);
+	
+	Motor_Right.dutyA=target_limit_float(Motor_Left.dutyA,-amplitude,amplitude);
+	Motor_Right.dutyB=target_limit_float(Motor_Left.dutyB,-amplitude,amplitude);
+	Motor_Right.dutyC=target_limit_float(Motor_Left.dutyC,-amplitude,amplitude);
+	    
 }	    
 /**************************************************************************
 Function: Limiting function
@@ -817,11 +926,22 @@ void Get_Velocity_Form_Encoder(void)
 		
 		//The encoder converts the raw data to wheel speed in m/s
 		//编码器原始数据转换为车轮速度，单位m/s
-		MOTOR_A.Encoder= Encoder_A_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;  
-		MOTOR_B.Encoder= Encoder_B_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;  
-		MOTOR_C.Encoder= Encoder_C_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision; 
-		MOTOR_D.Encoder= Encoder_D_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision; 
+		Motor_Left.Encoder= Encoder_A_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;  
+		Motor_Right.Encoder= Encoder_B_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;  
+//		MOTOR_C.Encoder= Encoder_C_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision; 
+//		MOTOR_D.Encoder= Encoder_D_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision; 
 }
+
+
+
+
+
+
+
+
+
+
+
 /**************************************************************************
 Function: Smoothing the three axis target velocity
 Input   : Three-axis target velocity
