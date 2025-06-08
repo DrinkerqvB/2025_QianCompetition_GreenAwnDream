@@ -173,7 +173,7 @@ void EXTI0_IRQHandler(void)
 {
 	if(EXTI_GetITStatus(EXTI_Line0)==SET){
 		
-		TIM_SetCounter(TIM3,0x00);
+		//TIM_SetCounter(TIM3,0x00);
 		
 		EXTI_ClearITPendingBit(EXTI_Line0);
 	}
@@ -184,7 +184,7 @@ void EXTI2_IRQHandler(void)
 {
 	if(EXTI_GetITStatus(EXTI_Line2)==SET){
 		
-		TIM_SetCounter(TIM2,0x00);
+		//TIM_SetCounter(TIM2,0x00);
 		
 		EXTI_ClearITPendingBit(EXTI_Line2);
 	}
