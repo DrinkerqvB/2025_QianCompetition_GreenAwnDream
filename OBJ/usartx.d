@@ -75,5 +75,6 @@
 ..\obj\usartx.o: ..\HARDWARE\MPU6050\MPU6050.h
 ..\obj\usartx.o: ..\HARDWARE\tracking.h
 ..\obj\usartx.o: ..\HARDWARE\brushlessMotor.h
+..\obj\usartx.o: ..\BALANCE\Control_Transmit.h
 ..\obj\usartx.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 ..\obj\usartx.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h

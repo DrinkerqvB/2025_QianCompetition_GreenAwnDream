@@ -75,6 +75,7 @@
 ..\obj\oled.o: ..\HARDWARE\MPU6050\MPU6050.h
 ..\obj\oled.o: ..\HARDWARE\tracking.h
 ..\obj\oled.o: ..\HARDWARE\brushlessMotor.h
+..\obj\oled.o: ..\BALANCE\Control_Transmit.h
 ..\obj\oled.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 ..\obj\oled.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
 ..\obj\oled.o: ..\HARDWARE\oledfont.h

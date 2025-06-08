@@ -22,7 +22,7 @@ Function: The inverse kinematics solution is used to calculate the target speed 
 Input   : X and Y, Z axis direction of the target movement speed
 Output  : none
 函数功能：运动学逆解，根据三轴目标速度计算各车轮目标转速
-入口参数：X和Y、Z轴方向的目标运动速度
+入口参数：X和Y、Z轴方向的目标运动速度//Vx为前后速度，Vz为逆时针为正的角速度
 返回  值：无
 **************************************************************************/
 void Drive_Motor(float Vx,float Vy,float Vz)
@@ -72,20 +72,23 @@ void Drive_Motor(float Vx,float Vy,float Vz)
 		}
 		*/
 		
+		
+		/*
 		//Differential car
 		//差速小车
-//		else if (Car_Mode==Diff_Car) 
-//		{
-//			//Inverse kinematics //运动学逆解
-//			MOTOR_A.Target  = Vx - Vz * Wheel_spacing / 2.0f; //计算出左轮的目标速度
-//		  MOTOR_B.Target =  Vx + Vz * Wheel_spacing / 2.0f; //计算出右轮的目标速度
-//			
-//			//Wheel (motor) target speed limit //车轮(电机)目标速度限幅
-//		  MOTOR_A.Target=target_limit_float( MOTOR_A.Target,-amplitude,amplitude); 
-//	    MOTOR_B.Target=target_limit_float( MOTOR_B.Target,-amplitude,amplitude); 
-//			MOTOR_C.Target=0; //Out of use //没有使用到
-//			MOTOR_D.Target=0; //Out of use //没有使用到
-//		}
+		else if (Car_Mode==Diff_Car) 
+		{
+			//Inverse kinematics //运动学逆解
+			MOTOR_A.Target  = Vx - Vz * Wheel_spacing / 2.0f; //计算出左轮的目标速度
+		  MOTOR_B.Target =  Vx + Vz * Wheel_spacing / 2.0f; //计算出右轮的目标速度
+			
+			//Wheel (motor) target speed limit //车轮(电机)目标速度限幅
+		  MOTOR_A.Target=target_limit_float( MOTOR_A.Target,-amplitude,amplitude); 
+	    MOTOR_B.Target=target_limit_float( MOTOR_B.Target,-amplitude,amplitude); 
+			MOTOR_C.Target=0; //Out of use //没有使用到
+			MOTOR_D.Target=0; //Out of use //没有使用到
+		}
+		*/
 		
 		//FourWheel car
 		//四驱车
@@ -141,14 +144,15 @@ void Balance_task(void *pvParameters)
 //				if(command_lost_count>RATE_100_HZ && APP_ON_Flag==0 && Remote_ON_Flag==0 && PS2_ON_Flag==0) //不是APP、PS2、航模遥控模式，就是CAN、串口1、串口3控制模式
 //					Move_X=0, Move_Y=0, Move_Z=0;
 
-				if      (APP_ON_Flag)      Get_RC();         //Handle the APP remote commands //处理APP遥控命令
+//				if      (APP_ON_Flag)      Get_RC();         //Handle the APP remote commands //处理APP遥控命令
 //				else if (Remote_ON_Flag)   Remote_Control(); //Handle model aircraft remote commands //处理航模遥控命令
 //				else if (PS2_ON_Flag)      PS2_control();    //Handle PS2 controller commands //处理PS2手柄控制命令
 				
 				//CAN, Usart 1, Usart 3, Uart5 control can directly get the three axis target speed, 
 				//without additional processing
 				//CAN、串口1、串口3(ROS)、串口5控制直接得到三轴目标速度，无须额外处理
-				else                      Drive_Motor(Move_X, Move_Y, Move_Z);
+//				else
+					Drive_Motor(Move_X, Move_Y, Move_Z);
 				
 				 
 				
@@ -165,10 +169,11 @@ void Balance_task(void *pvParameters)
 //					 MOTOR_C.Motor_Pwm=Incremental_PI_C(MOTOR_C.Encoder, MOTOR_C.Target);
 //					 MOTOR_D.Motor_Pwm=Incremental_PI_D(MOTOR_D.Encoder, MOTOR_D.Target);
 						 
-					 Limit_Pwm(16700);
+					 //Limit_Pwm(16700);
 					 
 					 //Set different PWM control polarity according to different car models
 					 //根据不同小车型号设置不同的PWM控制极性
+					 /*
 					 switch(Car_Mode)
 					 {
 							//case Mec_Car:       Set_Pwm( MOTOR_A.Motor_Pwm, -MOTOR_B.Motor_Pwm, -MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm, 0    ); break; //Mecanum wheel car       //麦克纳姆轮小车
@@ -182,7 +187,9 @@ void Balance_task(void *pvParameters)
 							//Set_Pwm( MOTOR_A.Motor_Pwm, -MOTOR_B.Motor_Pwm, -MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm, 0    ); break; //FourWheel car           //四驱车 
 							//case Tank_Car:      Set_Pwm( MOTOR_A.Motor_Pwm,  MOTOR_B.Motor_Pwm,  MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm, 0    ); break; //Tank Car                //履带车
 					 }
+					 */
 				 }
+				 
 				 //If Turn_Off(Voltage) returns to 1, the car is not allowed to move, and the PWM value is set to 0
 				 //如果Turn_Off(Voltage)返回值为1，不允许控制小车进行运动，PWM值设置为0
 				 else;	//Set_Pwm(0,0,0,0,0); 
@@ -387,8 +394,8 @@ void FOC_duty_Update(BrushlessMotor* motor,float freq) {
     // 计算相位增量（每1ms更新一次）
     if ( 1) {
 		
-        Phase += 0.0036f * freq; // 0.36 = 360° / 1000ms
-		//Phase += 0.0018f * freq;
+        Phase += 0.36f * freq; // 0.36 = 360° / 1000ms
+		
         if (Phase >= 360.0f) Phase -= 360.0f;
         last_time = current_time;
     }
@@ -566,29 +573,29 @@ pwm+=Kp[e（k）-e(k-1)]+Ki*e(k)
 **************************************************************************/
 int Incremental_PI_A (float Encoder,float Target)
 { 	
-	 static float Bias,Pwm,Last_bias;
-	 Bias=Target-Encoder; //Calculate the deviation //计算偏差
+	 static float Bias,ElecFreq,Last_bias;
+	 Bias=(Target-Encoder)*7/Wheel_perimeter; //Calculate the deviation //计算偏差
 	
-	 Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias; 
+	 ElecFreq+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias; 
 	
-	 if(Pwm>16700)Pwm=16700;
-	 if(Pwm<-16700)Pwm=-16700;
+	 if(ElecFreq>233)ElecFreq=233;
+	 if(ElecFreq<-233)ElecFreq=-233;
 	
 	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
-	 return Pwm;    
+	 return ElecFreq;    
 }
 int Incremental_PI_B (float Encoder,float Target)
 {  
-	 static float Bias,Pwm,Last_bias;
-	 Bias=Target-Encoder; //Calculate the deviation //计算偏差
+	 static float Bias,ElecFreq,Last_bias;
+	 Bias=(Target-Encoder)*7/Wheel_perimeter; //Calculate the deviation //计算偏差
 	
-	 Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias;  
+	 ElecFreq+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias;  
 	
-	 if(Pwm>16700)Pwm=16700;
-	 if(Pwm<-16700)Pwm=-16700;
+	 if(ElecFreq>233)ElecFreq=233;
+	 if(ElecFreq<-233)ElecFreq=-233;
 	
 	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
-	 return Pwm;
+	 return ElecFreq;
 }
 int Incremental_PI_C (float Encoder,float Target)
 {  

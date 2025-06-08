@@ -75,5 +75,6 @@
 ..\obj\robot_select_init.o: ..\HARDWARE\MPU6050\MPU6050.h
 ..\obj\robot_select_init.o: ..\HARDWARE\tracking.h
 ..\obj\robot_select_init.o: ..\HARDWARE\brushlessMotor.h
+..\obj\robot_select_init.o: ..\BALANCE\Control_Transmit.h
 ..\obj\robot_select_init.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 ..\obj\robot_select_init.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h

@@ -75,5 +75,6 @@
 ..\obj\tracking.o: ..\HARDWARE\MPU6050\MPU6050.h
 ..\obj\tracking.o: ..\HARDWARE\tracking.h
 ..\obj\tracking.o: ..\HARDWARE\brushlessMotor.h
+..\obj\tracking.o: ..\BALANCE\Control_Transmit.h
 ..\obj\tracking.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 ..\obj\tracking.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
