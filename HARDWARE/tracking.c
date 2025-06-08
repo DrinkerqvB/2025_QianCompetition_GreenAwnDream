@@ -1,8 +1,8 @@
 #include "tracking.h"
 #include "string.h"
-
+const float IR_Weights[8] = {-3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5};
 extern int Time_count;
-
+QueueHandle_t xControlQueue = NULL;//给了一个队列的基本指针***出现问题要回去看
 u8 rx_buff[Package_size];//用于直接接收串口数据
 u8 new_package[Package_size];//用于转换为数字
 u8 g_new_package_flag = 0;//接收到新的一包数据标志
@@ -24,6 +24,17 @@ void Tracking_task(void *pvParameters)
 		//此任务以200Hz的频率运行（5ms转换一次）
 		vTaskDelayUntil(&lastWakeTime, F2T(RATE_200_HZ)); 
 		Deal_Usart_Data();
+		float error =  Calculate_Line_error();
+			
+		ControlState cmd;
+		cmd.line_error = error;
+		cmd.speed_setpoint = 0.5f;      // 固定速度0.5m/s
+		cmd.turn_gain = 20.0f * error; // KP=20
+		
+		 
+		xQueueOverwrite(xControlQueue, &cmd);
+		vTaskDelay(pdMS_TO_TICKS(5));
+
 	}
 }
 /**************************************************************************
@@ -253,3 +264,45 @@ u8 Check_Sum(unsigned char Count_Number,unsigned char Mode)
 }
 
 */
+/*
+****************************************************************************************************
+Functions: Calculate 
+Input :data of IR_Data_number none 
+Output: 偏差值
+********************************************************************************************************
+*/
+float Calculate_Line_error(void){
+	float weighted_sum = 0.0f;
+			uint8_t sensor_count = 0;
+    
+	for(int i = 0; i < IR_Num; i++) {
+        if(IR_Data_number[i] == 1) { //读取黑线
+            weighted_sum += IR_Weights[i];
+            sensor_count++;
+        }
+    }
+    
+    if(sensor_count > 0) {
+        return weighted_sum / sensor_count;
+    }else{
+    return 10.0f; 
+	}
+}
+/*
+*********************************************************************************
+Function:检查红外传感器脱线情况
+Input: data of IR_Data_number (none)
+Output: 是否完全脱线
+************************************************************************************/
+uint8_t Is_Line_Lost(void)
+{
+    for(int i = 0; i < IR_Num; i++) {
+        if(IR_Data_number[i] == 1) {
+            return 0; // 至少有一个传感器检测到线
+        }
+    }
+    return 1; // 完全脱线
+}
+
+
+

@@ -11,7 +11,10 @@
 #define X_PARAMETER    (sqrt(3)/2.f)               
 #define Y_PARAMETER    (0.5f)    
 #define L_PARAMETER    (1.0f)
-
+typedef enum {
+   CW = 0,  // À≥ ±’Î
+   CCW = 1  // ƒÊ ±’Î
+} MotorDirection;
 //extern BrushlessMotor Motor_Left, Motor_Right;
 
 //BrushlessMotor Motor_Left, Motor_Right;
@@ -33,8 +36,8 @@ float target_limit_float(float insert,float low,float high);
 int target_limit_int(int insert,int low,int high);
 u8 Turn_Off( int voltage);
 u32 myabs(long int a);
-int Incremental_PI_A (float Encoder,float Target);
-int Incremental_PI_B (float Encoder,float Target);
+int Incremental_PID_A (float Encoder,float Target);
+int Incremental_PID_B (float Encoder,float Target);
 int Incremental_PI_C (float Encoder,float Target);
 int Incremental_PI_D (float Encoder,float Target);
 void Get_RC(void);

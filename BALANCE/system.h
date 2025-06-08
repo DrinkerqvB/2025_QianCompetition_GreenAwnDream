@@ -17,7 +17,14 @@
 #include "semphr.h"
 //The associated header file for the peripheral 
 //外设的相关头文件
+\
 
+typedef struct{
+	float line_error;      // 寻迹偏差（-3.5=最左, +3.5=最右）
+    float speed_setpoint;  // 目标速度（m/s）
+    float turn_gain;       // 转向系数（左正右负）
+}ControlState;
+extern QueueHandle_t xControlQueue;
 typedef struct  
 {
 	float U1,U2,U3;//三个电压
@@ -26,14 +33,14 @@ typedef struct
 	uint16_t dutyA,dutyB,dutyC;//三个占空比，即CCR寄存器值
 	
 	float FOC_freq; //FOC电频率
-	
+	 uint8_t dir;//0=CW, 1=CCW（方向控制）
 	float Encoder;     //Read the real time speed of the motor by encoder //编码器数值，读取电机实时速度
 	
 	
 //	float Motor_Pwm;   //Motor PWM value, control the real-time speed of the motor //电机PWM数值，控制电机实时速度
 	float Target;      //Control the target speed of the motor //电机目标速度值，控制电机目标速度
-	float Velocity_KP; //Speed control PID parameters //速度控制PID参数
-	float	Velocity_KI; //Speed control PID parameters //速度控制PID参数
+//	float Velocity_KP; //Speed control PID parameters //速度控制PID参数
+//	float	Velocity_KI; //Speed control PID parameters //速度控制PID参数
 }BrushlessMotor;
 
 
@@ -58,7 +65,6 @@ typedef struct
 #include "MPU6050.h"
 #include "tracking.h"
 #include "brushlessMotor.h"
-#include "Control_Transmit.h"
 
 
 #define EN     PDin(3)
@@ -99,7 +105,7 @@ extern u8 Car_Mode;
 extern int Servo;
 extern float RC_Velocity;
 extern float Move_X, Move_Y, Move_Z; 
-extern float Velocity_KP, Velocity_KI;	
+extern float Velocity_KP, Velocity_KI, Velocity_KD;	
 extern Smooth_Control smooth_control;
 //extern BrushlessMotor MOTOR_A, MOTOR_B, MOTOR_C, MOTOR_D;
 extern BrushlessMotor Motor_Left,Motor_Right;
