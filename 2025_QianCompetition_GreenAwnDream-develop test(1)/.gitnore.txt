@@ -1,0 +1,10 @@
+Objects/
+Listings/
+*.o
+*.axf
+*.lst
+*.map
+*.crf
+*.d
+*.dep
+*.bak
