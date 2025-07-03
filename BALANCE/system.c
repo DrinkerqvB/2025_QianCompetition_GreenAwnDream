@@ -236,9 +236,9 @@ void systemInit(void)
 	
 	//Initialize the hardware interface to the PS2 controller
 	//初始化与PS2手柄连接的硬件接口
-	PS2_Init();
+	//PS2_Init();
 	
 	//PS2 gamepad configuration is initialized and configured in analog mode
   //PS2手柄配置初始化,配置为模拟量模式	
-	PS2_SetInit();		 							
+	//PS2_SetInit();		 							
 }

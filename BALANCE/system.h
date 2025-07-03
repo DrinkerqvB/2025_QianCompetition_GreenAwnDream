@@ -65,6 +65,7 @@ typedef struct
 #include "MPU6050.h"
 #include "tracking.h"
 #include "brushlessMotor.h"
+#include "ESP8266.h"
 
 
 #define EN     PDin(3)
