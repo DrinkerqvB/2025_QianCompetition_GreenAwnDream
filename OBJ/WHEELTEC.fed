@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060960: Last Updated: Thu Jul 03 21:22:14 2025
+;#<FEEDBACK># ARM Linker, 5060960: Last Updated: Sat Jul 05 23:02:04 2025
 ;VERSION 0.2
 ;FILE adc.o
 __asm___5_adc_c_Revise____REV16 <= USED 0
@@ -38,8 +38,10 @@ Encoder_Z_Init <= USED 0
 __asm___9_encoder_c_558eddd7____REV16 <= USED 0
 __asm___9_encoder_c_558eddd7____REVSH <= USED 0
 ;FILE esp8266.o
-__asm___9_ESP8266_c____REV16 <= USED 0
-__asm___9_ESP8266_c____REVSH <= USED 0
+ESP8266_task <= USED 0
+USART3_ReceiveChar <= USED 0
+__asm___9_ESP8266_c_d3dc736b____REV16 <= USED 0
+__asm___9_ESP8266_c_d3dc736b____REVSH <= USED 0
 ;FILE event_groups.o
 __asm___14_event_groups_c_5f98c4ce____REV16 <= USED 0
 __asm___14_event_groups_c_5f98c4ce____REVSH <= USED 0
@@ -864,7 +866,6 @@ USART_ClockInit <= USED 0
 USART_ClockStructInit <= USED 0
 USART_DMACmd <= USED 0
 USART_DeInit <= USED 0
-USART_GetFlagStatus <= USED 0
 USART_HalfDuplexCmd <= USED 0
 USART_IrDACmd <= USED 0
 USART_IrDAConfig <= USED 0
@@ -874,7 +875,6 @@ USART_OneBitMethodCmd <= USED 0
 USART_OverSampling8Cmd <= USED 0
 USART_ReceiverWakeUpCmd <= USED 0
 USART_SendBreak <= USED 0
-USART_SendData <= USED 0
 USART_SetAddress <= USED 0
 USART_SetGuardTime <= USED 0
 USART_SetPrescaler <= USED 0
@@ -965,7 +965,6 @@ __asm___7_usart_c_9275e5e5____REVSH <= USED 0
 _sys_exit <= USED 0
 uart_init <= USED 0
 ;FILE usartx.o
-USART3_Return <= USED 0
 __asm___8_usartx_c_e93110c7____REV16 <= USED 0
 __asm___8_usartx_c_e93110c7____REVSH <= USED 0
 usart2_send <= USED 0

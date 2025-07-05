@@ -57,13 +57,13 @@ typedef struct _RECEIVE_DATA_
 void data_task(void *pvParameters);
 void data_transition(void);
 void USART1_SEND(void);
-void USART3_SEND(void);
+
 
 
 void CAN_SEND(void);
 void uart1_init(u32 bound);
 void uart2_init(u32 bound);
-void uart3_init(u32 bound);
+
 
 
 int USART1_IRQHandler(void);
