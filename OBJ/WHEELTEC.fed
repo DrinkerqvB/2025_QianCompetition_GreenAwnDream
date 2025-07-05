@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060960: Last Updated: Sat Jul 05 23:02:04 2025
+;#<FEEDBACK># ARM Linker, 5060960: Last Updated: Sun Jul 06 00:39:30 2025
 ;VERSION 0.2
 ;FILE adc.o
 __asm___5_adc_c_Revise____REV16 <= USED 0
@@ -77,9 +77,12 @@ __asm___5_key_c_KEY_Init____REVSH <= USED 0
 click <= USED 0
 click_N_Double <= USED 0
 ;FILE led.o
+Buzzer_Init <= USED 0
+LED_Init <= USED 0
 Led_Flash <= USED 0
 __asm___5_LED_C_46bf04cd____REV16 <= USED 0
 __asm___5_LED_C_46bf04cd____REVSH <= USED 0
+led_task <= USED 0
 ;FILE list.o
 __asm___6_list_c_a968f7cb____REV16 <= USED 0
 __asm___6_list_c_a968f7cb____REVSH <= USED 0
@@ -451,6 +454,7 @@ GPIO_ReadInputDataBit <= USED 0
 GPIO_ReadOutputData <= USED 0
 GPIO_ReadOutputDataBit <= USED 0
 GPIO_ResetBits <= USED 0
+GPIO_SetBits <= USED 0
 GPIO_StructInit <= USED 0
 GPIO_ToggleBits <= USED 0
 GPIO_Write <= USED 0

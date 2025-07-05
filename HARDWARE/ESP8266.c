@@ -1,8 +1,8 @@
 #include "ESP8266.h"
 //发送到串口上后清空数组！！
 
-uint8_t ESP8266_ReceiveBuf2[ESP8266_RECEIVE_LENGTH];
-uint8_t ESP8266_ReceiveCmd[ESP8266_RECEIVE_LENGTH];
+uint8_t ESP8266_ReceiveBuf2[ESP8266_RECEIVE_LENGTH];//接收暂存帧
+uint8_t ESP8266_ReceiveCmd[ESP8266_RECEIVE_LENGTH];//接收
 //uint16_t pt_w2=0;
 uint8_t aRxBuffer;			//接收中断缓冲
 
@@ -11,8 +11,8 @@ char MODE_Start[]="AT+CWMODE=1\r\n";
 char WIFI_Start[]="AT+CWJAP=\"2\",\"12345678\"\r\n";
 char Connected_Start[]="AT+CIPMUX=0\r\n";
 char TCP_Start[]="AT+CIPSTART=\"TCP\",\"192.168.214.20\",8234\r\n";
-char TouChuan_Start[]="AT+CIPMODE=1\r\n";
-char TouChuan_Exit[]="+++";
+char SeriaNet_Start[]="AT+CIPMODE=1\r\n";
+char SeriaNet_Exit[]="+++";
 char TX_Start[]="AT+CIPSEND\r\n";
 char Type[]="Type";
 
@@ -44,12 +44,13 @@ void ESP8266_task(void *pvParameters)
 
 void ESP8266_Init(void)
 {
+	uart3_init(115200);
 	ESP8266_Command(RST_Start);
 	ESP8266_Command(MODE_Start);
 	ESP8266_Command(WIFI_Start);
 	ESP8266_Command(Connected_Start);
 	ESP8266_Command(TCP_Start);
-	ESP8266_Command(TouChuan_Start);
+	ESP8266_Command(SeriaNet_Start);
 	ESP8266_Command(TX_Start);		//发送指令
 }
 
@@ -60,7 +61,7 @@ void ESP8266_Command(char* Command_AT)
 	
 	USART3_SendString(Command_AT);
 	
-	//HAL_Delay(3500);
+	delay_ms(2000);
 	printf("%s",Command_AT);
 	//pt_w2=0;
 }
@@ -167,10 +168,11 @@ void ESP8266_RxCpltCallback(uint8_t data)
 	
 	if((ESP8266_ReceiveBuf2[pReceiveBuf2-1] == 0x0A)&&(ESP8266_ReceiveBuf2[pReceiveBuf2-2] == 0x0D)) //判断结束位 /r/n
 	{
-		printf("%s",ESP8266_ReceiveBuf2);
+		//printf("%s",ESP8266_ReceiveBuf2);
 		//while(HAL_UART_GetState(&huart1) == HAL_UART_STATE_BUSY_TX);//检测USART2发送结束
 		pReceiveBuf2=0;
-		//memset(ESP8266_ReceiveBuf2,0x00,sizeof(ESP8266_ReceiveBuf2)); //清空数组
+		memcpy(ESP8266_ReceiveCmd,ESP8266_ReceiveBuf2,ESP8266_RECEIVE_LENGTH);
+		memset(ESP8266_ReceiveBuf2,0x00,sizeof(ESP8266_ReceiveBuf2)); //清空数组
 	}
 	
 }

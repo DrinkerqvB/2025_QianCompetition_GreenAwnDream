@@ -138,11 +138,11 @@ void systemInit(void)
 	
 	//Initialize the hardware interface connected to the LED lamp
 	//初始化与LED灯连接的硬件接口
-	LED_Init();                     
+	//LED_Init();                     
 	    
   //Initialize the hardware interface connected to the buzzer	
   //初始化与蜂鸣器连接的硬件接口
-	Buzzer_Init();  
+	//Buzzer_Init();  
 	
 	//Initialize the hardware interface connected to the enable switch
 	//初始化与使能开关连接的硬件接口
@@ -170,7 +170,8 @@ void systemInit(void)
 	//Serial port 3 is initialized and the baud rate is 115200. 
 	//Serial port 3 is the default port used to communicate with ROS terminal
 	//串口3初始化，通信波特率115200，串口3为默认用于与ROS端通信的串口
-	uart3_init(115200);
+	//uart3_init(115200);
+	ESP8266_Init();
 	
 	//Serial port 5 initialization, communication baud rate 115200, 
 	//can be used to communicate with ROS terminal
