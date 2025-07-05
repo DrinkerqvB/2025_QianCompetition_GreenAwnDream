@@ -76,5 +76,6 @@
 ..\obj\key.o: ..\HARDWARE\tracking.h
 ..\obj\key.o: ..\HARDWARE\brushlessMotor.h
 ..\obj\key.o: ..\HARDWARE\ESP8266.h
+..\obj\key.o: ..\HARDWARE\RGB.h
 ..\obj\key.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 ..\obj\key.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h

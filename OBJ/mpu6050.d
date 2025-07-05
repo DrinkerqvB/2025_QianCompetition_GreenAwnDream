@@ -75,6 +75,7 @@
 ..\obj\mpu6050.o: ..\HARDWARE\tracking.h
 ..\obj\mpu6050.o: ..\HARDWARE\brushlessMotor.h
 ..\obj\mpu6050.o: ..\HARDWARE\ESP8266.h
+..\obj\mpu6050.o: ..\HARDWARE\RGB.h
 ..\obj\mpu6050.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 ..\obj\mpu6050.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
 ..\obj\mpu6050.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdbool.h

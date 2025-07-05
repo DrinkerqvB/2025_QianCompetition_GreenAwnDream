@@ -76,5 +76,6 @@
 ..\obj\can.o: ..\HARDWARE\tracking.h
 ..\obj\can.o: ..\HARDWARE\brushlessMotor.h
 ..\obj\can.o: ..\HARDWARE\ESP8266.h
+..\obj\can.o: ..\HARDWARE\RGB.h
 ..\obj\can.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 ..\obj\can.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h

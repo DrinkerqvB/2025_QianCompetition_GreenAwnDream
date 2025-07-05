@@ -136,6 +136,9 @@ void systemInit(void)
 //	//延时函数初始化
 	delay_init(168);	
 	
+	
+	void RGB_Init();
+	
 	//Initialize the hardware interface connected to the LED lamp
 	//初始化与LED灯连接的硬件接口
 	//LED_Init();                     

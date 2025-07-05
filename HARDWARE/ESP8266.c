@@ -16,7 +16,7 @@ char SeriaNet_Exit[]="+++";
 char TX_Start[]="AT+CIPSEND\r\n";
 char Type[]="Type";
 
-
+Modbus_Typedef Modbus_Type=Modbus_Type_A;
 
 /**************************************************************************
 Function: Usartx3, Usartx1,Usartx5 and CAN send data task 

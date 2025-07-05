@@ -75,6 +75,7 @@
 ..\obj\i2c.o: ..\HARDWARE\tracking.h
 ..\obj\i2c.o: ..\HARDWARE\brushlessMotor.h
 ..\obj\i2c.o: ..\HARDWARE\ESP8266.h
+..\obj\i2c.o: ..\HARDWARE\RGB.h
 ..\obj\i2c.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 ..\obj\i2c.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
 ..\obj\i2c.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdbool.h

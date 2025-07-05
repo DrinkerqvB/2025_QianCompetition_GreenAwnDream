@@ -1,7 +1,7 @@
 Dependencies for Project 'WHEELTEC', Target 'FreeRTOS': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCOMPLIER506
-F (.\main.c)(0x6869551A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
-I (..\BALANCE\system.h)(0x686683D8)
+F (.\main.c)(0x686964D1)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\sys\sys.h)(0x68457F5A)
 I (..\USER\stm32f4xx.h)(0x68457F5A)
@@ -57,7 +57,7 @@ I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
 I (..\BALANCE\balance.h)(0x6845B7AD)
-I (..\HARDWARE\led.h)(0x68457F5A)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\HARDWARE\oled.h)(0x68457F5A)
 I (..\HARDWARE\usartx.h)(0x68693BA7)
 I (..\HARDWARE\adc.h)(0x68457F5A)
@@ -73,7 +73,8 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
 I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
 I (..\HARDWARE\tracking.h)(0x68457F5A)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\HARDWARE\RGB.h)(0x68697118)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
 F (.\stm32f4xx_it.c)(0x68457F5A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\stm32f4xx_it.o --omf_browse ..\obj\stm32f4xx_it.crf --depend ..\obj\stm32f4xx_it.d)
@@ -195,7 +196,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x68457F5A)
-I (..\BALANCE\system.h)(0x686683D8)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\usart\usart.h)(0x68457F5A)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)
@@ -213,7 +214,7 @@ I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
 I (..\BALANCE\balance.h)(0x6845B7AD)
-I (..\HARDWARE\led.h)(0x68457F5A)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\HARDWARE\oled.h)(0x68457F5A)
 I (..\HARDWARE\usartx.h)(0x68693BA7)
 I (..\HARDWARE\can.h)(0x68457F5A)
@@ -228,7 +229,8 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
 I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
 I (..\HARDWARE\tracking.h)(0x68457F5A)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\HARDWARE\RGB.h)(0x68697118)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
 F (..\HARDWARE\can.c)(0x68457F5A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\can.o --omf_browse ..\obj\can.crf --depend ..\obj\can.d)
@@ -271,7 +273,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x68457F5A)
-I (..\BALANCE\system.h)(0x686683D8)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\usart\usart.h)(0x68457F5A)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)
@@ -289,7 +291,7 @@ I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
 I (..\BALANCE\balance.h)(0x6845B7AD)
-I (..\HARDWARE\led.h)(0x68457F5A)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\HARDWARE\oled.h)(0x68457F5A)
 I (..\HARDWARE\usartx.h)(0x68693BA7)
 I (..\HARDWARE\adc.h)(0x68457F5A)
@@ -304,7 +306,8 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
 I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
 I (..\HARDWARE\tracking.h)(0x68457F5A)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\HARDWARE\RGB.h)(0x68697118)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
 F (..\HARDWARE\encoder.c)(0x6845ACC4)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\encoder.o --omf_browse ..\obj\encoder.crf --depend ..\obj\encoder.d)
@@ -347,7 +350,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x68457F5A)
-I (..\BALANCE\system.h)(0x686683D8)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\usart\usart.h)(0x68457F5A)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)
@@ -365,7 +368,7 @@ I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
 I (..\BALANCE\balance.h)(0x6845B7AD)
-I (..\HARDWARE\led.h)(0x68457F5A)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\HARDWARE\oled.h)(0x68457F5A)
 I (..\HARDWARE\usartx.h)(0x68693BA7)
 I (..\HARDWARE\adc.h)(0x68457F5A)
@@ -380,7 +383,8 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
 I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
 I (..\HARDWARE\tracking.h)(0x68457F5A)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\HARDWARE\RGB.h)(0x68697118)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
 F (..\HARDWARE\key.c)(0x68457F5A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\key.o --omf_browse ..\obj\key.crf --depend ..\obj\key.d)
@@ -423,7 +427,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x68457F5A)
-I (..\BALANCE\system.h)(0x686683D8)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\usart\usart.h)(0x68457F5A)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)
@@ -441,7 +445,7 @@ I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
 I (..\BALANCE\balance.h)(0x6845B7AD)
-I (..\HARDWARE\led.h)(0x68457F5A)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\HARDWARE\oled.h)(0x68457F5A)
 I (..\HARDWARE\usartx.h)(0x68693BA7)
 I (..\HARDWARE\adc.h)(0x68457F5A)
@@ -456,11 +460,12 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
 I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
 I (..\HARDWARE\tracking.h)(0x68457F5A)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\HARDWARE\RGB.h)(0x68697118)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
-F (..\HARDWARE\LED.C)(0x68457F5A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\led.o --omf_browse ..\obj\led.crf --depend ..\obj\led.d)
-I (..\HARDWARE\led.h)(0x68457F5A)
+F (..\HARDWARE\LED.C)(0x686964D0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\led.o --omf_browse ..\obj\led.crf --depend ..\obj\led.d)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\SYSTEM\sys\sys.h)(0x68457F5A)
 I (..\USER\stm32f4xx.h)(0x68457F5A)
 I (..\CORE\core_cm4.h)(0x68457F5A)
@@ -499,7 +504,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x68457F5A)
-I (..\BALANCE\system.h)(0x686683D8)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\usart\usart.h)(0x68457F5A)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)
@@ -532,7 +537,8 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
 I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
 I (..\HARDWARE\tracking.h)(0x68457F5A)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\HARDWARE\RGB.h)(0x68697118)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
 F (..\HARDWARE\oled.c)(0x68457F5A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\oled.o --omf_browse ..\obj\oled.crf --depend ..\obj\oled.d)
@@ -575,7 +581,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x68457F5A)
-I (..\BALANCE\system.h)(0x686683D8)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\usart\usart.h)(0x68457F5A)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)
@@ -593,7 +599,7 @@ I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
 I (..\BALANCE\balance.h)(0x6845B7AD)
-I (..\HARDWARE\led.h)(0x68457F5A)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\HARDWARE\usartx.h)(0x68693BA7)
 I (..\HARDWARE\adc.h)(0x68457F5A)
 I (..\HARDWARE\can.h)(0x68457F5A)
@@ -608,7 +614,8 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
 I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
 I (..\HARDWARE\tracking.h)(0x68457F5A)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\HARDWARE\RGB.h)(0x68697118)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
 I (..\HARDWARE\oledfont.h)(0x68457F5A)
@@ -653,7 +660,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x68457F5A)
-I (..\BALANCE\system.h)(0x686683D8)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\usart\usart.h)(0x68457F5A)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)
@@ -670,7 +677,7 @@ I (..\FreeRTOS\include\queue.h)(0x68457F5A)
 I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\BALANCE\balance.h)(0x6845B7AD)
-I (..\HARDWARE\led.h)(0x68457F5A)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\HARDWARE\oled.h)(0x68457F5A)
 I (..\HARDWARE\usartx.h)(0x68693BA7)
 I (..\HARDWARE\adc.h)(0x68457F5A)
@@ -685,12 +692,13 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
 I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
 I (..\HARDWARE\tracking.h)(0x68457F5A)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\HARDWARE\RGB.h)(0x68697118)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
 F (..\HARDWARE\timer.c)(0x68457F5A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\timer.o --omf_browse ..\obj\timer.crf --depend ..\obj\timer.d)
 I (..\HARDWARE\timer.h)(0x68457F5A)
-I (..\BALANCE\system.h)(0x686683D8)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\sys\sys.h)(0x68457F5A)
 I (..\USER\stm32f4xx.h)(0x68457F5A)
@@ -746,7 +754,7 @@ I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
 I (..\BALANCE\balance.h)(0x6845B7AD)
-I (..\HARDWARE\led.h)(0x68457F5A)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\HARDWARE\oled.h)(0x68457F5A)
 I (..\HARDWARE\usartx.h)(0x68693BA7)
 I (..\HARDWARE\adc.h)(0x68457F5A)
@@ -761,7 +769,8 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
 I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
 I (..\HARDWARE\tracking.h)(0x68457F5A)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\HARDWARE\RGB.h)(0x68697118)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
 F (..\HARDWARE\usartx.c)(0x68693C15)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\usartx.o --omf_browse ..\obj\usartx.crf --depend ..\obj\usartx.d)
@@ -805,7 +814,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x68457F5A)
-I (..\BALANCE\system.h)(0x686683D8)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\usart\usart.h)(0x68457F5A)
 I (..\FreeRTOS\include\FreeRTOS.h)(0x68457F5A)
@@ -822,7 +831,7 @@ I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
 I (..\BALANCE\balance.h)(0x6845B7AD)
-I (..\HARDWARE\led.h)(0x68457F5A)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\HARDWARE\oled.h)(0x68457F5A)
 I (..\HARDWARE\adc.h)(0x68457F5A)
 I (..\HARDWARE\can.h)(0x68457F5A)
@@ -837,7 +846,8 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
 I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
 I (..\HARDWARE\tracking.h)(0x68457F5A)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\HARDWARE\RGB.h)(0x68697118)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
 F (..\HARDWARE\tracking.c)(0x6845B53F)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\tracking.o --omf_browse ..\obj\tracking.crf --depend ..\obj\tracking.d)
@@ -880,7 +890,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x68457F5A)
-I (..\BALANCE\system.h)(0x686683D8)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\usart\usart.h)(0x68457F5A)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)
@@ -898,7 +908,7 @@ I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
 I (..\BALANCE\balance.h)(0x6845B7AD)
-I (..\HARDWARE\led.h)(0x68457F5A)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\HARDWARE\oled.h)(0x68457F5A)
 I (..\HARDWARE\usartx.h)(0x68693BA7)
 I (..\HARDWARE\adc.h)(0x68457F5A)
@@ -913,12 +923,13 @@ I (..\HARDWARE\MPU6050\I2C.h)(0x68457F5A)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
 I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\HARDWARE\RGB.h)(0x68697118)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
 F (..\HARDWARE\brushlessMotor.c)(0x68457F5A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\brushlessmotor.o --omf_browse ..\obj\brushlessmotor.crf --depend ..\obj\brushlessmotor.d)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
-I (..\BALANCE\system.h)(0x686683D8)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\sys\sys.h)(0x68457F5A)
 I (..\USER\stm32f4xx.h)(0x68457F5A)
@@ -974,7 +985,7 @@ I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
 I (..\BALANCE\balance.h)(0x6845B7AD)
-I (..\HARDWARE\led.h)(0x68457F5A)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\HARDWARE\oled.h)(0x68457F5A)
 I (..\HARDWARE\usartx.h)(0x68693BA7)
 I (..\HARDWARE\adc.h)(0x68457F5A)
@@ -989,12 +1000,13 @@ I (..\HARDWARE\MPU6050\I2C.h)(0x68457F5A)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
 I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
 I (..\HARDWARE\tracking.h)(0x68457F5A)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\HARDWARE\RGB.h)(0x68697118)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
-F (..\HARDWARE\ESP8266.c)(0x686954A7)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\esp8266.o --omf_browse ..\obj\esp8266.crf --depend ..\obj\esp8266.d)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
-I (..\BALANCE\system.h)(0x686683D8)
+F (..\HARDWARE\ESP8266.c)(0x68696E12)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\esp8266.o --omf_browse ..\obj\esp8266.crf --depend ..\obj\esp8266.d)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\sys\sys.h)(0x68457F5A)
 I (..\USER\stm32f4xx.h)(0x68457F5A)
@@ -1050,7 +1062,7 @@ I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
 I (..\BALANCE\balance.h)(0x6845B7AD)
-I (..\HARDWARE\led.h)(0x68457F5A)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\HARDWARE\oled.h)(0x68457F5A)
 I (..\HARDWARE\usartx.h)(0x68693BA7)
 I (..\HARDWARE\adc.h)(0x68457F5A)
@@ -1066,6 +1078,84 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
 I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
 I (..\HARDWARE\tracking.h)(0x68457F5A)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
+I (..\HARDWARE\RGB.h)(0x68697118)
+I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
+I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
+F (..\HARDWARE\RGB.c)(0x68696FA7)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\rgb.o --omf_browse ..\obj\rgb.crf --depend ..\obj\rgb.d)
+I (..\HARDWARE\RGB.h)(0x68697118)
+I (..\BALANCE\system.h)(0x68696E12)
+I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
+I (..\SYSTEM\sys\sys.h)(0x68457F5A)
+I (..\USER\stm32f4xx.h)(0x68457F5A)
+I (..\CORE\core_cm4.h)(0x68457F5A)
+I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdint.h)(0x5E8E3CC2)
+I (..\CORE\core_cmInstr.h)(0x68457F5A)
+I (..\CORE\core_cmFunc.h)(0x68457F5A)
+I (..\CORE\core_cm4_simd.h)(0x68457F5A)
+I (..\USER\system_stm32f4xx.h)(0x68457F5A)
+I (..\CORE\arm_math.h)(0x68457F5A)
+I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\string.h)(0x5E8E3CC2)
+I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\math.h)(0x5E8E3CC2)
+I (..\USER\stm32f4xx_conf.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_adc.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_crc.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_dbgmcu.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_dma.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_exti.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_flash.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_gpio.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_i2c.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_iwdg.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_pwr.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_rcc.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_rtc.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_sdio.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_spi.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_syscfg.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_tim.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_usart.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_wwdg.h)(0x68457F5A)
+I (..\FWLIB\inc\misc.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_cryp.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_hash.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_rng.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_can.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_dac.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x68457F5A)
+I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x68457F5A)
+I (..\SYSTEM\usart\usart.h)(0x68457F5A)
+I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)
+I (..\FreeRTOS\include\FreeRTOS.h)(0x68457F5A)
+I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stddef.h)(0x5E8E3CC2)
+I (..\FreeRTOS\include\projdefs.h)(0x68457F5A)
+I (..\FreeRTOS\include\portable.h)(0x68457F5A)
+I (..\FreeRTOS\include\deprecated_definitions.h)(0x68457F5A)
+I (..\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h)(0x68457F5A)
+I (..\FreeRTOS\include\mpu_wrappers.h)(0x68457F5A)
+I (..\FreeRTOS\include\task.h)(0x68457F5A)
+I (..\FreeRTOS\include\list.h)(0x68457F5A)
+I (..\FreeRTOS\include\queue.h)(0x68457F5A)
+I (..\FreeRTOS\include\timers.h)(0x68457F5A)
+I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
+I (..\SYSTEM\delay\delay.h)(0x68457F5A)
+I (..\BALANCE\balance.h)(0x6845B7AD)
+I (..\HARDWARE\led.h)(0x686964D0)
+I (..\HARDWARE\oled.h)(0x68457F5A)
+I (..\HARDWARE\usartx.h)(0x68693BA7)
+I (..\HARDWARE\adc.h)(0x68457F5A)
+I (..\HARDWARE\can.h)(0x68457F5A)
+I (..\HARDWARE\timer.h)(0x68457F5A)
+I (..\HARDWARE\encoder.h)(0x68457F5A)
+I (..\BALANCE\show.h)(0x68457F5A)
+I (..\HARDWARE\pstwo.h)(0x68457F5A)
+I (..\HARDWARE\key.h)(0x68457F5A)
+I (..\BALANCE\robot_select_init.h)(0x68457F5A)
+I (..\HARDWARE\MPU6050\I2C.h)(0x68457F5A)
+I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
+I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
+I (..\HARDWARE\tracking.h)(0x68457F5A)
+I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
 F (..\SYSTEM\delay\delay.c)(0x68457F5A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\delay.o --omf_browse ..\obj\delay.crf --depend ..\obj\delay.d)
@@ -2964,8 +3054,8 @@ I (..\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h)(0x68457F5A)
 I (..\FreeRTOS\include\mpu_wrappers.h)(0x68457F5A)
 I (..\FreeRTOS\include\task.h)(0x68457F5A)
 I (..\FreeRTOS\include\list.h)(0x68457F5A)
-F (..\BALANCE\system.c)(0x6869551A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\system.o --omf_browse ..\obj\system.crf --depend ..\obj\system.d)
-I (..\BALANCE\system.h)(0x686683D8)
+F (..\BALANCE\system.c)(0x6869718D)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\system.o --omf_browse ..\obj\system.crf --depend ..\obj\system.d)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\sys\sys.h)(0x68457F5A)
 I (..\USER\stm32f4xx.h)(0x68457F5A)
@@ -3021,7 +3111,7 @@ I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
 I (..\BALANCE\balance.h)(0x6845B7AD)
-I (..\HARDWARE\led.h)(0x68457F5A)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\HARDWARE\oled.h)(0x68457F5A)
 I (..\HARDWARE\usartx.h)(0x68693BA7)
 I (..\HARDWARE\adc.h)(0x68457F5A)
@@ -3037,10 +3127,11 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
 I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
 I (..\HARDWARE\tracking.h)(0x68457F5A)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\HARDWARE\RGB.h)(0x68697118)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
-F (..\BALANCE\balance.c)(0x6845C6DC)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\balance.o --omf_browse ..\obj\balance.crf --depend ..\obj\balance.d)
+F (..\BALANCE\balance.c)(0x686964D0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\balance.o --omf_browse ..\obj\balance.crf --depend ..\obj\balance.d)
 I (..\BALANCE\balance.h)(0x6845B7AD)
 I (..\SYSTEM\sys\sys.h)(0x68457F5A)
 I (..\USER\stm32f4xx.h)(0x68457F5A)
@@ -3080,7 +3171,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x68457F5A)
-I (..\BALANCE\system.h)(0x686683D8)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\usart\usart.h)(0x68457F5A)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)
@@ -3097,7 +3188,7 @@ I (..\FreeRTOS\include\queue.h)(0x68457F5A)
 I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
-I (..\HARDWARE\led.h)(0x68457F5A)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\HARDWARE\oled.h)(0x68457F5A)
 I (..\HARDWARE\usartx.h)(0x68693BA7)
 I (..\HARDWARE\adc.h)(0x68457F5A)
@@ -3113,7 +3204,8 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
 I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
 I (..\HARDWARE\tracking.h)(0x68457F5A)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\HARDWARE\RGB.h)(0x68697118)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
 F (..\BALANCE\robot_select_init.c)(0x68457F5A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\robot_select_init.o --omf_browse ..\obj\robot_select_init.crf --depend ..\obj\robot_select_init.d)
@@ -3156,7 +3248,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x68457F5A)
-I (..\BALANCE\system.h)(0x686683D8)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\usart\usart.h)(0x68457F5A)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)
@@ -3174,7 +3266,7 @@ I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
 I (..\BALANCE\balance.h)(0x6845B7AD)
-I (..\HARDWARE\led.h)(0x68457F5A)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\HARDWARE\oled.h)(0x68457F5A)
 I (..\HARDWARE\usartx.h)(0x68693BA7)
 I (..\HARDWARE\adc.h)(0x68457F5A)
@@ -3189,7 +3281,8 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
 I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
 I (..\HARDWARE\tracking.h)(0x68457F5A)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\HARDWARE\RGB.h)(0x68697118)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
 F (..\BALANCE\show.c)(0x68457F5A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\show.o --omf_browse ..\obj\show.crf --depend ..\obj\show.d)
@@ -3233,7 +3326,7 @@ I (..\FWLIB\inc\stm32f4xx_dac.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x68457F5A)
 I (..\HARDWARE\oled.h)(0x68457F5A)
-I (..\BALANCE\system.h)(0x686683D8)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\usart\usart.h)(0x68457F5A)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)
@@ -3251,7 +3344,7 @@ I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
 I (..\BALANCE\balance.h)(0x6845B7AD)
-I (..\HARDWARE\led.h)(0x68457F5A)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\HARDWARE\usartx.h)(0x68693BA7)
 I (..\HARDWARE\adc.h)(0x68457F5A)
 I (..\HARDWARE\can.h)(0x68457F5A)
@@ -3265,7 +3358,8 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
 I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
 I (..\HARDWARE\tracking.h)(0x68457F5A)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\HARDWARE\RGB.h)(0x68697118)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
 F (..\HARDWARE\MPU6050\MPU6050.c)(0x68457F5A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\mpu6050.o --omf_browse ..\obj\mpu6050.crf --depend ..\obj\mpu6050.d)
@@ -3309,7 +3403,7 @@ I (..\FWLIB\inc\stm32f4xx_dac.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x68457F5A)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x68457F5A)
 I (..\HARDWARE\MPU6050\I2C.h)(0x68457F5A)
-I (..\BALANCE\system.h)(0x686683D8)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\usart\usart.h)(0x68457F5A)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)
@@ -3327,7 +3421,7 @@ I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
 I (..\BALANCE\balance.h)(0x6845B7AD)
-I (..\HARDWARE\led.h)(0x68457F5A)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\HARDWARE\oled.h)(0x68457F5A)
 I (..\HARDWARE\usartx.h)(0x68693BA7)
 I (..\HARDWARE\adc.h)(0x68457F5A)
@@ -3340,13 +3434,14 @@ I (..\HARDWARE\key.h)(0x68457F5A)
 I (..\BALANCE\robot_select_init.h)(0x68457F5A)
 I (..\HARDWARE\tracking.h)(0x68457F5A)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\HARDWARE\RGB.h)(0x68697118)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)
 F (..\HARDWARE\MPU6050\I2C.c)(0x68457F5A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\i2c.o --omf_browse ..\obj\i2c.crf --depend ..\obj\i2c.d)
 I (..\HARDWARE\MPU6050\I2C.h)(0x68457F5A)
-I (..\BALANCE\system.h)(0x686683D8)
+I (..\BALANCE\system.h)(0x68696E12)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\sys\sys.h)(0x68457F5A)
 I (..\USER\stm32f4xx.h)(0x68457F5A)
@@ -3402,7 +3497,7 @@ I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
 I (..\BALANCE\balance.h)(0x6845B7AD)
-I (..\HARDWARE\led.h)(0x68457F5A)
+I (..\HARDWARE\led.h)(0x686964D0)
 I (..\HARDWARE\oled.h)(0x68457F5A)
 I (..\HARDWARE\usartx.h)(0x68693BA7)
 I (..\HARDWARE\adc.h)(0x68457F5A)
@@ -3416,7 +3511,8 @@ I (..\BALANCE\robot_select_init.h)(0x68457F5A)
 I (..\HARDWARE\MPU6050\MPU6050.h)(0x68457F5A)
 I (..\HARDWARE\tracking.h)(0x68457F5A)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
-I (..\HARDWARE\ESP8266.h)(0x68693E44)
+I (..\HARDWARE\ESP8266.h)(0x68696FA7)
+I (..\HARDWARE\RGB.h)(0x68697118)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdbool.h)(0x5E8E3CC2)

@@ -76,5 +76,6 @@
 ..\obj\usartx.o: ..\HARDWARE\tracking.h
 ..\obj\usartx.o: ..\HARDWARE\brushlessMotor.h
 ..\obj\usartx.o: ..\HARDWARE\ESP8266.h
+..\obj\usartx.o: ..\HARDWARE\RGB.h
 ..\obj\usartx.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 ..\obj\usartx.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h

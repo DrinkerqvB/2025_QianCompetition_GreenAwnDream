@@ -66,6 +66,7 @@ typedef struct
 #include "tracking.h"
 #include "brushlessMotor.h"
 #include "ESP8266.h"
+#include "RGB.h"
 
 
 #define EN     PDin(3)
@@ -96,6 +97,13 @@ typedef struct
 	float VY;
 	float VZ;
 }Smooth_Control;
+
+
+typedef enum{
+	Modbus_Type_A,
+	Modbus_Type_B
+
+}Modbus_Typedef;
 
 /****** external variable definition. When system.h is referenced in other C files, 
         other C files can also use the variable defined by system.c           ******/

@@ -464,6 +464,11 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\ESP8266.c</FilePath>
             </File>
+            <File>
+              <FileName>RGB.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\RGB.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
