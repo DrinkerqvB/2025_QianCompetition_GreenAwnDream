@@ -469,6 +469,11 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\RGB.c</FilePath>
             </File>
+            <File>
+              <FileName>Modbus.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\Modbus.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

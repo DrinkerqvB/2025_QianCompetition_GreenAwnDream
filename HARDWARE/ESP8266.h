@@ -6,7 +6,11 @@
 
 #define ESP8266_RECEIVE_LENGTH 2000
 
+typedef enum{
+	Modbus_Type_A,
+	Modbus_Type_B
 
+}Modbus_Typedef;
 
 void ESP8266_Init(void);
 void ESP8266_Command(char* Command_AT);

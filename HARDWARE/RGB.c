@@ -2,7 +2,7 @@
 
 extern Modbus_Typedef Modbus_Type;
 
-void RGB_Init()
+void RGB_Init(void)
 {
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE,ENABLE);
 	
@@ -18,7 +18,7 @@ void RGB_Init()
 }
 
 
-void RGB_DeInit()
+void RGB_DeInit(void)
 {
 	GPIO_ResetBits(GPIOE,GPIO_Pin_2);
 	GPIO_ResetBits(GPIOE,GPIO_Pin_3);
