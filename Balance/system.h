@@ -20,8 +20,8 @@
 
 typedef enum{
 	Modbus_Type_A,
-	Modbus_Type_B
-
+	Modbus_Type_B,
+	Modbus_Other_Error
 }Modbus_Typedef;//两种通讯协议
 
 typedef struct{
@@ -73,6 +73,8 @@ typedef struct
 #include "ESP8266.h"
 #include "RGB.h"
 #include "Timer.h"
+#include "OLED_Data.h"
+#include "OLED.h"
 
 
 

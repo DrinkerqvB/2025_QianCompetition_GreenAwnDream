@@ -76,7 +76,10 @@
 .\objects\usartx.o: .\Hardware\ESP8266.h
 .\objects\usartx.o: .\Hardware\RGB.h
 .\objects\usartx.o: .\Hardware\Timer.h
+.\objects\usartx.o: .\Hardware\OLED\OLED_Data.h
+.\objects\usartx.o: .\Hardware\OLED\OLED.h
+.\objects\usartx.o: .\Start\stm32f4xx.h
+.\objects\usartx.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
 .\objects\usartx.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 .\objects\usartx.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
 .\objects\usartx.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\math.h
-.\objects\usartx.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h

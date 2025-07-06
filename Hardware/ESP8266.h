@@ -7,7 +7,7 @@
 #define ESP8266_RECEIVE_LENGTH 2000
 
 
-
+void ESP8266_task(void);
 void ESP8266_Init(void);
 void ESP8266_Command(char* Command_AT);
 void USART3_SendChar(uint8_t ch);

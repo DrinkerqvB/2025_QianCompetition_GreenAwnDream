@@ -59,6 +59,8 @@
 ".\objects\balance.o"
 ".\objects\system.o"
 ".\objects\robot_select_init.o"
+".\objects\oled.o"
+".\objects\oled_data.o"
 --strict --scatter ".\Objects\ESP8266.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

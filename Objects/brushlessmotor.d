@@ -76,7 +76,10 @@
 .\objects\brushlessmotor.o: .\Hardware\ESP8266.h
 .\objects\brushlessmotor.o: .\Hardware\RGB.h
 .\objects\brushlessmotor.o: .\Hardware\Timer.h
+.\objects\brushlessmotor.o: .\Hardware\OLED\OLED_Data.h
+.\objects\brushlessmotor.o: .\Hardware\OLED\OLED.h
+.\objects\brushlessmotor.o: .\Start\stm32f4xx.h
+.\objects\brushlessmotor.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
 .\objects\brushlessmotor.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 .\objects\brushlessmotor.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
 .\objects\brushlessmotor.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\math.h
-.\objects\brushlessmotor.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h

@@ -76,8 +76,11 @@
 .\objects\modbus.o: .\Hardware\ESP8266.h
 .\objects\modbus.o: .\Hardware\RGB.h
 .\objects\modbus.o: .\Hardware\Timer.h
+.\objects\modbus.o: .\Hardware\OLED\OLED_Data.h
+.\objects\modbus.o: .\Hardware\OLED\OLED.h
+.\objects\modbus.o: .\Start\stm32f4xx.h
+.\objects\modbus.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
 .\objects\modbus.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 .\objects\modbus.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
 .\objects\modbus.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\math.h
-.\objects\modbus.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
 .\objects\modbus.o: .\Start\stm32f4xx.h

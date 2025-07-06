@@ -28,15 +28,29 @@ Output  : none
 入口参数：无
 返回  值：无
 **************************************************************************/
-void ESP8266_task()
+void ESP8266_task(void)
 {
 	 if(ESP8266_ReceiveFlag==RESET){
 		return;
 	 }
 	 if(strcmp(ESP8266_ReceiveCmd,"Request for Communication Protocol\r\n")==0){
 		RGB_SelectiveLight(Modbus_TestCmmunicationProtocol);
+		OLED_Clear();
+		 if(Modbus_TestCmmunicationProtocol==Modbus_Type_A){
+			OLED_Printf(1,0,"Modbus_Type_A");
+		 }else if(Modbus_TestCmmunicationProtocol==Modbus_Type_B){
+			OLED_Printf(1,0,"Modbus_Type_B");
+		 }else{
+			OLED_Printf(1,1,"Others");
+		 }
+		 OLED_Update();
+		 
 	 }else{
 		USART3_SendString("ERROR!");
+		 RGB_SelectiveLight(Modbus_Other_Error);
+		 OLED_Clear();
+		 OLED_Printf(1,1,"ERROR!");
+		 OLED_Update();
 	 }
 	 
 	 

@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\User;.\Start;.\Library;.\Hardware;.\Balance;.\System\usart;.\System\sys;.\System\delay</IncludePath>
+              <IncludePath>.\User;.\Start;.\Library;.\Hardware;.\Balance;.\System\usart;.\System\sys;.\System\delay;.\Hardware\OLED</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1003,6 +1003,31 @@
               <FileName>robot_select_init.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Balance\robot_select_init.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>OLED</GroupName>
+          <Files>
+            <File>
+              <FileName>OLED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\OLED\OLED.c</FilePath>
+            </File>
+            <File>
+              <FileName>OLED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\OLED\OLED.h</FilePath>
+            </File>
+            <File>
+              <FileName>OLED_Data.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\OLED\OLED_Data.c</FilePath>
+            </File>
+            <File>
+              <FileName>OLED_Data.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\OLED\OLED_Data.h</FilePath>
             </File>
           </Files>
         </Group>
