@@ -139,7 +139,7 @@ void systemInit(void)
 //	delay_init(168);	
 	
 	
-	void RGB_Init();
+	RGB_Init();
 	
 
   //Initialize the hardware interface connected to the OLED display

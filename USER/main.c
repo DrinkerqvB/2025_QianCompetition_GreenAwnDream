@@ -7,6 +7,7 @@ int main()
 	while(1){
 		Tracking_task();
 		Balance_task();
+		ESP8266_task();
 		
 		
 	}

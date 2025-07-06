@@ -18,6 +18,8 @@ char Type[]="Type";
 
 Modbus_Typedef Modbus_Type=Modbus_Type_A;
 
+FlagStatus ESP8266_ReceiveFlag=RESET;
+Modbus_Typedef Modbus_TestCmmunicationProtocol= Modbus_Type_A;
 /**************************************************************************
 Function: Usartx3, Usartx1,Usartx5 and CAN send data task 
 Input   : none
@@ -28,7 +30,20 @@ Output  : none
 **************************************************************************/
 void ESP8266_task()
 {
+	 if(ESP8266_ReceiveFlag==RESET){
+		return;
+	 }
+	 if(strcmp(ESP8266_ReceiveCmd,"Request for Communication Protocol\r\n")==0){
+		RGB_SelectiveLight(Modbus_TestCmmunicationProtocol);
+	 }else{
+		USART3_SendString("ERROR!");
+	 }
 	 
+	 
+	 
+	 
+	 
+	 ESP8266_ReceiveFlag=RESET;
 }
 
 
@@ -155,7 +170,6 @@ void USART3_IRQHandler(void)
         uint8_t aRxBuffer = USART_ReceiveData(USART3);
         // 处理接收到的数据
 		ESP8266_RxCpltCallback(aRxBuffer);
-        //USART_SendData(USART3, aRxBuffer); // 回传测试
 		
 		USART_ClearITPendingBit(USART3, USART_IT_RXNE);
     }
@@ -171,6 +185,7 @@ void ESP8266_RxCpltCallback(uint8_t data)
 		//printf("%s",ESP8266_ReceiveBuf2);
 		//while(HAL_UART_GetState(&huart1) == HAL_UART_STATE_BUSY_TX);//检测USART2发送结束
 		pReceiveBuf2=0;
+		ESP8266_ReceiveFlag=SET;
 		memcpy(ESP8266_ReceiveCmd,ESP8266_ReceiveBuf2,ESP8266_RECEIVE_LENGTH);
 		memset(ESP8266_ReceiveBuf2,0x00,sizeof(ESP8266_ReceiveBuf2)); //清空数组
 	}

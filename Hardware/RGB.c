@@ -20,7 +20,7 @@ void RGB_Init(void)
 
 void RGB_DeInit(void)
 {
-	GPIO_ResetBits(GPIOE,GPIO_Pin_2);
+	GPIO_SetBits(GPIOE,GPIO_Pin_2);
 	GPIO_ResetBits(GPIOE,GPIO_Pin_3);
 	GPIO_ResetBits(GPIOE,GPIO_Pin_4);
 }
