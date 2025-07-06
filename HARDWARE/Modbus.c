@@ -20,52 +20,7 @@
 #include "misc.h"
 #include <string.h>
 
-/* 硬件引脚定义 -------------------------------------------------------------*/
-#define RS485_IO_GPIO_PORT    GPIOA
-#define RS485_IO_PIN          GPIO_Pin_1     // 根据实际电路修改
-#define RS485_IO_RCC          RCC_AHB1Periph_GPIOA
 
-#define USART2_GPIO_PORT      GPIOA
-#define USART2_TX_PIN         GPIO_Pin_2
-#define USART2_RX_PIN         GPIO_Pin_3
-#define USART2_GPIO_RCC       RCC_AHB1Periph_GPIOA
-#define USART2_PERIPH         USART2
-#define USART2_RCC            RCC_APB1Periph_USART2
-#define USART2_IRQn           USART2_IRQn
-
-/* 常量定义 -----------------------------------------------------------------*/
-#define RX_BUF_SIZE       9   // 接收缓冲区大小（含2字节CRC）
-#define TX_BUF_SIZE       8   // 发送请求帧长度
-#define POWER_DATA_COUNT  6   // 需读取的参数数量
-
-/* 类型定义 -----------------------------------------------------------------*/
-typedef enum {
-    Voltage      = 0x0000,  // 电压寄存器地址
-    Current      = 0x0008,  // 电流寄存器地址
-    ActivePower  = 0x0012,  // 有功功率寄存器地址
-    PowerFactor  = 0x002A,  // 功率因数寄存器地址
-    Frequency    = 0x0036,  // 频率寄存器地址
-    ActiveEnergy = 0x0100,  // 有功电能寄存器地址
-    Invalid      = 0xFFFF   // 无效地址标记
-} RegAddr_t;
-
-typedef struct {
-    float Voltage;
-    float Current;
-    float Frequency;
-    float ActivePower;
-    float ActiveEnergy;
-    float PowerFactor; 
-    uint8_t CommStatus;
-    
-    struct {
-        uint8_t Red;    // RGB红灯亮度(0-255)
-        uint8_t Green;  // 绿灯亮度
-        uint8_t Blue;   // 蓝灯亮度
-    } RGB_LED;
-    
-    char OLED_Display[32]; // OLED显示缓存
-} PowerMeter_t;
 
 /* 全局变量 ----------------------------------------------------------------*/
 static uint8_t txBuffer[TX_BUF_SIZE] = {  // Modbus请求帧模板
@@ -116,10 +71,10 @@ uint16_t ModbusCRC_CheckTable(uint8_t *data, uint16_t length) {
 /**
   * @brief  系统初始化
   */
-void System_Init(void) {
+void Modbus_Init(void) {
     /* 配置系统时钟为168MHz (根据实际需求配置) */
-    RCC_DeInit();
-    SystemInit();
+    //RCC_DeInit();
+    //SystemInit();
     
     /* 初始化外设 */
     GPIO_Config();
@@ -129,6 +84,7 @@ void System_Init(void) {
     /* 初始化电能计量结构体 */
     memset(&powerMeter, 0, sizeof(PowerMeter_t));
     powerMeter.CommStatus = 1; // 初始状态为通信异常
+	PowerMeter_StartReceive();
 }
 
 /**
@@ -332,19 +288,38 @@ static float RegToFloat(void) {
 
 /**
   * @brief  主函数
+  *记得要先系统初始化！！ 
   */
-int main(void) {
-    /* 系统初始化 */
-    System_Init();
-    
-    /* 启动第一次接收 */
-    PowerMeter_StartReceive();
-    
-    while(1) {
-        /* 定期发送数据请求 */
-        PowerMeter_RequestData();
-        
-        /* 简单延时，实际应用应使用定时器 */
-        for(uint32_t i = 0; i < 1000000; i++);
-    }
+//    System_Init();
+
+void Modbus_task(void *pvParameters)
+{
+	 u32 lastWakeTime = getSysTickCnt();
+	
+   while(1)
+    {	
+			//The task is run at 20hz
+			//此任务以20Hz的频率运行
+			vTaskDelayUntil(&lastWakeTime, F2T(RATE_20_HZ));
+		
+			
+		PowerMeter_RequestData();
+	}
 }
+  
+
+//int main(void) {
+//    
+//    
+//    /* 启动第一次接收 */
+//    PowerMeter_StartReceive();
+//    
+//    while(1) {
+//        /* 定期发送数据请求 */
+//        PowerMeter_RequestData();
+//        
+//        /* 简单延时，实际应用应使用定时器 */
+//        for(uint32_t i = 0; i < 1000000; i++);
+//    }
+//}
+

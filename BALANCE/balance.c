@@ -68,12 +68,12 @@ void Balance_task(void *pvParameters)
 			vTaskDelayUntil(&lastWakeTime, F2T(RATE_100_HZ)); 
 			
 		
-			if(Time_count<3000)Time_count++;
-			Buzzer_count1++;
+//			if(Time_count<3000)Time_count++;
+//			Buzzer_count1++;
 			
 			Get_Velocity_Form_Encoder();   
 		
-				Key();
+//				Key();
 			if(Check==0) 
 			{
 				if(xQueueReceive(xControlQueue, &ctrl, 0) == pdPASS) {
@@ -85,7 +85,7 @@ void Balance_task(void *pvParameters)
 								
 
 				//如果电池电压不存在异常，而且使能开关在ON档位，而且软件失能标志位为0
-				if(Turn_Off(Voltage)==0) 
+				if(1) 
 				 { 			
           
 					Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, Motor_Left.Target);
@@ -584,51 +584,6 @@ void Get_RC(void)
 
 
 
-/**************************************************************************
-Function: Click the user button to update gyroscope zero
-Input   : none
-Output  : none
-函数功能：单击用户按键更新陀螺仪零点
-入口参数：无
-返回  值：无
-**************************************************************************/
-void Key(void)
-{	
-	u8 tmp;
-	tmp=click_N_Double_MPU6050(50); 
-	if(Check==1&&tmp==1)		
-	{
-		Proc_Flag++;
-		if(Proc_Flag==21)			
-		{
-			Check = 0;
-			Buzzer = 0;
-			Proc_Flag = 0;
-			check_time_count_motor_forward=300;
-			check_time_count_motor_retreat=500;
-			Servo_Count[0] = Servo_Count[1] = Servo_Count[2] = Servo_Count[3] = Servo_Count[4] = Servo_Count[5] = 500;
-			servo_direction[0] = servo_direction[1] = servo_direction[2] = servo_direction[3] = servo_direction[4] = servo_direction[5] = 0;
-			TIM_ITConfig(TIM8, TIM_IT_CC1|TIM_IT_CC2|TIM_IT_CC3|TIM_IT_CC4,	ENABLE); 
-		}
-	}
-	if(Check==0&&tmp==2)		memcpy(Deviation_gyro,Original_gyro,sizeof(gyro)),memcpy(Deviation_accel,Original_accel,sizeof(accel));
-	if(Check==1&&tmp==2)		
-	{
-		Check = 0;
-		Buzzer = 0;
-		Proc_Flag = 0;
-		check_time_count_motor_forward=300;
-		check_time_count_motor_retreat=500;
-		Servo_Count[0] = Servo_Count[1] = Servo_Count[2] = Servo_Count[3] = Servo_Count[4] = Servo_Count[5] = 500;
-		servo_direction[0] = servo_direction[1] = servo_direction[2] = servo_direction[3] = servo_direction[4] = servo_direction[5] = 0;
-		TIM_ITConfig(TIM8, TIM_IT_CC1|TIM_IT_CC2|TIM_IT_CC3|TIM_IT_CC4,	ENABLE); 
-	}
-//	if(tmp==3)							
-//	{
-//		Check = 1;
-////		Proc_Flag = 17;
-//	}
-}
 
 
 

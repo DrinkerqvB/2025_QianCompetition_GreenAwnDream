@@ -17,7 +17,12 @@
 #include "semphr.h"
 //The associated header file for the peripheral 
 //外设的相关头文件
-\
+
+typedef enum{
+	Modbus_Type_A,
+	Modbus_Type_B
+
+}Modbus_Typedef;//两种通讯协议
 
 typedef struct{
 	float line_error;      // 寻迹偏差（-3.5=最左, +3.5=最右）
@@ -48,21 +53,21 @@ typedef struct
 #include "delay.h"
 #include "usart.h"
 #include "balance.h"
-#include "led.h"
+//#include "led.h"
 #include "oled.h"
 #include "usart.h"
 #include "usartx.h"
-#include "adc.h"
-#include "can.h"
+//#include "adc.h"
+//#include "can.h"
 //#include "motor.h"
-#include "timer.h"
+//#include "timer.h"
 #include "encoder.h"
 #include "show.h"								   
-#include "pstwo.h"
-#include "key.h"
+//#include "pstwo.h"
+//#include "key.h"
 #include "robot_select_init.h"
-#include "I2C.h"
-#include "MPU6050.h"
+//#include "I2C.h"
+//#include "MPU6050.h"
 #include "tracking.h"
 #include "brushlessMotor.h"
 #include "ESP8266.h"

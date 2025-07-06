@@ -67,7 +67,7 @@ void uart2_init(u32 bound);
 
 
 int USART1_IRQHandler(void);
-int USART2_IRQHandler(void);
+
 int USART3_IRQHandler(void);
 
 

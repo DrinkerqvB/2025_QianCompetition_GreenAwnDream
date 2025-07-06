@@ -28,7 +28,7 @@ void data_task(void *pvParameters)
 				USART1_SEND();     //Serial port 1 sends data //串口1发送数据
 				//USART3_SEND();     //Serial port 3 (ROS) sends data  //串口3(ROS)发送数据
 				//USART5_SEND();		 //Serial port 5 sends data //串口5发送数据
-				CAN_SEND();        //CAN send data //CAN发送数据	
+				//CAN_SEND();        //CAN send data //CAN发送数据	
 			}
 	}
 }
@@ -53,46 +53,13 @@ void data_transition(void)
 	Send_Data.Sensor_Str.Y_speed = 0;
 	Send_Data.Sensor_Str.Z_speed = ((-Motor_Left.Encoder+Motor_Right.Encoder)/(Axle_spacing+Wheel_spacing))*1000;
 	/*
-	switch(Car_Mode)
-	{	
-		case Mec_Car:      
-			Send_Data.Sensor_Str.X_speed = ((MOTOR_A.Encoder+MOTOR_B.Encoder+MOTOR_C.Encoder+MOTOR_D.Encoder)/4)*1000;
-	    Send_Data.Sensor_Str.Y_speed = ((MOTOR_A.Encoder-MOTOR_B.Encoder+MOTOR_C.Encoder-MOTOR_D.Encoder)/4)*1000; 
-	    Send_Data.Sensor_Str.Z_speed = ((-MOTOR_A.Encoder-MOTOR_B.Encoder+MOTOR_C.Encoder+MOTOR_D.Encoder)/4/(Axle_spacing+Wheel_spacing))*1000;         
-		  break; 
-		
-    case Omni_Car:      
-			Send_Data.Sensor_Str.X_speed = ((MOTOR_C.Encoder-MOTOR_B.Encoder)/2/X_PARAMETER)*1000; 
-	    Send_Data.Sensor_Str.Y_speed = ((MOTOR_A.Encoder*2-MOTOR_B.Encoder-MOTOR_C.Encoder)/3)*1000; 
-	    Send_Data.Sensor_Str.Z_speed = ((MOTOR_A.Encoder+MOTOR_B.Encoder+MOTOR_C.Encoder)/3/Omni_turn_radiaus)*1000;      
-		  break; 
-    
 		case Akm_Car:  
 			Send_Data.Sensor_Str.X_speed = ((MOTOR_A.Encoder+MOTOR_B.Encoder)/2)*1000; 
 			Send_Data.Sensor_Str.Y_speed = 0;
 			Send_Data.Sensor_Str.Z_speed = ((MOTOR_B.Encoder-MOTOR_A.Encoder)/Wheel_spacing)*1000;
 		  break; 
 		
-		case Diff_Car: 
-			Send_Data.Sensor_Str.X_speed = ((MOTOR_A.Encoder+MOTOR_B.Encoder)/2)*1000; 
-			Send_Data.Sensor_Str.Y_speed = 0;
-			Send_Data.Sensor_Str.Z_speed = ((MOTOR_B.Encoder-MOTOR_A.Encoder)/Wheel_spacing)*1000;
-			break; 
-		
-		case FourWheel_Car:
-      Send_Data.Sensor_Str.X_speed = ((MOTOR_A.Encoder+MOTOR_B.Encoder+MOTOR_C.Encoder+MOTOR_D.Encoder)/4)*1000; 
-	    Send_Data.Sensor_Str.Y_speed = 0;
-	    Send_Data.Sensor_Str.Z_speed = ((-MOTOR_B.Encoder-MOTOR_A.Encoder+MOTOR_C.Encoder+MOTOR_D.Encoder)/2/(Axle_spacing+Wheel_spacing))*1000;
-		 break; 
-		
-		case Tank_Car:   
-			Send_Data.Sensor_Str.X_speed = ((MOTOR_A.Encoder+MOTOR_B.Encoder)/2)*1000; 
-			Send_Data.Sensor_Str.Y_speed = 0;
-			Send_Data.Sensor_Str.Z_speed = ((MOTOR_B.Encoder-MOTOR_A.Encoder)/(Wheel_spacing)*1000);
-			break; 
-			
-	}
-	*/
+
 	
 	//The acceleration of the triaxial acceleration //加速度计三轴加速度
 	Send_Data.Sensor_Str.Accelerometer.X_data= accel[1]; //The accelerometer Y-axis is converted to the ros coordinate X axis //加速度计Y轴转换到ROS坐标X轴
@@ -155,6 +122,8 @@ void data_transition(void)
 	Send_Data.buffer[22]=Check_Sum(22,1); 
 	
 	Send_Data.buffer[23]=Send_Data.Sensor_Str.Frame_Tail; //Frame_tail //帧尾
+	*/
+	
 }
 /**************************************************************************
 Function: Serial port 1 sends data
@@ -183,28 +152,29 @@ Output  : none
 入口参数：无
 返 回 值：无
 **************************************************************************/
-void CAN_SEND(void) 
-{
-	u8 CAN_SENT[8],i;
-	
-	for(i=0;i<8;i++)
-	{
-	  CAN_SENT[i]=Send_Data.buffer[i];
-	}
-	CAN1_Send_Num(0x101,CAN_SENT);
-	
-	for(i=0;i<8;i++)
-	{
-	  CAN_SENT[i]=Send_Data.buffer[i+8];
-	}
-	CAN1_Send_Num(0x102,CAN_SENT);
-	
-	for(i=0;i<8;i++)
-	{
-	  CAN_SENT[i]=Send_Data.buffer[i+16];
-	}
-	CAN1_Send_Num(0x103,CAN_SENT);
-}
+
+//void CAN_SEND(void) 
+//{
+//	u8 CAN_SENT[8],i;
+//	
+//	for(i=0;i<8;i++)
+//	{
+//	  CAN_SENT[i]=Send_Data.buffer[i];
+//	}
+//	CAN1_Send_Num(0x101,CAN_SENT);
+//	
+//	for(i=0;i<8;i++)
+//	{
+//	  CAN_SENT[i]=Send_Data.buffer[i+8];
+//	}
+//	CAN1_Send_Num(0x102,CAN_SENT);
+//	
+//	for(i=0;i<8;i++)
+//	{
+//	  CAN_SENT[i]=Send_Data.buffer[i+16];
+//	}
+//	CAN1_Send_Num(0x103,CAN_SENT);
+//}
 /**************************************************************************
 Function: Serial port 1 initialization
 Input   : none
@@ -402,6 +372,7 @@ Output  : none
 入口参数：无
 返回  值：无
 **************************************************************************/
+/*
 int USART2_IRQHandler(void)
 {	
 	int Usart_Receive;
@@ -412,10 +383,10 @@ int USART2_IRQHandler(void)
 				
 		Usart_Receive=USART2->DR; //Read the data //读取数据
 		
-		if(Deviation_Count<CONTROL_DELAY)
-			// Data is not processed until 10 seconds after startup
-		  //开机10秒前不处理数据
-		  return 0;	
+//		if(Deviation_Count<CONTROL_DELAY)
+//			// Data is not processed until 10 seconds after startup
+//		  //开机10秒前不处理数据
+//		  return 0;	
 		if(Check==0)
 		{
 		if(Usart_Receive==0x41&&Last_Usart_Receive==0x41&&APP_ON_Flag==0)
@@ -526,6 +497,7 @@ int USART2_IRQHandler(void)
 }
 
 
+*/
 /**************************************************************************
 Function: After the top 8 and low 8 figures are integrated into a short type data, the unit reduction is converted
 Input   : 8 bits high, 8 bits low

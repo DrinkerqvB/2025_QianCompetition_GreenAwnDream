@@ -410,11 +410,6 @@
               <FilePath>..\HARDWARE\encoder.c</FilePath>
             </File>
             <File>
-              <FileName>LED.C</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\LED.C</FilePath>
-            </File>
-            <File>
               <FileName>oled.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\oled.c</FilePath>
@@ -728,11 +723,6 @@
               <FileName>robot_select_init.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BALANCE\robot_select_init.c</FilePath>
-            </File>
-            <File>
-              <FileName>show.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\BALANCE\show.c</FilePath>
             </File>
           </Files>
         </Group>
