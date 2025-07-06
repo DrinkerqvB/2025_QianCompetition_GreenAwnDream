@@ -69,11 +69,9 @@ void Balance_task(void)
  
 				Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, Motor_Left.Target);
 //				Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, Motor_Right.Target);
-		 Motor_Right.FOC_freq=15.0f;
+		 Motor_Right.FOC_freq=-50.0f;
 				Limit_Pwm(50);
-
-		
-		 
+	 
 }
 
 
@@ -130,6 +128,80 @@ void FOC_Init(void) {
 
 // 更新开环FOC输出（freq: 电频率Hz）
 void FOC_duty_Update(BrushlessMotor* motor,float freq) {
+	
+	// 定义正弦表大小
+#define SIN_TABLE_SIZE 360
+
+
+    // 每1ms调用的周期内计算旋转角度
+    static float Phase_Left = 0.0f;
+    static float Phase_Right = 0.0f;
+    
+    // 判断电机方向 (正转时freq>0，反转时freq<0)
+    motor->dir = (freq >= 0.0f) ? CW : CCW;
+    
+    // 计算相位增量（每1ms执行1次）
+    float phase_inc = 0.36f * fabsf(freq); // 0.36 = 360°/1000ms
+    
+    // 获取当前电机的相位指针
+    float *phase_ptr = (motor == &Motor_Left) ? &Phase_Left : &Phase_Right;
+    
+    // 更新相位值（区分正反转）
+    if (motor->dir == CW) {
+        *phase_ptr += phase_inc;  // 正转：相位增加
+    } else {
+        *phase_ptr -= phase_inc;  // 反转：相位减少
+    }
+    
+    // 相位归一化到0~360°
+    *phase_ptr = fmodf(*phase_ptr, 360.0f);
+    if (*phase_ptr < 0.0f) {
+        *phase_ptr += 360.0f;
+    }
+    
+    // 反转时生成反相正弦波（正确的方式）
+    float theta = *phase_ptr;
+    float inversion_factor = (motor->dir == CW) ? 1.0f : -1.0f;
+    
+    // 生成三相正弦波（使用插值提高精度）
+    float theta1 = fmodf(theta, SIN_TABLE_SIZE);
+    int idx0 = (int)theta1;
+    int idx1 = (idx0 + 1) % SIN_TABLE_SIZE;
+    float frac = theta1 - idx0;
+    
+    float Ua = (SinTable[idx0] + frac * (SinTable[idx1] - SinTable[idx0])) * inversion_factor;
+    
+    idx0 = (int)fmodf(theta + 120.0f, SIN_TABLE_SIZE);
+    idx1 = (idx0 + 1) % SIN_TABLE_SIZE;
+    frac = (theta + 120.0f) - idx0;
+    
+    float Ub = (SinTable[idx0] + frac * (SinTable[idx1] - SinTable[idx0])) * inversion_factor;
+    
+    idx0 = (int)fmodf(theta + 240.0f, SIN_TABLE_SIZE);
+    idx1 = (idx0 + 1) % SIN_TABLE_SIZE;
+    frac = (theta + 240.0f) - idx0;
+    
+    float Uc = (SinTable[idx0] + frac * (SinTable[idx1] - SinTable[idx0])) * inversion_factor;
+    
+    // 转换到PWM占空比（电压中心点偏移）
+    float V_offset = 0.5f;
+    
+    // 限幅保护
+    Ua = fmaxf(-1.0f, fminf(Ua, 1.0f));
+    Ub = fmaxf(-1.0f, fminf(Ub, 1.0f));
+    Uc = fmaxf(-1.0f, fminf(Uc, 1.0f));
+    
+    // 转换为PWM占空比（范围：0到PWM_PERIOD）
+    uint16_t DutyA = (uint16_t)((Ua * 0.5f + 0.5f) * PWM_PERIOD);
+    uint16_t DutyB = (uint16_t)((Ub * 0.5f + 0.5f) * PWM_PERIOD);
+    uint16_t DutyC = (uint16_t)((Uc * 0.5f + 0.5f) * PWM_PERIOD);
+    
+    // 写入到电机控制结构
+    motor->dutyA = DutyA;
+    motor->dutyB = DutyB;
+    motor->dutyC = DutyC;
+
+	/*
 	 static float Phase_Left = 0, Phase_Right = 0; // 分离左右电机相位
 		
 	
@@ -168,6 +240,7 @@ void FOC_duty_Update(BrushlessMotor* motor,float freq) {
 //    TIM1->CCR1 = DutyA;
 //    TIM1->CCR2 = DutyB;
 //    TIM1->CCR3 = DutyC;
+*/
 }
 
 
@@ -283,7 +356,7 @@ pwm+=Kp[e（k）-e(k-1)]+Ki*e(k)
 **************************************************************************/
 int Incremental_PID_A (float Encoder,float Target)
 { 	
-	 static float Bias,ElecFreq,Last_bias;
+	 static float Bias,ElecFreq=0,Last_bias;
 	 Bias=(Target-Encoder)*7/Wheel_perimeter; //Calculate the deviation //计算偏差
 	
 	 ElecFreq+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias+Velocity_KD*(Bias-Last_bias); 
@@ -296,7 +369,8 @@ int Incremental_PID_A (float Encoder,float Target)
 }
 int Incremental_PID_B (float Encoder,float Target)
 {  
-	 static float Bias,ElecFreq,Last_bias;
+	 static float Bias,ElecFreq=0,Last_bias;
+	
 	 Bias=(Target-Encoder)*7/Wheel_perimeter; //Calculate the deviation //计算偏差
 	
 	 ElecFreq+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias+Velocity_KD*(Bias-Last_bias);  

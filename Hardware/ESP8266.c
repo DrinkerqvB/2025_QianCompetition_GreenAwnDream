@@ -52,7 +52,7 @@ void ESP8266_Command(char* Command_AT)
 	
 	USART3_SendString(Command_AT);
 	
-	delay_ms(800);
+	delay_ms(500);
 	printf("%s",Command_AT);
 	//pt_w2=0;
 }
