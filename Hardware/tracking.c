@@ -14,7 +14,7 @@ extern ControlState cmd;//存储偏差、前进速度、转向角速度
 入口参数：无
 返回  值：无
 **************************************************************************/
-void Tracking_task(void *pvParameters)
+void Tracking_task(void)
 { 
 	
 		Deal_Usart_Data();
@@ -112,7 +112,7 @@ void uart5_init(u32 bound)
 	//UsartNVIC configuration //UsartNVIC配置
 	NVIC_InitStructure.NVIC_IRQChannel = UART5_IRQn;
 	//Preempt priority //抢占优先级
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2 ;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=3 ;
 	//Sub priority //子优先级
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;		
 	//Enable the IRQ channel //IRQ通道使能	

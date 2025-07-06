@@ -52,7 +52,7 @@ void ESP8266_Command(char* Command_AT)
 	
 	USART3_SendString(Command_AT);
 	
-	delay_ms(2000);
+	delay_ms(800);
 	printf("%s",Command_AT);
 	//pt_w2=0;
 }
@@ -142,7 +142,7 @@ Output  : none
 入口参数：无
 返回  值：无
 **************************************************************************/
-int USART3_IRQHandler(void)
+void USART3_IRQHandler(void)
 {	
 	if(USART_GetITStatus(USART3, USART_IT_RXNE) != RESET) {
         uint8_t aRxBuffer = USART_ReceiveData(USART3);

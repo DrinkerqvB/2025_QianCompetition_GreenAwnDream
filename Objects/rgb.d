@@ -75,6 +75,7 @@
 .\objects\rgb.o: .\Hardware\brushlessMotor.h
 .\objects\rgb.o: .\Hardware\ESP8266.h
 .\objects\rgb.o: .\Hardware\RGB.h
+.\objects\rgb.o: .\Hardware\Timer.h
 .\objects\rgb.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 .\objects\rgb.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
 .\objects\rgb.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\math.h

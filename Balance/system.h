@@ -72,6 +72,7 @@ typedef struct
 #include "brushlessMotor.h"
 #include "ESP8266.h"
 #include "RGB.h"
+#include "Timer.h"
 
 
 

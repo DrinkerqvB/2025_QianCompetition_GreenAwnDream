@@ -75,6 +75,7 @@
 .\objects\tracking.o: .\Hardware\brushlessMotor.h
 .\objects\tracking.o: .\Hardware\ESP8266.h
 .\objects\tracking.o: .\Hardware\RGB.h
+.\objects\tracking.o: .\Hardware\Timer.h
 .\objects\tracking.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 .\objects\tracking.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
 .\objects\tracking.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\math.h

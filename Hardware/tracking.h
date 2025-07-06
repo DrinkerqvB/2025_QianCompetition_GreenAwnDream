@@ -14,7 +14,7 @@ extern u8 IR_Data_number[IR_Num];
 extern u8 g_new_package_flag;
 
 
-void Tracking_task(void *pvParameters);
+void Tracking_task(void);
 void Tracking_Init(void);
 void USART5_SEND(uint8_t *BufferPtr, uint16_t Length);
 void usart5_send(u8 data);

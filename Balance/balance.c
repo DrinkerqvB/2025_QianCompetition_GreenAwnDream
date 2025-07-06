@@ -53,7 +53,7 @@ Output  : none
 入口参数：无
 返回  值：无
 **************************************************************************/
-void Balance_task(void *pvParameters)
+void Balance_task(void)
 { 	
 	  
 	//ControlState ctrl;//把红外传输的数据粘贴
@@ -68,8 +68,8 @@ void Balance_task(void *pvParameters)
 		Drive_Motor(Move_X, 0, Move_Z); // 只使用X(速度)和Z(转向)
  
 				Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, Motor_Left.Target);
-				Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, Motor_Right.Target);
-		 
+//				Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, Motor_Right.Target);
+		 Motor_Right.FOC_freq=15.0f;
 				Limit_Pwm(50);
 
 		
@@ -82,7 +82,7 @@ void Balance_task(void *pvParameters)
 入口参数：
 返回  值：无
 **************************************************************************/
-void FOCLoop_task(void *pvParameters)
+void FOCLoop_task(void)
 {
 	
 			// This task runs at a frequency of 100Hz (10ms control once)

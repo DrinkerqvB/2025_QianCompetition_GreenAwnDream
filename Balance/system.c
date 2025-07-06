@@ -180,6 +180,7 @@ void systemInit(void)
 	//生成正弦表
 	//初始化电机PWM所需定时器
 	 FOC_Init();
+	 TIM7_Init();
 	 TIM4_Init();
 	 TIM8_Init();
 						

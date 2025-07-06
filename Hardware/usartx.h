@@ -54,7 +54,7 @@ typedef struct _RECEIVE_DATA_
 }RECEIVE_DATA;
 
 
-void data_task(void *pvParameters);
+void data_task(void);
 void data_transition(void);
 void USART1_SEND(void);
 
@@ -68,7 +68,6 @@ void uart2_init(u32 bound);
 
 int USART1_IRQHandler(void);
 
-int USART3_IRQHandler(void);
 
 
 float Vz_to_Akm_Angle(float Vx, float Vz);

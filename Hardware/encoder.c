@@ -149,13 +149,13 @@ void Encoder_Z_Init(void)
 	NVIC_InitTypeDef NVIC_InitStructure;
 	NVIC_InitStructure.NVIC_IRQChannel=EXTI2_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelCmd=ENABLE;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=1;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=14;
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority=0;
 	NVIC_Init(&NVIC_InitStructure);
 	
 	NVIC_InitStructure.NVIC_IRQChannel=EXTI0_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelCmd=ENABLE;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=1;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=14;
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority=0;
 	NVIC_Init(&NVIC_InitStructure);
 	
