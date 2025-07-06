@@ -149,7 +149,7 @@ void systemInit(void)
 	
 	//Initialize the hardware interface connected to the enable switch
 	//初始化与使能开关连接的硬件接口
-	Enable_Pin();
+	//Enable_Pin();
 
   //Initialize the hardware interface connected to the OLED display
   //初始化与OLED显示屏连接的硬件接口	
@@ -157,9 +157,9 @@ void systemInit(void)
 	
 	//Initialize the hardware interface connected to the user's key
 	//初始化与用户按键连接的硬件接口
-	KEY_Init();	
-	if(KEY==0)			Check=1;
-	else if(KEY==1)	Check=0;
+//	KEY_Init();	
+//	if(KEY==0)			Check=1;
+//	else if(KEY==1)	Check=0;
 	//Serial port 1 initialization, communication baud rate 115200, 
 	//can be used to communicate with ROS terminal
 	//串口1初始化，通信波特率115200，可用于与ROS端通信
@@ -167,7 +167,7 @@ void systemInit(void)
 	
 	//Serial port 2 initialization, communication baud rate 9600, 
 	//used to communicate with Bluetooth APP terminal
-	//串口2初始化，通信波特率9600，用于与蓝牙APP端通信
+	//串口2初始化，通信波特率9600，用于printf调试
 	uart2_init(9600);  
 	
 	//Serial port 3 is initialized and the baud rate is 115200. 
@@ -184,12 +184,12 @@ void systemInit(void)
 	//ADC pin initialization, used to read the battery voltage and potentiometer gear, 
 	//potentiometer gear determines the car after the boot of the car model
 	//ADC引脚初始化，用于读取电池电压与电位器档位，电位器档位决定小车开机后的小车适配型号
- 	Adc_Init();  
-	Adc_POWER_Init();
+ 	//Adc_Init();  
+	//Adc_POWER_Init();
 	
 	//Initialize the CAN communication interface
   //CAN通信接口初始化
-	CAN1_Mode_Init(1,7,6,3,0); 
+	//CAN1_Mode_Init(1,7,6,3,0); 
 	
   //According to the tap position of the potentiometer, determine which type of car needs to be matched, 
   //and then initialize the corresponding parameters	
@@ -210,13 +210,13 @@ void systemInit(void)
 //		Encoder_Init_TIM5(); 
 	
 	//定时器12用作舵机的PWM接口
-		TIM12_SERVO_Init(9999,84-1);  //APB1的时钟频率为84M , 频率=84M/((9999+1)*(83+1))=100Hz
+		//TIM12_SERVO_Init(9999,84-1);  //APB1的时钟频率为84M , 频率=84M/((9999+1)*(83+1))=100Hz
 		
 		//普通小车默认定时器8用作航模接口
    // TIM8_SERVO_Init(9999,168-1);//APB2的时钟频率为168M , 频率=168M/((9999+1)*(167+1))=100Hz
 	 //Initialize the model remote control interface		
 	 //初始化航模遥控接口
-	 TIM8_Cap_Init(9999,168-1);  //高级定时器TIM8的时钟频率为168M    
+	 //TIM8_Cap_Init(9999,168-1);  //高级定时器TIM8的时钟频率为168M    
 
   //Initialize motor speed control and, for controlling motor speed, PWM frequency 10kHz
   //初始化电机速度控制以及，用于控制电机速度，PWM频率10KHZ
@@ -231,12 +231,12 @@ void systemInit(void)
 		
   //IIC initialization for MPU6050 
   //IIC初始化，用于MPU6050  
-	I2C_GPIOInit();
+	//I2C_GPIOInit();
 
   //MPU6050  is initialized to read the vehicle's three-axis attitude, 
 	//three-axis angular velocity and three-axis acceleration information
   //MPU6050 初始化，用于读取小车三轴姿态、三轴角速度、三轴加速度信息
-   MPU6050_initialize();        		
+   //MPU6050_initialize();        		
 	
-	ESP8266_Init();							
+	//ESP8266_Init();							
 }

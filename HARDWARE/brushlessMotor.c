@@ -9,21 +9,7 @@ uint8_t Rotor_Angle;
 
 
 
-/**************************************************************************
-函数功能：使能开关引脚初始化
-入口参数：无
-返回  值：无 
-**************************************************************************/
-void Enable_Pin(void)
-{
-	GPIO_InitTypeDef  GPIO_InitStructure;
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);//使能GPIOB时钟
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3; //KEY对应引脚
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;//普通输入模式
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;//100M
-	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;//上拉
-	GPIO_Init(GPIOD, &GPIO_InitStructure);//初始化GPIOB14
-} 
+
 
 
 

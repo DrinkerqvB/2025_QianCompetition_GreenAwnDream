@@ -405,24 +405,9 @@
           <GroupName>HARDWARE</GroupName>
           <Files>
             <File>
-              <FileName>adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>can.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\can.c</FilePath>
-            </File>
-            <File>
               <FileName>encoder.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\encoder.c</FilePath>
-            </File>
-            <File>
-              <FileName>key.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\key.c</FilePath>
             </File>
             <File>
               <FileName>LED.C</FileName>
@@ -433,16 +418,6 @@
               <FileName>oled.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\oled.c</FilePath>
-            </File>
-            <File>
-              <FileName>pstwo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\pstwo.c</FilePath>
-            </File>
-            <File>
-              <FileName>timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\timer.c</FilePath>
             </File>
             <File>
               <FileName>usartx.c</FileName>
@@ -758,21 +733,6 @@
               <FileName>show.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\BALANCE\show.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>MPU6050</GroupName>
-          <Files>
-            <File>
-              <FileName>MPU6050.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\MPU6050\MPU6050.c</FilePath>
-            </File>
-            <File>
-              <FileName>I2C.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\MPU6050\I2C.c</FilePath>
             </File>
           </Files>
         </Group>
