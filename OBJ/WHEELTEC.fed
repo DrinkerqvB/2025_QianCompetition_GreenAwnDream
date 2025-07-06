@@ -1,9 +1,13 @@
-;#<FEEDBACK># ARM Linker, 5060960: Last Updated: Sun Jul 06 18:15:41 2025
+;#<FEEDBACK># ARM Linker, 5060960: Last Updated: Sun Jul 06 21:31:24 2025
 ;VERSION 0.2
 ;FILE balance.o
+FOC_duty_Update <= USED 0
 Get_RC <= USED 0
+Incremental_PID_A <= USED 0
+Incremental_PID_B <= USED 0
 Incremental_PI_C <= USED 0
 Incremental_PI_D <= USED 0
+Limit_Pwm <= USED 0
 Smooth_control <= USED 0
 Turn_Off <= USED 0
 __asm___9_balance_c_8ff6a6ce____REV16 <= USED 0
@@ -65,30 +69,6 @@ NVIC_SetVectorTable <= USED 0
 NVIC_SystemLPConfig <= USED 0
 __asm___6_misc_c_d0fc1254____REV16 <= USED 0
 __asm___6_misc_c_d0fc1254____REVSH <= USED 0
-;FILE modbus.o
-Modbus_Init <= USED 0
-Modbus_task <= USED 0
-PowerMeter_RequestData <= USED 0
-__asm___8_Modbus_c_86e4e40d____REV16 <= USED 0
-__asm___8_Modbus_c_86e4e40d____REVSH <= USED 0
-;FILE oled.o
-OLED_Display_Off <= USED 0
-OLED_Display_On <= USED 0
-OLED_DrawPoint <= USED 0
-OLED_DrawPoint_Shu <= USED 0
-OLED_Set_Pos <= USED 0
-OLED_ShowCHinese <= USED 0
-OLED_ShowCHinese12 <= USED 0
-OLED_ShowChar <= USED 0
-OLED_ShowFont12 <= USED 0
-OLED_ShowFont16 <= USED 0
-OLED_ShowNumber <= USED 0
-OLED_ShowString <= USED 0
-OLED_ShowString16 <= USED 0
-OLED_Show_POT <= USED 0
-__asm___6_oled_c_d8b4a4da____REV16 <= USED 0
-__asm___6_oled_c_d8b4a4da____REVSH <= USED 0
-oled_pow <= USED 0
 ;FILE port.o
 __asm___6_port_c_39a90d8d____REV16 <= USED 0
 __asm___6_port_c_39a90d8d____REVSH <= USED 0
@@ -545,6 +525,7 @@ LTDC_StructInit <= USED 0
 __asm___16_stm32f4xx_ltdc_c_74c236bc____REV16 <= USED 0
 __asm___16_stm32f4xx_ltdc_c_74c236bc____REVSH <= USED 0
 ;FILE stm32f4xx_pwr.o
+PWR_BackupAccessCmd <= USED 0
 PWR_BackupRegulatorCmd <= USED 0
 PWR_ClearFlag <= USED 0
 PWR_DeInit <= USED 0
@@ -591,6 +572,7 @@ RCC_HSEConfig <= USED 0
 RCC_HSICmd <= USED 0
 RCC_I2SCLKConfig <= USED 0
 RCC_ITConfig <= USED 0
+RCC_LSEConfig <= USED 0
 RCC_LSEModeConfig <= USED 0
 RCC_LSICmd <= USED 0
 RCC_LTDCCLKDivConfig <= USED 0
@@ -936,7 +918,10 @@ xTimerIsTimerActive <= USED 0
 xTimerPendFunctionCall <= USED 0
 xTimerPendFunctionCallFromISR <= USED 0
 ;FILE tracking.o
+Calculate_Line_error <= USED 0
+Deal_Usart_Data <= USED 0
 Is_Line_Lost <= USED 0
+Tracking_task <= USED 0
 __asm___10_tracking_c_1984593c____REV16 <= USED 0
 __asm___10_tracking_c_1984593c____REVSH <= USED 0
 ;FILE usart.o

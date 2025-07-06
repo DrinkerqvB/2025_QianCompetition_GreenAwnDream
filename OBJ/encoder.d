@@ -59,10 +59,8 @@
 ..\obj\encoder.o: ..\SYSTEM\delay\delay.h
 ..\obj\encoder.o: ..\BALANCE\balance.h
 ..\obj\encoder.o: ..\BALANCE\system.h
-..\obj\encoder.o: ..\HARDWARE\oled.h
 ..\obj\encoder.o: ..\HARDWARE\usartx.h
 ..\obj\encoder.o: ..\HARDWARE\encoder.h
-..\obj\encoder.o: ..\BALANCE\show.h
 ..\obj\encoder.o: ..\BALANCE\robot_select_init.h
 ..\obj\encoder.o: ..\HARDWARE\tracking.h
 ..\obj\encoder.o: ..\HARDWARE\brushlessMotor.h

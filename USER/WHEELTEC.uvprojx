@@ -410,11 +410,6 @@
               <FilePath>..\HARDWARE\encoder.c</FilePath>
             </File>
             <File>
-              <FileName>oled.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\oled.c</FilePath>
-            </File>
-            <File>
               <FileName>usartx.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\usartx.c</FilePath>
@@ -438,11 +433,6 @@
               <FileName>RGB.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\RGB.c</FilePath>
-            </File>
-            <File>
-              <FileName>Modbus.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\Modbus.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -74,26 +74,29 @@ void Balance_task(void *pvParameters)
 			Get_Velocity_Form_Encoder();   
 		
 //				Key();
-			if(Check==0) 
-			{
+			/*
 				if(xQueueReceive(xControlQueue, &ctrl, 0) == pdPASS) {
                     Move_X = ctrl.speed_setpoint;
                     Move_Z = ctrl.turn_gain;
                 }
-                Drive_Motor(Move_X, 0, Move_Z); // 只使用X(速度)和Z(转向)
-            }
+		*/
+//                Drive_Motor(Move_X, 0, Move_Z); // 只使用X(速度)和Z(转向)
+				Drive_Motor(1, 0, Move_Z);
+            
 								
 
 				//如果电池电压不存在异常，而且使能开关在ON档位，而且软件失能标志位为0
 				if(1) 
 				 { 			
           
-					Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, Motor_Left.Target);
-					Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, Motor_Right.Target);
+//					Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, Motor_Left.Target);
+//					Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, Motor_Right.Target);
+					 Motor_Right.FOC_freq=15.0f;
+					 
 //				 	MOTOR_C.Motor_Pwm=Incremental_PI_C(MOTOR_C.Encoder, MOTOR_C.Target);
 //					MOTOR_D.Motor_Pwm=Incremental_PI_D(MOTOR_D.Encoder, MOTOR_D.Target);
 						 
-					 Limit_Pwm(16700);
+//					 Limit_Pwm(16700);
 					 
 					 
 				 }
@@ -246,13 +249,9 @@ void FOCLoop_task(void *pvParameters)
 			// This task runs at a frequency of 100Hz (10ms control once)
 			//此任务以1000Hz的频率运行（1ms控制一次）
 		vTaskDelayUntil(&lastWakeTime, F2T(RATE_1000_HZ)); 
-			
-			
-		   
-			
 		
-			FOC_duty_Update(&Motor_Left, Motor_Left.FOC_freq);
-			FOC_duty_Update(&Motor_Right, Motor_Right.FOC_freq);
+			FOC_duty_Update_1(&Motor_Left, Motor_Left.FOC_freq);
+			FOC_duty_Update_1(&Motor_Right, Motor_Right.FOC_freq);
 			Set_Pwm();
 		
 	}
@@ -291,6 +290,40 @@ void FOC_Init(void) {
     for (int i = 0; i < 360; i++) {
         SinTable[i] = sinf(i * 3.1415926f / 180.0f);
     }
+}
+
+// 更新开环FOC输出（freq: 电频率Hz）
+void FOC_duty_Update_1(BrushlessMotor* motor, float freq) {
+	volatile static uint32_t count=0;
+    volatile static uint32_t last_time = 0;
+	(void)last_time;
+    uint32_t current_time = SysTick->VAL;
+	static float Phase=0.0f;
+	
+	
+    
+    // 计算相位增量（每1ms更新一次）
+    if ( 1) {
+		
+        Phase += 0.36f * freq; // 0.36 = 360° / 1000ms
+		//Phase += 0.0018f * freq;
+        if (Phase >= 360.0f) Phase -= 360.0f;
+        last_time = current_time;
+    }
+    
+    // 生成三相正弦波
+    float Ua = SinTable[(int)Phase % 360];
+    float Ub = SinTable[(int)(Phase + 120) % 360];
+    float Uc = SinTable[(int)(Phase + 240) % 360];
+    
+    // 转换为PWM占空比（幅值设为50%）
+    uint16_t DutyA = (uint16_t)((Ua + 1.0f) * PWM_PERIOD / 2);
+    uint16_t DutyB = (uint16_t)((Ub + 1.0f) * PWM_PERIOD / 2);
+    uint16_t DutyC = (uint16_t)((Uc + 1.0f) * PWM_PERIOD / 2);
+    
+	Motor_Right.dutyA=DutyA;
+	Motor_Right.dutyB=DutyB;
+	Motor_Right.dutyC=DutyC;
 }
 
 // 更新开环FOC输出（freq: 电频率Hz）

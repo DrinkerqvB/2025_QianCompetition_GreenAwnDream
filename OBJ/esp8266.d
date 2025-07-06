@@ -59,10 +59,8 @@
 ..\obj\esp8266.o: ..\SYSTEM\delay\delay.h
 ..\obj\esp8266.o: ..\BALANCE\balance.h
 ..\obj\esp8266.o: ..\BALANCE\system.h
-..\obj\esp8266.o: ..\HARDWARE\oled.h
 ..\obj\esp8266.o: ..\HARDWARE\usartx.h
 ..\obj\esp8266.o: ..\HARDWARE\encoder.h
-..\obj\esp8266.o: ..\BALANCE\show.h
 ..\obj\esp8266.o: ..\BALANCE\robot_select_init.h
 ..\obj\esp8266.o: ..\HARDWARE\tracking.h
 ..\obj\esp8266.o: ..\HARDWARE\brushlessMotor.h

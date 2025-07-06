@@ -58,11 +58,9 @@
 ..\obj\balance.o: ..\FreeRTOS\include\semphr.h
 ..\obj\balance.o: ..\SYSTEM\delay\delay.h
 ..\obj\balance.o: ..\BALANCE\balance.h
-..\obj\balance.o: ..\HARDWARE\oled.h
-..\obj\balance.o: ..\BALANCE\system.h
 ..\obj\balance.o: ..\HARDWARE\usartx.h
+..\obj\balance.o: ..\BALANCE\system.h
 ..\obj\balance.o: ..\HARDWARE\encoder.h
-..\obj\balance.o: ..\BALANCE\show.h
 ..\obj\balance.o: ..\BALANCE\robot_select_init.h
 ..\obj\balance.o: ..\HARDWARE\tracking.h
 ..\obj\balance.o: ..\HARDWARE\brushlessMotor.h

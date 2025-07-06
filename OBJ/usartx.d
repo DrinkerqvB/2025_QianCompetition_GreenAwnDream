@@ -59,10 +59,8 @@
 ..\obj\usartx.o: ..\SYSTEM\delay\delay.h
 ..\obj\usartx.o: ..\BALANCE\balance.h
 ..\obj\usartx.o: ..\BALANCE\system.h
-..\obj\usartx.o: ..\HARDWARE\oled.h
 ..\obj\usartx.o: ..\HARDWARE\usartx.h
 ..\obj\usartx.o: ..\HARDWARE\encoder.h
-..\obj\usartx.o: ..\BALANCE\show.h
 ..\obj\usartx.o: ..\BALANCE\robot_select_init.h
 ..\obj\usartx.o: ..\HARDWARE\tracking.h
 ..\obj\usartx.o: ..\HARDWARE\brushlessMotor.h

@@ -29,6 +29,7 @@ void FOCLoop_task(void *pvParameters);
 void Set_Pwm(void);
 void FOC_Init(void);
 void FOC_duty_Update(BrushlessMotor* motor,float freq);
+void FOC_duty_Update_1(BrushlessMotor* motor,float freq);
 
 
 void Limit_Pwm(int amplitude);

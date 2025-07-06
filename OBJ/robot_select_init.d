@@ -59,10 +59,8 @@
 ..\obj\robot_select_init.o: ..\SYSTEM\delay\delay.h
 ..\obj\robot_select_init.o: ..\BALANCE\balance.h
 ..\obj\robot_select_init.o: ..\BALANCE\system.h
-..\obj\robot_select_init.o: ..\HARDWARE\oled.h
 ..\obj\robot_select_init.o: ..\HARDWARE\usartx.h
 ..\obj\robot_select_init.o: ..\HARDWARE\encoder.h
-..\obj\robot_select_init.o: ..\BALANCE\show.h
 ..\obj\robot_select_init.o: ..\BALANCE\robot_select_init.h
 ..\obj\robot_select_init.o: ..\HARDWARE\tracking.h
 ..\obj\robot_select_init.o: ..\HARDWARE\brushlessMotor.h

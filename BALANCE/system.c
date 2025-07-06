@@ -153,7 +153,7 @@ void systemInit(void)
 
   //Initialize the hardware interface connected to the OLED display
   //初始化与OLED显示屏连接的硬件接口	
-	OLED_Init();     
+	//OLED_Init();     
 	
 	//Initialize the hardware interface connected to the user's key
 	//初始化与用户按键连接的硬件接口
