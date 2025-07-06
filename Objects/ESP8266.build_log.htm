@@ -21,13 +21,135 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.3.0.0
 Dialog DLL:      TCM.DLL V1.56.6.0
  
 <h2>Project:</h2>
-D:\Project\Real_Project\2025_QianCompitition\Project_code\NoFreeRTOS\ESP8266.uvprojx
-Project File Date:  07/03/2025
+D:\Project\Real_Project\2025_QianCompitition\Project_code\2025_QianCompetition_GreenAwnDream\ESP8266.uvprojx
+Project File Date:  07/07/2025
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Keil_v5\ARM\ARMCOMPLIER506\Bin'
 Build target 'Target_1'
-".\Objects\ESP8266.axf" - 0 Error(s), 0 Warning(s).
+compiling encoder.c...
+.\Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
+  extern QueueHandle_t xControlQueue;
+Hardware\encoder.c: 0 warnings, 1 error
+compiling Modbus.c...
+.\Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
+  extern QueueHandle_t xControlQueue;
+Hardware\Modbus.c(297): warning:  #223-D: function "getSysTickCnt" declared implicitly
+  	 u32 lastWakeTime = getSysTickCnt();
+Hardware\Modbus.c(303): warning:  #223-D: function "vTaskDelayUntil" declared implicitly
+  			vTaskDelayUntil(&lastWakeTime, F2T(RATE_20_HZ));
+Hardware\Modbus.c(303): warning:  #223-D: function "F2T" declared implicitly
+  			vTaskDelayUntil(&lastWakeTime, F2T(RATE_20_HZ));
+Hardware\Modbus.c: 3 warnings, 1 error
+compiling usartx.c...
+.\Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
+  extern QueueHandle_t xControlQueue;
+Hardware\usartx.c(16): warning:  #223-D: function "getSysTickCnt" declared implicitly
+  	 u32 lastWakeTime = getSysTickCnt();
+Hardware\usartx.c(22): warning:  #223-D: function "vTaskDelayUntil" declared implicitly
+  			vTaskDelayUntil(&lastWakeTime, F2T(RATE_20_HZ));
+Hardware\usartx.c(22): warning:  #223-D: function "F2T" declared implicitly
+  			vTaskDelayUntil(&lastWakeTime, F2T(RATE_20_HZ));
+Hardware\usartx.c(520): error:  #20: identifier "MINI_AKM_MIN_TURN_RADIUS" is undefined
+  	Min_Turn_Radius=MINI_AKM_MIN_TURN_RADIUS;
+Hardware\usartx.c: 3 warnings, 2 errors
+compiling delay.c...
+.\Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
+  extern QueueHandle_t xControlQueue;
+System\delay\delay.c: 0 warnings, 1 error
+compiling RGB.c...
+.\Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
+  extern QueueHandle_t xControlQueue;
+Hardware\RGB.c: 0 warnings, 1 error
+compiling system.c...
+Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
+  extern QueueHandle_t xControlQueue;
+Balance\system.c(137): warning:  #223-D: function "delay_init" declared implicitly
+  	delay_init(168);	
+Balance\system.c(156): warning:  #223-D: function "OLED_Init" declared implicitly
+  	OLED_Init();     
+Balance\system.c(197): warning:  #223-D: function "Robot_Select" declared implicitly
+  	Robot_Select();                 
+Balance\system.c: 3 warnings, 1 error
+compiling usart.c...
+System\usart\usart.c(5): error:  #5: cannot open source input file "FreeRTOS.h": No such file or directory
+  #include "FreeRTOS.h"					//FreeRTOS使用	  
+System\usart\usart.c: 0 warnings, 1 error
+compiling ESP8266.c...
+.\Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
+  extern QueueHandle_t xControlQueue;
+Hardware\ESP8266.c(31): warning:  #223-D: function "getSysTickCnt" declared implicitly
+  	 u32 lastWakeTime = getSysTickCnt();
+Hardware\ESP8266.c(37): warning:  #223-D: function "vTaskDelayUntil" declared implicitly
+  			vTaskDelayUntil(&lastWakeTime, F2T(RATE_20_HZ));
+Hardware\ESP8266.c(37): warning:  #223-D: function "F2T" declared implicitly
+  			vTaskDelayUntil(&lastWakeTime, F2T(RATE_20_HZ));
+Hardware\ESP8266.c(162): warning:  #940-D: missing return statement at end of non-void function "USART3_IRQHandler" 
+  }
+Hardware\ESP8266.c: 4 warnings, 1 error
+compiling tracking.c...
+.\Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
+  extern QueueHandle_t xControlQueue;
+Hardware\tracking.c(5): error:  #20: identifier "QueueHandle_t" is undefined
+  QueueHandle_t xControlQueue = NULL;//给了一个队列的基本指针***出现问题要回去看
+Hardware\tracking.c(19): warning:  #223-D: function "getSysTickCnt" declared implicitly
+  	u32 lastWakeTime = getSysTickCnt();
+Hardware\tracking.c(25): warning:  #223-D: function "vTaskDelayUntil" declared implicitly
+  		vTaskDelayUntil(&lastWakeTime, F2T(RATE_200_HZ)); 
+Hardware\tracking.c(25): warning:  #223-D: function "F2T" declared implicitly
+  		vTaskDelayUntil(&lastWakeTime, F2T(RATE_200_HZ)); 
+Hardware\tracking.c(35): warning:  #223-D: function "xQueueOverwrite" declared implicitly
+  		xQueueOverwrite(xControlQueue, &cmd);
+Hardware\tracking.c(36): warning:  #223-D: function "vTaskDelay" declared implicitly
+  		vTaskDelay(pdMS_TO_TICKS(5));
+Hardware\tracking.c(36): warning:  #223-D: function "pdMS_TO_TICKS" declared implicitly
+  		vTaskDelay(pdMS_TO_TICKS(5));
+Hardware\tracking.c: 6 warnings, 2 errors
+compiling brushlessMotor.c...
+.\Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
+  extern QueueHandle_t xControlQueue;
+Hardware\brushlessMotor.c: 0 warnings, 1 error
+compiling balance.c...
+Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
+  extern QueueHandle_t xControlQueue;
+Balance\balance.c(17): error:  #20: identifier "Encoder" is undefined
+  Encoder OriginalEncoder; //Encoder raw data //编码器原始数据
+Balance\balance.c(62): warning:  #223-D: function "getSysTickCnt" declared implicitly
+  	u32 lastWakeTime = getSysTickCnt();
+Balance\balance.c(68): warning:  #223-D: function "vTaskDelayUntil" declared implicitly
+  			vTaskDelayUntil(&lastWakeTime, F2T(RATE_100_HZ)); 
+Balance\balance.c(68): warning:  #223-D: function "F2T" declared implicitly
+  			vTaskDelayUntil(&lastWakeTime, F2T(RATE_100_HZ)); 
+Balance\balance.c(79): warning:  #223-D: function "xQueueReceive" declared implicitly
+  				if(xQueueReceive(xControlQueue, &ctrl, 0) == pdPASS) {
+Balance\balance.c(79): error:  #20: identifier "pdPASS" is undefined
+  				if(xQueueReceive(xControlQueue, &ctrl, 0) == pdPASS) {
+Balance\balance.c(63): warning:  #177-D: variable "last_error"  was declared but never referenced
+  	float last_error = 0;//偏差
+Balance\balance.c(242): warning:  #223-D: function "getSysTickCnt" declared implicitly
+  	u32 lastWakeTime = getSysTickCnt();
+Balance\balance.c(248): warning:  #223-D: function "vTaskDelayUntil" declared implicitly
+  		vTaskDelayUntil(&lastWakeTime, F2T(RATE_1000_HZ)); 
+Balance\balance.c(248): warning:  #223-D: function "F2T" declared implicitly
+  		vTaskDelayUntil(&lastWakeTime, F2T(RATE_1000_HZ)); 
+Balance\balance.c(536): error:  #20: identifier "PI" is undefined
+  		 if     (Flag_Left ==1)  Move_Z= PI/2*(RC_Velocity/500); //left rotation  //左自转  
+Balance\balance.c(537): error:  #20: identifier "PI" is undefined
+  		 else if(Flag_Right==1)  Move_Z=-PI/2*(RC_Velocity/500); //right rotation //右自转
+Balance\balance.c(546): error:  #20: identifier "PI" is undefined
+  			case 2:      Move_X=+RC_Velocity;  	 Move_Z=-PI/2;   	 break;
+Balance\balance.c(555): error:  #20: identifier "PI" is undefined
+  	 if     (Flag_Left ==1)  Move_Z= PI/2; //left rotation  //左自转 
+Balance\balance.c(556): error:  #20: identifier "PI" is undefined
+  	 else if(Flag_Right==1)  Move_Z=-PI/2; //right rotation //右自转	
+Balance\balance.c(620): error:  #20: identifier "CONTROL_FREQUENCY" is undefined
+  		Motor_Left.Encoder= Encoder_A_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;  
+Balance\balance.c(602): warning:  #177-D: variable "Encoder_C_pr"  was declared but never referenced
+  		float Encoder_A_pr,Encoder_B_pr,Encoder_C_pr,Encoder_D_pr; 
+Balance\balance.c(602): warning:  #177-D: variable "Encoder_D_pr"  was declared but never referenced
+  		float Encoder_A_pr,Encoder_B_pr,Encoder_C_pr,Encoder_D_pr; 
+Balance\balance.c: 10 warnings, 9 errors
+".\Objects\ESP8266.axf" - 21 Error(s), 29 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -39,6 +161,7 @@ Package Vendor: Keil
 <h2>Collection of Component include folders:</h2>
 
 <h2>Collection of Component Files used:</h2>
+Target not created.
 Build Time Elapsed:  00:00:01
 </pre>
 </body>
