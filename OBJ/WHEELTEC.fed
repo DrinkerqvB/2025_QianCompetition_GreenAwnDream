@@ -1,4 +1,4 @@
-;#<FEEDBACK># ARM Linker, 5060960: Last Updated: Sun Jul 06 21:31:24 2025
+;#<FEEDBACK># ARM Linker, 5060960: Last Updated: Sun Jul 06 22:07:35 2025
 ;VERSION 0.2
 ;FILE balance.o
 FOC_duty_Update <= USED 0
@@ -64,6 +64,7 @@ __asm___6_list_c_a968f7cb____REVSH <= USED 0
 ;FILE main.o
 __asm___6_main_c_main____REV16 <= USED 0
 __asm___6_main_c_main____REVSH <= USED 0
+start_task <= USED 0
 ;FILE misc.o
 NVIC_SetVectorTable <= USED 0
 NVIC_SystemLPConfig <= USED 0
@@ -887,6 +888,7 @@ uxTaskGetTaskNumber <= USED 0
 uxTaskPriorityGet <= USED 0
 uxTaskPriorityGetFromISR <= USED 0
 uxTaskResetEventItemValue <= USED 0
+vTaskDelete <= USED 0
 vTaskEndScheduler <= USED 0
 vTaskGetInfo <= USED 0
 vTaskList <= USED 0

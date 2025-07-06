@@ -55,17 +55,15 @@ Output  : none
 入口参数：无
 返回  值：无
 **************************************************************************/
-void Balance_task(void *pvParameters)
+void Balance_task()
 { 	
 	  
 	ControlState ctrl;//把红外传输的数据粘贴
-	u32 lastWakeTime = getSysTickCnt();
+	
 	float last_error = 0;//偏差
 
-    while(1)
-    {	
+   
 			
-			vTaskDelayUntil(&lastWakeTime, F2T(RATE_100_HZ)); 
 			
 		
 //			if(Time_count<3000)Time_count++;
@@ -230,7 +228,7 @@ void Balance_task(void *pvParameters)
 				}
 				}
 				*/
-		 }  
+		   
 		 
 }
 
@@ -240,7 +238,7 @@ void Balance_task(void *pvParameters)
 入口参数：
 返回  值：无
 **************************************************************************/
-void FOCLoop_task(void *pvParameters)
+void FOCLoop_task()
 {
 	u32 lastWakeTime = getSysTickCnt();
 			

@@ -1,6 +1,6 @@
 Dependencies for Project 'WHEELTEC', Target 'FreeRTOS': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCOMPLIER506
-F (.\main.c)(0x686A7A8C)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x686A8306)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (..\BALANCE\system.h)(0x686A7018)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x68457F5A)
 I (..\SYSTEM\sys\sys.h)(0x68457F5A)
@@ -56,11 +56,11 @@ I (..\FreeRTOS\include\queue.h)(0x68457F5A)
 I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
-I (..\BALANCE\balance.h)(0x686A58B9)
+I (..\BALANCE\balance.h)(0x686A820E)
 I (..\HARDWARE\usartx.h)(0x686A426C)
 I (..\HARDWARE\encoder.h)(0x68457F5A)
 I (..\BALANCE\robot_select_init.h)(0x68457F5A)
-I (..\HARDWARE\tracking.h)(0x68457F5A)
+I (..\HARDWARE\tracking.h)(0x686A820E)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
 I (..\HARDWARE\ESP8266.h)(0x686A418A)
 I (..\HARDWARE\RGB.h)(0x686A3C01)
@@ -202,10 +202,10 @@ I (..\FreeRTOS\include\queue.h)(0x68457F5A)
 I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
-I (..\BALANCE\balance.h)(0x686A58B9)
+I (..\BALANCE\balance.h)(0x686A820E)
 I (..\HARDWARE\usartx.h)(0x686A426C)
 I (..\BALANCE\robot_select_init.h)(0x68457F5A)
-I (..\HARDWARE\tracking.h)(0x68457F5A)
+I (..\HARDWARE\tracking.h)(0x686A820E)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
 I (..\HARDWARE\ESP8266.h)(0x686A418A)
 I (..\HARDWARE\RGB.h)(0x686A3C01)
@@ -268,17 +268,17 @@ I (..\FreeRTOS\include\queue.h)(0x68457F5A)
 I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
-I (..\BALANCE\balance.h)(0x686A58B9)
+I (..\BALANCE\balance.h)(0x686A820E)
 I (..\HARDWARE\encoder.h)(0x68457F5A)
 I (..\BALANCE\robot_select_init.h)(0x68457F5A)
-I (..\HARDWARE\tracking.h)(0x68457F5A)
+I (..\HARDWARE\tracking.h)(0x686A820E)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
 I (..\HARDWARE\ESP8266.h)(0x686A418A)
 I (..\HARDWARE\RGB.h)(0x686A3C01)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
-F (..\HARDWARE\tracking.c)(0x6845B53F)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\tracking.o --omf_browse ..\obj\tracking.crf --depend ..\obj\tracking.d)
-I (..\HARDWARE\tracking.h)(0x68457F5A)
+F (..\HARDWARE\tracking.c)(0x686A820E)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\tracking.o --omf_browse ..\obj\tracking.crf --depend ..\obj\tracking.d)
+I (..\HARDWARE\tracking.h)(0x686A820E)
 I (..\SYSTEM\sys\sys.h)(0x68457F5A)
 I (..\USER\stm32f4xx.h)(0x68457F5A)
 I (..\CORE\core_cm4.h)(0x68457F5A)
@@ -334,7 +334,7 @@ I (..\FreeRTOS\include\queue.h)(0x68457F5A)
 I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
-I (..\BALANCE\balance.h)(0x686A58B9)
+I (..\BALANCE\balance.h)(0x686A820E)
 I (..\HARDWARE\usartx.h)(0x686A426C)
 I (..\HARDWARE\encoder.h)(0x68457F5A)
 I (..\BALANCE\robot_select_init.h)(0x68457F5A)
@@ -400,11 +400,11 @@ I (..\FreeRTOS\include\queue.h)(0x68457F5A)
 I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
-I (..\BALANCE\balance.h)(0x686A58B9)
+I (..\BALANCE\balance.h)(0x686A820E)
 I (..\HARDWARE\usartx.h)(0x686A426C)
 I (..\HARDWARE\encoder.h)(0x68457F5A)
 I (..\BALANCE\robot_select_init.h)(0x68457F5A)
-I (..\HARDWARE\tracking.h)(0x68457F5A)
+I (..\HARDWARE\tracking.h)(0x686A820E)
 I (..\HARDWARE\ESP8266.h)(0x686A418A)
 I (..\HARDWARE\RGB.h)(0x686A3C01)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
@@ -466,11 +466,11 @@ I (..\FreeRTOS\include\queue.h)(0x68457F5A)
 I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
-I (..\BALANCE\balance.h)(0x686A58B9)
+I (..\BALANCE\balance.h)(0x686A820E)
 I (..\HARDWARE\usartx.h)(0x686A426C)
 I (..\HARDWARE\encoder.h)(0x68457F5A)
 I (..\BALANCE\robot_select_init.h)(0x68457F5A)
-I (..\HARDWARE\tracking.h)(0x68457F5A)
+I (..\HARDWARE\tracking.h)(0x686A820E)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
 I (..\HARDWARE\RGB.h)(0x686A3C01)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
@@ -532,11 +532,11 @@ I (..\FreeRTOS\include\queue.h)(0x68457F5A)
 I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
-I (..\BALANCE\balance.h)(0x686A58B9)
+I (..\BALANCE\balance.h)(0x686A820E)
 I (..\HARDWARE\usartx.h)(0x686A426C)
 I (..\HARDWARE\encoder.h)(0x68457F5A)
 I (..\BALANCE\robot_select_init.h)(0x68457F5A)
-I (..\HARDWARE\tracking.h)(0x68457F5A)
+I (..\HARDWARE\tracking.h)(0x686A820E)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
 I (..\HARDWARE\ESP8266.h)(0x686A418A)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
@@ -2493,18 +2493,18 @@ I (..\FreeRTOS\include\queue.h)(0x68457F5A)
 I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
-I (..\BALANCE\balance.h)(0x686A58B9)
+I (..\BALANCE\balance.h)(0x686A820E)
 I (..\HARDWARE\usartx.h)(0x686A426C)
 I (..\HARDWARE\encoder.h)(0x68457F5A)
 I (..\BALANCE\robot_select_init.h)(0x68457F5A)
-I (..\HARDWARE\tracking.h)(0x68457F5A)
+I (..\HARDWARE\tracking.h)(0x686A820E)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
 I (..\HARDWARE\ESP8266.h)(0x686A418A)
 I (..\HARDWARE\RGB.h)(0x686A3C01)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdarg.h)(0x5E8E3CC2)
-F (..\BALANCE\balance.c)(0x686A7971)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\balance.o --omf_browse ..\obj\balance.crf --depend ..\obj\balance.d)
-I (..\BALANCE\balance.h)(0x686A58B9)
+F (..\BALANCE\balance.c)(0x686A820E)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\HARDWARE\MPU6050-ID:\Keil_v5\ARM\Packs\Keil\STM32F4xx_DFP\3.0.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\balance.o --omf_browse ..\obj\balance.crf --depend ..\obj\balance.d)
+I (..\BALANCE\balance.h)(0x686A820E)
 I (..\SYSTEM\sys\sys.h)(0x68457F5A)
 I (..\USER\stm32f4xx.h)(0x68457F5A)
 I (..\CORE\core_cm4.h)(0x68457F5A)
@@ -2563,7 +2563,7 @@ I (..\SYSTEM\delay\delay.h)(0x68457F5A)
 I (..\HARDWARE\usartx.h)(0x686A426C)
 I (..\HARDWARE\encoder.h)(0x68457F5A)
 I (..\BALANCE\robot_select_init.h)(0x68457F5A)
-I (..\HARDWARE\tracking.h)(0x68457F5A)
+I (..\HARDWARE\tracking.h)(0x686A820E)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
 I (..\HARDWARE\ESP8266.h)(0x686A418A)
 I (..\HARDWARE\RGB.h)(0x686A3C01)
@@ -2626,10 +2626,10 @@ I (..\FreeRTOS\include\queue.h)(0x68457F5A)
 I (..\FreeRTOS\include\timers.h)(0x68457F5A)
 I (..\FreeRTOS\include\semphr.h)(0x68457F5A)
 I (..\SYSTEM\delay\delay.h)(0x68457F5A)
-I (..\BALANCE\balance.h)(0x686A58B9)
+I (..\BALANCE\balance.h)(0x686A820E)
 I (..\HARDWARE\usartx.h)(0x686A426C)
 I (..\HARDWARE\encoder.h)(0x68457F5A)
-I (..\HARDWARE\tracking.h)(0x68457F5A)
+I (..\HARDWARE\tracking.h)(0x686A820E)
 I (..\HARDWARE\brushlessMotor.h)(0x68457F5A)
 I (..\HARDWARE\ESP8266.h)(0x686A418A)
 I (..\HARDWARE\RGB.h)(0x686A3C01)
