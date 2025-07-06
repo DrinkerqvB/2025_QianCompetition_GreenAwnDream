@@ -2,7 +2,7 @@
 //发送到串口上后清空数组！！
 
 uint8_t ESP8266_ReceiveBuf2[ESP8266_RECEIVE_LENGTH];//接收暂存帧
-uint8_t ESP8266_ReceiveCmd[ESP8266_RECEIVE_LENGTH];//接收
+uint8_t ESP8266_ReceiveCmd[ESP8266_RECEIVE_LENGTH]={0};//接收
 //uint16_t pt_w2=0;
 uint8_t aRxBuffer;			//接收中断缓冲
 
@@ -37,11 +37,17 @@ void ESP8266_Init(void)
 {
 	uart3_init(115200);
 	ESP8266_Command(RST_Start);
+
 	ESP8266_Command(MODE_Start);
+
 	ESP8266_Command(WIFI_Start);
+
 	ESP8266_Command(Connected_Start);
+	
 	ESP8266_Command(TCP_Start);
+	
 	ESP8266_Command(SeriaNet_Start);
+	
 	ESP8266_Command(TX_Start);		//发送指令
 }
 
@@ -52,7 +58,8 @@ void ESP8266_Command(char* Command_AT)
 	
 	USART3_SendString(Command_AT);
 	
-	delay_ms(500);
+	
+	delay_ms(1000);
 	printf("%s",Command_AT);
 	//pt_w2=0;
 }
@@ -148,7 +155,9 @@ void USART3_IRQHandler(void)
         uint8_t aRxBuffer = USART_ReceiveData(USART3);
         // 处理接收到的数据
 		ESP8266_RxCpltCallback(aRxBuffer);
-        USART_SendData(USART3, aRxBuffer); // 回传测试
+        //USART_SendData(USART3, aRxBuffer); // 回传测试
+		
+		USART_ClearITPendingBit(USART3, USART_IT_RXNE);
     }
 }
 

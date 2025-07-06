@@ -46,7 +46,9 @@ float Move_X, Move_Y, Move_Z;
 
 //PID parameters of Speed control
 //速度控制PID参数
-float Velocity_KP=3.0,Velocity_KI=3.0,Velocity_KD=3.0; 
+float Velocity_KP=1.5f;
+float Velocity_KI=1.5f;
+float Velocity_KD=0; 
 
 //Smooth control of intermediate variables, dedicated to omni-directional moving cars
 //平滑控制中间变量，全向移动小车专用

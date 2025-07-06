@@ -69,7 +69,8 @@ void Balance_task(void)
  
 				Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, Motor_Left.Target);
 //				Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, Motor_Right.Target);
-		 Motor_Right.FOC_freq=-50.0f;
+	Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, 0.5);
+//		 Motor_Right.FOC_freq=50.0f;
 				Limit_Pwm(50);
 	 
 }
@@ -200,7 +201,7 @@ void FOC_duty_Update(BrushlessMotor* motor,float freq) {
     motor->dutyA = DutyA;
     motor->dutyB = DutyB;
     motor->dutyC = DutyC;
-
+}
 	/*
 	 static float Phase_Left = 0, Phase_Right = 0; // 分离左右电机相位
 		
@@ -241,7 +242,7 @@ void FOC_duty_Update(BrushlessMotor* motor,float freq) {
 //    TIM1->CCR2 = DutyB;
 //    TIM1->CCR3 = DutyC;
 */
-}
+
 
 
 
