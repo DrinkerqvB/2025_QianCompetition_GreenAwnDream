@@ -292,20 +292,20 @@ static float RegToFloat(void) {
   */
 //    System_Init();
 
-void Modbus_task(void *pvParameters)
-{
-	 u32 lastWakeTime = getSysTickCnt();
-	
-   while(1)
-    {	
-			//The task is run at 20hz
-			//此任务以20Hz的频率运行
-			vTaskDelayUntil(&lastWakeTime, F2T(RATE_20_HZ));
-		
-			
-		PowerMeter_RequestData();
-	}
-}
+//void Modbus_task(void *pvParameters)
+//{
+//	 u32 lastWakeTime = getSysTickCnt();
+//	
+//   while(1)
+//    {	
+//			//The task is run at 20hz
+//			//此任务以20Hz的频率运行
+//			vTaskDelayUntil(&lastWakeTime, F2T(RATE_20_HZ));
+//		
+//			
+//		PowerMeter_RequestData();
+//	}
+//}
   
 
 //int main(void) {

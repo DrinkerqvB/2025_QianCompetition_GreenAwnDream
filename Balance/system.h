@@ -65,7 +65,7 @@ typedef struct
 //#include "show.h"								   
 //#include "pstwo.h"
 //#include "key.h"
-//#include "robot_select_init.h"
+#include "robot_select_init.h"
 //#include "I2C.h"
 //#include "MPU6050.h"
 #include "tracking.h"

@@ -26,18 +26,9 @@ Output  : none
 入口参数：无
 返回  值：无
 **************************************************************************/
-void ESP8266_task(void *pvParameters)
+void ESP8266_task()
 {
-	 u32 lastWakeTime = getSysTickCnt();
-	
-   while(1)
-    {	
-			//The task is run at 20hz
-			//此任务以20Hz的频率运行
-			vTaskDelayUntil(&lastWakeTime, F2T(RATE_20_HZ));
-			
-		
-	}
+	 
 }
 
 

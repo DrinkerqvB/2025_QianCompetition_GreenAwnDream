@@ -70,6 +70,7 @@
 .\objects\modbus.o: .\Balance\balance.h
 .\objects\modbus.o: .\Hardware\usartx.h
 .\objects\modbus.o: .\Hardware\encoder.h
+.\objects\modbus.o: .\Balance\robot_select_init.h
 .\objects\modbus.o: .\Hardware\tracking.h
 .\objects\modbus.o: .\Hardware\brushlessMotor.h
 .\objects\modbus.o: .\Hardware\ESP8266.h

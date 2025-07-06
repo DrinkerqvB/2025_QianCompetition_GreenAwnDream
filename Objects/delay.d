@@ -70,6 +70,7 @@
 .\objects\delay.o: .\Balance\system.h
 .\objects\delay.o: .\Hardware\usartx.h
 .\objects\delay.o: .\Hardware\encoder.h
+.\objects\delay.o: .\Balance\robot_select_init.h
 .\objects\delay.o: .\Hardware\tracking.h
 .\objects\delay.o: .\Hardware\brushlessMotor.h
 .\objects\delay.o: .\Hardware\ESP8266.h

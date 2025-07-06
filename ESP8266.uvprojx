@@ -984,6 +984,16 @@
               <FileType>5</FileType>
               <FilePath>.\Balance\system.h</FilePath>
             </File>
+            <File>
+              <FileName>robot_select_init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Balance\robot_select_init.c</FilePath>
+            </File>
+            <File>
+              <FileName>robot_select_init.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Balance\robot_select_init.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

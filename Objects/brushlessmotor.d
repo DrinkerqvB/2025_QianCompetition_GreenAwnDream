@@ -70,6 +70,7 @@
 .\objects\brushlessmotor.o: .\Balance\balance.h
 .\objects\brushlessmotor.o: .\Hardware\usartx.h
 .\objects\brushlessmotor.o: .\Hardware\encoder.h
+.\objects\brushlessmotor.o: .\Balance\robot_select_init.h
 .\objects\brushlessmotor.o: .\Hardware\tracking.h
 .\objects\brushlessmotor.o: .\Hardware\brushlessMotor.h
 .\objects\brushlessmotor.o: .\Hardware\ESP8266.h

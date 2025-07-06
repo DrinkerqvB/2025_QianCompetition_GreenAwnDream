@@ -85,8 +85,8 @@ void Balance_task(void *pvParameters)
 								
 
 				//如果电池电压不存在异常，而且使能开关在ON档位，而且软件失能标志位为0
-				if(1) 
-				 { 			
+				
+				 			
           
 					Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, Motor_Left.Target);
 					Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, Motor_Right.Target);
@@ -94,139 +94,7 @@ void Balance_task(void *pvParameters)
 //					MOTOR_D.Motor_Pwm=Incremental_PI_D(MOTOR_D.Encoder, MOTOR_D.Target);
 						 
 					 Limit_Pwm(16700);
-					 
-					 
-				 }
-				
-				 else{ 
-			 }
-			
-			 //以下else为自检程序代码
-			 /*
-			 
-				else
-				{
-					if(Proc_Flag==3)						//自检电机
-				{
-					 if(check_time_count_motor_forward>0)
-					 {	 
-						 check_time_count_motor_forward--;
-						 Full_rotation=16799;
-					 }
-					 else if(check_time_count_motor_retreat>0) 
-					 {	 
-							check_time_count_motor_retreat--;
-						 Full_rotation=-16799;
-					 }		
 
-					 switch(Car_Mode)
-					 {
-//							case Mec_Car:       Set_Pwm( Full_rotation, -Full_rotation, -Full_rotation, Full_rotation, 0    ); break; //Mecanum wheel car       //麦克纳姆轮小车
-//							case Omni_Car:      Set_Pwm(-Full_rotation,  Full_rotation, -Full_rotation, Full_rotation, 0    ); break; //Omni car                //全向轮小车
-//							case Akm_Car:       Set_Pwm( Full_rotation,  Full_rotation,  Full_rotation, Full_rotation, 0    ); break; //Ackermann structure car //阿克曼小车
-//							case Diff_Car:      Set_Pwm( Full_rotation,  Full_rotation,  Full_rotation, Full_rotation, 0    ); break; //Differential car        //两轮差速小车
-//							case FourWheel_Car: Set_Pwm( Full_rotation, -Full_rotation, -Full_rotation, Full_rotation, 0    ); break; //FourWheel car           //四驱车 
-//							case Tank_Car:      Set_Pwm( Full_rotation,  Full_rotation,  Full_rotation, Full_rotation, 0    ); break; //Tank Car                //履带车
-					 } 
-					 if(!(check_time_count_motor_retreat>0) && !(check_time_count_motor_forward>0))
-					 {	 
-						 //Set_Pwm(0,0,0,0,0);		 
-					 }
-				}
-				if(Proc_Flag==4)		//Set_Pwm(0,0,0,0,0);
-				if(Proc_Flag==6)		TIM8_SERVO_Init(9999,168-1);					//六路舵机
-				if(Proc_Flag==7)																					//控制舵机
-				{
-					if(servo_direction[0]==0&&Servo_Count[0]<2500) Servo_Count[0]=Servo_Count[0]+5;
-				 if(servo_direction[0]==0&&Servo_Count[0]>=2500) servo_direction[0]=1;
-				 if(Servo_Count[0]>500&&servo_direction[0]==1)  Servo_Count[0]=Servo_Count[0]-5;
-				 if(Servo_Count[0]<=500&&servo_direction[0]==1)  Servo_Count[0]=500,servo_direction[0] = 2;
-				 TIM12->CCR2=Servo_Count[0];
-				 
-				}
-				if(Proc_Flag==8)
-				{
-					if(servo_direction[0]!=2)					Servo_Count[0]=500,TIM12->CCR2=Servo_Count[0];
-					if(servo_direction[1]==0&&Servo_Count[1]<2500) Servo_Count[1]=Servo_Count[1]+5;
-				 if(servo_direction[1]==0&&Servo_Count[1]>=2500) servo_direction[1]=1;
-				 if(Servo_Count[1]>500&&servo_direction[1]==1)  Servo_Count[1]=Servo_Count[1]-5;
-				 if(Servo_Count[1]<=500&&servo_direction[1]==1)  Servo_Count[1]=500,servo_direction[1] = 2;
-					TIM12->CCR1=Servo_Count[1];
-				}
-				if(Proc_Flag==9)
-				{
-					if(servo_direction[1]!=2)					Servo_Count[1]=500,TIM12->CCR1=Servo_Count[1];
-					if(servo_direction[2]==0&&Servo_Count[2]<2500) Servo_Count[2]=Servo_Count[2]+5;
-				 if(servo_direction[2]==0&&Servo_Count[2]>=2500) servo_direction[2]=1;
-				 if(Servo_Count[2]>500&&servo_direction[2]==1)  Servo_Count[2]=Servo_Count[2]-5;
-				 if(Servo_Count[2]<=500&&servo_direction[2]==1)  Servo_Count[2]=500,servo_direction[2] = 2;
-					TIM8->CCR4=Servo_Count[2];
-				}
-				if(Proc_Flag==10)
-				{
-					if(servo_direction[2]!=2)					Servo_Count[2]=500,TIM8->CCR4=Servo_Count[2];
-					if(servo_direction[3]==0&&Servo_Count[3]<2500) Servo_Count[3]=Servo_Count[3]+5;
-				 if(servo_direction[3]==0&&Servo_Count[3]>=2500) servo_direction[3]=1;
-				 if(Servo_Count[3]>500&&servo_direction[3]==1)  Servo_Count[3]=Servo_Count[3]-5;
-				 if(Servo_Count[3]<=500&&servo_direction[3]==1)  Servo_Count[3]=500,servo_direction[3] = 2;
-					TIM8->CCR3=Servo_Count[3];
-				}
-				if(Proc_Flag==11)
-				{
-					if(servo_direction[3]!=2)					Servo_Count[3]=500,TIM8->CCR3=Servo_Count[3];
-					if(servo_direction[4]==0&&Servo_Count[4]<2500) Servo_Count[4]=Servo_Count[4]+5;
-				 if(servo_direction[4]==0&&Servo_Count[4]>=2500) servo_direction[4]=1;
-				 if(Servo_Count[4]>500&&servo_direction[4]==1)  Servo_Count[4]=Servo_Count[4]-5;
-				 if(Servo_Count[4]<=500&&servo_direction[4]==1)  Servo_Count[4]=500,servo_direction[4] = 2;
-					TIM8->CCR2=Servo_Count[4];
-				}
-				if(Proc_Flag==12)
-				{
-					if(servo_direction[4]!=2)					Servo_Count[4]=500,TIM8->CCR2=Servo_Count[4];
-					if(servo_direction[5]==0&&Servo_Count[5]<2500) Servo_Count[5]=Servo_Count[5]+5;
-				 if(servo_direction[5]==0&&Servo_Count[5]>=2500) servo_direction[5]=1;
-				 if(Servo_Count[5]>500&&servo_direction[5]==1)  Servo_Count[5]=Servo_Count[5]-5;
-				 if(Servo_Count[5]<=500&&servo_direction[5]==1)  Servo_Count[5]=500,servo_direction[5] = 2;
-					TIM8->CCR1=Servo_Count[5];
-				}
-				
-				if(Proc_Flag==13)																	//
-				{
-					servo_direction[0] = servo_direction[1] = servo_direction[2] = servo_direction[3] = servo_direction[4] = servo_direction[5] = 0;
-					Servo_Count[0] = Servo_Count[1] = Servo_Count[2] = Servo_Count[3] = Servo_Count[4] = Servo_Count[5] = 500;
-					 TIM8->CCR1=Servo_Count[5];
-					 TIM8->CCR2=Servo_Count[4];
-					 TIM8->CCR3=Servo_Count[3];
-					 TIM8->CCR4=Servo_Count[2];
-					 TIM12->CCR1=Servo_Count[1];
-					 TIM12->CCR2=Servo_Count[0];
-				}
-				if(Proc_Flag==14)																	//蜂鸣器间隔1s响一次
-				{
-					if((Buzzer_count1/100)%2)			Buzzer = 1;
-					else													Buzzer = 0;
-				}
-				if(Proc_Flag==15)			Buzzer = 0;
-//				if(Proc_Flag==17)																	//向APP发送WHEELTEC
-//				{
-//					if(uart2_send_flag==1)
-//					{
-//						USART2_Return();
-//						uart2_send_flag = 0;
-//						app_count = 0;
-//					}
-//				}
-				if(Proc_Flag==19)
-				{
-					if(uart3_send_flag==1)
-					{
-						USART3_Return();
-						uart3_send_flag = 0;
-						message_count = 0;
-					}
-				}
-				}
-				*/
 		 }  
 		 
 }
@@ -246,11 +114,7 @@ void FOCLoop_task(void *pvParameters)
 			// This task runs at a frequency of 100Hz (10ms control once)
 			//此任务以1000Hz的频率运行（1ms控制一次）
 		vTaskDelayUntil(&lastWakeTime, F2T(RATE_1000_HZ)); 
-			
-			
-		   
-			
-		
+	
 			FOC_duty_Update(&Motor_Left, Motor_Left.FOC_freq);
 			FOC_duty_Update(&Motor_Right, Motor_Right.FOC_freq);
 			Set_Pwm();
@@ -599,7 +463,8 @@ void Get_Velocity_Form_Encoder(void)
 {
 	  //Retrieves the original data of the encoder
 	  //获取编码器的原始数据
-		float Encoder_A_pr,Encoder_B_pr,Encoder_C_pr,Encoder_D_pr; 
+		float Encoder_A_pr,Encoder_B_pr; 
+//		float Encoder_C_pr,Encoder_D_pr;
 		OriginalEncoder.A=Read_Encoder(2);	
 		OriginalEncoder.B=Read_Encoder(3);	
 //		OriginalEncoder.C=Read_Encoder(4);	

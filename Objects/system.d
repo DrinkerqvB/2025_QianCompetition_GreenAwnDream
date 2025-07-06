@@ -69,6 +69,7 @@
 .\objects\system.o: Balance\balance.h
 .\objects\system.o: .\Hardware\usartx.h
 .\objects\system.o: .\Hardware\encoder.h
+.\objects\system.o: Balance\robot_select_init.h
 .\objects\system.o: .\Hardware\tracking.h
 .\objects\system.o: .\Hardware\brushlessMotor.h
 .\objects\system.o: .\Hardware\ESP8266.h

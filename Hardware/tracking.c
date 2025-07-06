@@ -16,13 +16,7 @@ u8 IR_Data_number[IR_Num];//（所需数据）最终得到的探测数据，从0位到7位为x1-x8
 **************************************************************************/
 void Tracking_task(void *pvParameters)
 { 
-	u32 lastWakeTime = getSysTickCnt();
-
-    while(1)
-    {	
-		// This task runs at a frequency of 100Hz (10ms control once)
-		//此任务以200Hz的频率运行（5ms转换一次）
-		vTaskDelayUntil(&lastWakeTime, F2T(RATE_200_HZ)); 
+	
 		Deal_Usart_Data();
 		float error =  Calculate_Line_error();
 			
@@ -32,10 +26,10 @@ void Tracking_task(void *pvParameters)
 		cmd.turn_gain = 20.0f * error; // KP=20
 		
 		 
-		xQueueOverwrite(xControlQueue, &cmd);
-		vTaskDelay(pdMS_TO_TICKS(5));
+//		xQueueOverwrite(xControlQueue, &cmd);
+//		vTaskDelay(pdMS_TO_TICKS(5));
 
-	}
+	
 }
 /**************************************************************************
 函数功能：八路循迹初始化
