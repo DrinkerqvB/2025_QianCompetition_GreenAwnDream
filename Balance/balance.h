@@ -38,8 +38,7 @@ u8 Turn_Off( int voltage);
 u32 myabs(long int a);
 int Incremental_PID_A (float Encoder,float Target);
 int Incremental_PID_B (float Encoder,float Target);
-int Incremental_PI_C (float Encoder,float Target);
-int Incremental_PI_D (float Encoder,float Target);
+
 void Get_RC(void);
 //void Remote_Control(void);
 void Drive_Motor(float Vx,float Vy,float Vz);

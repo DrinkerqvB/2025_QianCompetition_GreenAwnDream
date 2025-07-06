@@ -27,79 +27,11 @@ Project File Date:  07/07/2025
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Keil_v5\ARM\ARMCOMPLIER506\Bin'
 Build target 'Target_1'
-compiling brushlessMotor.c...
-.\Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
-  extern QueueHandle_t xControlQueue;
-Hardware\brushlessMotor.c: 0 warnings, 1 error
-compiling encoder.c...
-.\Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
-  extern QueueHandle_t xControlQueue;
-Hardware\encoder.c: 0 warnings, 1 error
-compiling Modbus.c...
-.\Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
-  extern QueueHandle_t xControlQueue;
-Hardware\Modbus.c: 0 warnings, 1 error
-compiling RGB.c...
-.\Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
-  extern QueueHandle_t xControlQueue;
-Hardware\RGB.c: 0 warnings, 1 error
-compiling usart.c...
-System\usart\usart.c(5): error:  #5: cannot open source input file "FreeRTOS.h": No such file or directory
-  #include "FreeRTOS.h"					//FreeRTOS使用	  
-System\usart\usart.c: 0 warnings, 1 error
-compiling robot_select_init.c...
-Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
-  extern QueueHandle_t xControlQueue;
-Balance\robot_select_init.c: 0 warnings, 1 error
-compiling ESP8266.c...
-.\Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
-  extern QueueHandle_t xControlQueue;
-Hardware\ESP8266.c(153): warning:  #940-D: missing return statement at end of non-void function "USART3_IRQHandler" 
-  }
-Hardware\ESP8266.c: 1 warning, 1 error
 compiling balance.c...
-Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
-  extern QueueHandle_t xControlQueue;
-Balance\balance.c(62): warning:  #223-D: function "getSysTickCnt" declared implicitly
-  	u32 lastWakeTime = getSysTickCnt();
-Balance\balance.c(68): warning:  #223-D: function "vTaskDelayUntil" declared implicitly
-  			vTaskDelayUntil(&lastWakeTime, F2T(RATE_100_HZ)); 
-Balance\balance.c(68): warning:  #223-D: function "F2T" declared implicitly
-  			vTaskDelayUntil(&lastWakeTime, F2T(RATE_100_HZ)); 
-Balance\balance.c(79): warning:  #223-D: function "xQueueReceive" declared implicitly
-  				if(xQueueReceive(xControlQueue, &ctrl, 0) == pdPASS) {
-Balance\balance.c(79): error:  #20: identifier "pdPASS" is undefined
-  				if(xQueueReceive(xControlQueue, &ctrl, 0) == pdPASS) {
-Balance\balance.c(63): warning:  #177-D: variable "last_error"  was declared but never referenced
-  	float last_error = 0;//偏差
-Balance\balance.c(110): warning:  #223-D: function "getSysTickCnt" declared implicitly
-  	u32 lastWakeTime = getSysTickCnt();
-Balance\balance.c(116): warning:  #223-D: function "vTaskDelayUntil" declared implicitly
-  		vTaskDelayUntil(&lastWakeTime, F2T(RATE_1000_HZ)); 
-Balance\balance.c(116): warning:  #223-D: function "F2T" declared implicitly
-  		vTaskDelayUntil(&lastWakeTime, F2T(RATE_1000_HZ)); 
-Balance\balance.c: 8 warnings, 2 errors
-compiling system.c...
-Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
-  extern QueueHandle_t xControlQueue;
-Balance\system.c: 0 warnings, 1 error
-compiling delay.c...
-.\Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
-  extern QueueHandle_t xControlQueue;
-System\delay\delay.c: 0 warnings, 1 error
-compiling usartx.c...
-.\Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
-  extern QueueHandle_t xControlQueue;
-Hardware\usartx.c: 0 warnings, 1 error
-compiling tracking.c...
-.\Balance\system.h(32): error:  #20: identifier "QueueHandle_t" is undefined
-  extern QueueHandle_t xControlQueue;
-Hardware\tracking.c(5): error:  #20: identifier "QueueHandle_t" is undefined
-  QueueHandle_t xControlQueue = NULL;//给了一个队列的基本指针***出现问题要回去看
-Hardware\tracking.c(23): warning:  #550-D: variable "cmd"  was set but never used
-  		ControlState cmd;
-Hardware\tracking.c: 1 warning, 2 errors
-".\Objects\ESP8266.axf" - 14 Error(s), 10 Warning(s).
+linking...
+Program Size: Code=2098 RO-data=458 RW-data=220 ZI-data=5908  
+FromELF: creating hex file...
+".\Objects\ESP8266.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -111,7 +43,6 @@ Package Vendor: Keil
 <h2>Collection of Component include folders:</h2>
 
 <h2>Collection of Component Files used:</h2>
-Target not created.
 Build Time Elapsed:  00:00:01
 </pre>
 </body>

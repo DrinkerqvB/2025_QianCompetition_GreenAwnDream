@@ -29,7 +29,7 @@ typedef struct{
     float speed_setpoint;  // 目标速度（m/s）
     float turn_gain;       // 转向系数（左正右负）
 }ControlState;
-extern QueueHandle_t xControlQueue;
+//extern QueueHandle_t xControlQueue;
 typedef struct  
 {
 	float U1,U2,U3;//三个电压

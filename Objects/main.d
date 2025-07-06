@@ -1,4 +1,5 @@
 .\objects\main.o: User\main.c
+.\objects\main.o: .\Balance\system.h
 .\objects\main.o: .\Start\stm32f4xx.h
 .\objects\main.o: .\Start\core_cm4.h
 .\objects\main.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdint.h
@@ -59,3 +60,21 @@
 .\objects\main.o: .\Start\stm32f4xx.h
 .\objects\main.o: .\Library\stm32f4xx_fsmc.h
 .\objects\main.o: .\Start\stm32f4xx.h
+.\objects\main.o: .\System\sys\sys.h
+.\objects\main.o: .\Start\stm32f4xx.h
+.\objects\main.o: .\System\delay\delay.h
+.\objects\main.o: .\Balance\system.h
+.\objects\main.o: .\System\usart\usart.h
+.\objects\main.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdio.h
+.\objects\main.o: .\Balance\balance.h
+.\objects\main.o: .\Hardware\usartx.h
+.\objects\main.o: .\Hardware\encoder.h
+.\objects\main.o: .\Balance\robot_select_init.h
+.\objects\main.o: .\Hardware\tracking.h
+.\objects\main.o: .\Hardware\brushlessMotor.h
+.\objects\main.o: .\Hardware\ESP8266.h
+.\objects\main.o: .\Hardware\RGB.h
+.\objects\main.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
+.\objects\main.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
+.\objects\main.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\math.h
+.\objects\main.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h

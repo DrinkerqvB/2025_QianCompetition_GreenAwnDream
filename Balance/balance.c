@@ -13,7 +13,7 @@ static float SinTable[360];
 
 
 
-
+ControlState cmd;
 Encoder OriginalEncoder; //Encoder raw data //编码器原始数据
 
 u8 command_lost_count=0; //串口、CAN控制命令丢失时间计数，丢失1秒后停止控制
@@ -58,44 +58,23 @@ Output  : none
 void Balance_task(void *pvParameters)
 { 	
 	  
-	ControlState ctrl;//把红外传输的数据粘贴
-	u32 lastWakeTime = getSysTickCnt();
-	float last_error = 0;//偏差
+	//ControlState ctrl;//把红外传输的数据粘贴
+	//float last_error = 0;//偏差
 
-    while(1)
-    {	
+
+		Get_Velocity_Form_Encoder();   
 			
-			vTaskDelayUntil(&lastWakeTime, F2T(RATE_100_HZ)); 
-			
+				Move_X = cmd.speed_setpoint;
+				Move_Z = cmd.turn_gain;
+                
+		Drive_Motor(Move_X, 0, Move_Z); // 只使用X(速度)和Z(转向)
+ 
+				Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, Motor_Left.Target);
+				Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, Motor_Right.Target);
+		 
+				Limit_Pwm(16700);
+
 		
-//			if(Time_count<3000)Time_count++;
-//			Buzzer_count1++;
-			
-			Get_Velocity_Form_Encoder();   
-		
-//				Key();
-			if(Check==0) 
-			{
-				if(xQueueReceive(xControlQueue, &ctrl, 0) == pdPASS) {
-                    Move_X = ctrl.speed_setpoint;
-                    Move_Z = ctrl.turn_gain;
-                }
-                Drive_Motor(Move_X, 0, Move_Z); // 只使用X(速度)和Z(转向)
-            }
-								
-
-				//如果电池电压不存在异常，而且使能开关在ON档位，而且软件失能标志位为0
-				
-				 			
-          
-					Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, Motor_Left.Target);
-					Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, Motor_Right.Target);
-//				 	MOTOR_C.Motor_Pwm=Incremental_PI_C(MOTOR_C.Encoder, MOTOR_C.Target);
-//					MOTOR_D.Motor_Pwm=Incremental_PI_D(MOTOR_D.Encoder, MOTOR_D.Target);
-						 
-					 Limit_Pwm(16700);
-
-		 }  
 		 
 }
 
@@ -107,19 +86,16 @@ void Balance_task(void *pvParameters)
 **************************************************************************/
 void FOCLoop_task(void *pvParameters)
 {
-	u32 lastWakeTime = getSysTickCnt();
-			
-    while(1)
-    {	
+	
 			// This task runs at a frequency of 100Hz (10ms control once)
 			//此任务以1000Hz的频率运行（1ms控制一次）
-		vTaskDelayUntil(&lastWakeTime, F2T(RATE_1000_HZ)); 
+		
 	
 			FOC_duty_Update(&Motor_Left, Motor_Left.FOC_freq);
 			FOC_duty_Update(&Motor_Right, Motor_Right.FOC_freq);
 			Set_Pwm();
 		
-	}
+	
 
 }
 
@@ -348,26 +324,26 @@ int Incremental_PID_B (float Encoder,float Target)
 	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
 	 return ElecFreq;
 }
-int Incremental_PI_C (float Encoder,float Target)
-{  
-	 static float Bias,Pwm,Last_bias;
-	 Bias=Target-Encoder; //Calculate the deviation //计算偏差
-	 Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias; 
-	 if(Pwm>16700)Pwm=16700;
-	 if(Pwm<-16700)Pwm=-16700;
-	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
-	 return Pwm; 
-}
-int Incremental_PI_D (float Encoder,float Target)
-{  
-	 static float Bias,Pwm,Last_bias;
-	 Bias=Target-Encoder; //Calculate the deviation //计算偏差
-	 Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias;  
-	 if(Pwm>16700)Pwm=16700;
-	 if(Pwm<-16700)Pwm=-16700;
-	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
-	 return Pwm; 
-}
+//int Incremental_PI_C (float Encoder,float Target)
+//{  
+//	 static float Bias,Pwm,Last_bias;
+//	 Bias=Target-Encoder; //Calculate the deviation //计算偏差
+//	 Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias; 
+//	 if(Pwm>16700)Pwm=16700;
+//	 if(Pwm<-16700)Pwm=-16700;
+//	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
+//	 return Pwm; 
+//}
+//int Incremental_PI_D (float Encoder,float Target)
+//{  
+//	 static float Bias,Pwm,Last_bias;
+//	 Bias=Target-Encoder; //Calculate the deviation //计算偏差
+//	 Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias;  
+//	 if(Pwm>16700)Pwm=16700;
+//	 if(Pwm<-16700)Pwm=-16700;
+//	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
+//	 return Pwm; 
+//}
 /**************************************************************************
 Function: Processes the command sent by APP through usart 2
 Input   : none
@@ -467,25 +443,16 @@ void Get_Velocity_Form_Encoder(void)
 //		float Encoder_C_pr,Encoder_D_pr;
 		OriginalEncoder.A=Read_Encoder(2);	
 		OriginalEncoder.B=Read_Encoder(3);	
-//		OriginalEncoder.C=Read_Encoder(4);	
-//		OriginalEncoder.D=Read_Encoder(5);	
 
-	//test_num=OriginalEncoder.B;
 
 		Encoder_A_pr= OriginalEncoder.A; 
 		Encoder_B_pr= OriginalEncoder.B; 
-//	Encoder_C_pr=-OriginalEncoder.C;  
-//	Encoder_D_pr=-OriginalEncoder.D; 
-//				break; 
-//			case Tank_Car:      Encoder_A_pr= OriginalEncoder.A; Encoder_B_pr=-OriginalEncoder.B; Encoder_C_pr= OriginalEncoder.C;  Encoder_D_pr= OriginalEncoder.D; break; 
-//		}
+
 		
 		//The encoder converts the raw data to wheel speed in m/s
 		//编码器原始数据转换为车轮速度，单位m/s
 		Motor_Left.Encoder= Encoder_A_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;  
 		Motor_Right.Encoder= Encoder_B_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;  
-//		MOTOR_C.Encoder= Encoder_C_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision; 
-//		MOTOR_D.Encoder= Encoder_D_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision; 
 }
 
 

@@ -2,13 +2,13 @@
 #include "string.h"
 const float IR_Weights[8] = {-3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5};
 extern int Time_count;
-QueueHandle_t xControlQueue = NULL;//给了一个队列的基本指针***出现问题要回去看
+//QueueHandle_t xControlQueue = NULL;//给了一个队列的基本指针***出现问题要回去看
 u8 rx_buff[Package_size];//用于直接接收串口数据
 u8 new_package[Package_size];//用于转换为数字
 u8 g_new_package_flag = 0;//接收到新的一包数据标志
 
 u8 IR_Data_number[IR_Num];//（所需数据）最终得到的探测数据，从0位到7位为x1-x8
-
+extern ControlState cmd;//存储偏差、前进速度、转向角速度
 /**************************************************************************
 函数功能：FreeRTOS任务，八路循迹数据处理
 入口参数：无
@@ -20,16 +20,11 @@ void Tracking_task(void *pvParameters)
 		Deal_Usart_Data();
 		float error =  Calculate_Line_error();
 			
-		ControlState cmd;
+		
 		cmd.line_error = error;
 		cmd.speed_setpoint = 0.5f;      // 固定速度0.5m/s
 		cmd.turn_gain = 20.0f * error; // KP=20
-		
-		 
-//		xQueueOverwrite(xControlQueue, &cmd);
-//		vTaskDelay(pdMS_TO_TICKS(5));
 
-	
 }
 /**************************************************************************
 函数功能：八路循迹初始化
@@ -279,7 +274,7 @@ float Calculate_Line_error(void){
     if(sensor_count > 0) {
         return weighted_sum / sensor_count;
     }else{
-    return 10.0f; 
+		return 10.0f; 
 	}
 }
 /*

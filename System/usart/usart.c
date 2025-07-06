@@ -2,7 +2,7 @@
 ////////////////////////////////////////////////////////////////////////////////// 	 
 //如果使用ucos,则包括下面的头文件即可.
 #if SYSTEM_SUPPORT_OS
-#include "FreeRTOS.h"					//FreeRTOS使用	  
+//#include "FreeRTOS.h"					//FreeRTOS使用	  
 #endif  
  
 
