@@ -13,15 +13,15 @@ Output  : none
 入口参数：无
 返回  值：无
 **************************************************************************/
-void USART1_SEND(void)
-{
-  unsigned char i = 0;	
-	
-	for(i=0; i<24; i++)
-	{
-		usart1_send(Send_Data.buffer[i]);
-	}	 
-}
+//void USART1_SEND(void)
+//{
+//  unsigned char i = 0;	
+//	
+//	for(i=0; i<24; i++)
+//	{
+//		usart1_send(Send_Data.buffer[i]);
+//	}	 
+//}
 
 
 /**************************************************************************
@@ -251,11 +251,11 @@ Output  : none
 入口参数：要发送的数据
 返回  值：无
 **************************************************************************/
-void usart1_send(u8 data)
-{
-	USART1->DR = data;
-	while((USART1->SR&0x40)==0);	
-}
+//void usart1_send(u8 data)
+//{
+//	USART1->DR = data;
+//	while((USART1->SR&0x40)==0);	
+//}
 /**************************************************************************
 Function: Serial port 2 sends data
 Input   : The data to send

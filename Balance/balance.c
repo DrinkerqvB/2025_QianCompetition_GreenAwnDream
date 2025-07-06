@@ -35,14 +35,12 @@ void Drive_Motor(float Vx,float Vy,float Vz)
 			//Inverse kinematics //运动学逆解
 			Motor_Left.Target  = Vx - Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出左轮的目标速度
 			Motor_Right.Target  = Vx + Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出左轮的目标速度
-//			MOTOR_C.Target  = Vx + Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出右轮的目标速度
-//			MOTOR_D.Target  = Vx + Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出右轮的目标速度
+
 					
 			//Wheel (motor) target speed limit //车轮(电机)目标速度限幅
 			Motor_Left.Target=target_limit_float( Motor_Left.Target,-amplitude,amplitude); 
 			Motor_Right.Target=target_limit_float( Motor_Right.Target,-amplitude,amplitude); 
-//			MOTOR_C.Target=target_limit_float( MOTOR_C.Target,-amplitude,amplitude); 
-//			MOTOR_D.Target=target_limit_float( MOTOR_D.Target,-amplitude,amplitude); 	
+	
 		}
 		
 
@@ -72,7 +70,7 @@ void Balance_task(void *pvParameters)
 				Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, Motor_Left.Target);
 				Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, Motor_Right.Target);
 		 
-				Limit_Pwm(16700);
+				Limit_Pwm(50);
 
 		
 		 
@@ -90,12 +88,9 @@ void FOCLoop_task(void *pvParameters)
 			// This task runs at a frequency of 100Hz (10ms control once)
 			//此任务以1000Hz的频率运行（1ms控制一次）
 		
-	
 			FOC_duty_Update(&Motor_Left, Motor_Left.FOC_freq);
 			FOC_duty_Update(&Motor_Right, Motor_Right.FOC_freq);
 			Set_Pwm();
-		
-	
 
 }
 
@@ -169,14 +164,6 @@ void FOC_duty_Update(BrushlessMotor* motor,float freq) {
 	motor->dutyB=DutyB;
 	motor->dutyC=DutyC;
 	
-	
-	
-//	TIM1->CCR1 = (uint16_t)((Ua + 1.0f) * 0.4f * PWM_PERIOD + 0.1f * PWM_PERIOD);
-//    TIM1->CCR2 = (uint16_t)((Ub + 1.0f) * 0.4f * PWM_PERIOD + 0.1f * PWM_PERIOD);
-//    TIM1->CCR3 = (uint16_t)((Uc + 1.0f) * 0.4f * PWM_PERIOD + 0.1f * PWM_PERIOD);
-	
-	
-	
     // 更新PWM寄存器
 //    TIM1->CCR1 = DutyA;
 //    TIM1->CCR2 = DutyB;
@@ -199,14 +186,10 @@ Output  : none
 **************************************************************************/
 void Limit_Pwm(int amplitude)
 {	
-	Motor_Left.dutyA=target_limit_float(Motor_Left.dutyA,-amplitude,amplitude);
-	Motor_Left.dutyB=target_limit_float(Motor_Left.dutyB,-amplitude,amplitude);
-	Motor_Left.dutyC=target_limit_float(Motor_Left.dutyC,-amplitude,amplitude);
+	Motor_Left.FOC_freq=target_limit_float(Motor_Left.FOC_freq,-amplitude,amplitude);
 	
-	Motor_Right.dutyA=target_limit_float(Motor_Left.dutyA,-amplitude,amplitude);
-	Motor_Right.dutyB=target_limit_float(Motor_Left.dutyB,-amplitude,amplitude);
-	Motor_Right.dutyC=target_limit_float(Motor_Left.dutyC,-amplitude,amplitude);
-	    
+	Motor_Right.FOC_freq=target_limit_float(Motor_Right.FOC_freq,-amplitude,amplitude);
+  
 }	    
 /**************************************************************************
 Function: Limiting function
@@ -242,24 +225,24 @@ Output  : Whether control is allowed, 1: not allowed, 0 allowed
 入口参数：电压
 返回  值：是否允许控制，1：不允许，0允许
 **************************************************************************/
-u8 Turn_Off( int voltage)
-{
-	    u8 temp;
-			if(voltage<10||Flag_Stop==1)
-			{	                                                
-				temp=1;    
-					TIM4->CCR1=0;
-				TIM4->CCR2=0;
-				TIM8->CCR1=0;
-				TIM8->CCR2=0;
-				TIM8->CCR3=0;
-				TIM8->CCR4=0;
-							
-      }
-			else
-			temp=0;
-			return temp;			
-}
+//u8 Turn_Off( int voltage)
+//{
+//	    u8 temp;
+//			if(voltage<10||Flag_Stop==1)
+//			{	                                                
+//				temp=1;    
+//					TIM4->CCR1=0;
+//				TIM4->CCR2=0;
+//				TIM8->CCR1=0;
+//				TIM8->CCR2=0;
+//				TIM8->CCR3=0;
+//				TIM8->CCR4=0;
+//							
+//      }
+//			else
+//			temp=0;
+//			return temp;			
+//}
 /**************************************************************************
 Function: Calculate absolute value
 Input   : long int
@@ -305,8 +288,8 @@ int Incremental_PID_A (float Encoder,float Target)
 	
 	 ElecFreq+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias+Velocity_KD*(Bias-Last_bias); 
 	
-	 if(ElecFreq>233)ElecFreq=233;
-	 if(ElecFreq<-233)ElecFreq=-233;
+//	 if(ElecFreq>200)ElecFreq=200;
+//	 if(ElecFreq<-200)ElecFreq=-200;
 	
 	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
 	 return ElecFreq;    
@@ -318,8 +301,8 @@ int Incremental_PID_B (float Encoder,float Target)
 	
 	 ElecFreq+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias+Velocity_KD*(Bias-Last_bias);  
 	
-	 if(ElecFreq>233)ElecFreq=233;
-	 if(ElecFreq<-233)ElecFreq=-233;
+//	 if(ElecFreq>200)ElecFreq=200;
+//	 if(ElecFreq<-200)ElecFreq=-200;
 	
 	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
 	 return ElecFreq;
