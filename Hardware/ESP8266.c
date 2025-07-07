@@ -1,8 +1,8 @@
 #include "ESP8266.h"
 //发送到串口上后清空数组！！
 
-uint8_t ESP8266_ReceiveBuf2[ESP8266_RECEIVE_LENGTH];//接收暂存帧
-uint8_t ESP8266_ReceiveCmd[ESP8266_RECEIVE_LENGTH]={0};//接收
+char ESP8266_ReceiveBuf2[ESP8266_RECEIVE_LENGTH];//接收暂存帧
+char ESP8266_ReceiveCmd[ESP8266_RECEIVE_LENGTH]={0};//接收
 //uint16_t pt_w2=0;
 uint8_t aRxBuffer;			//接收中断缓冲
 
@@ -33,29 +33,46 @@ void ESP8266_task(void)
 	 if(ESP8266_ReceiveFlag==RESET){
 		return;
 	 }
-	 if(strcmp(ESP8266_ReceiveCmd,"Request for Communication Protocol\r\n")==0){
-		RGB_SelectiveLight(Modbus_TestCmmunicationProtocol);
-		OLED_Clear();
-		 if(Modbus_TestCmmunicationProtocol==Modbus_Type_A){
-			OLED_Printf(1,0,"Modbus_Type_A");
-		 }else if(Modbus_TestCmmunicationProtocol==Modbus_Type_B){
-			OLED_Printf(1,0,"Modbus_Type_B");
-		 }else{
-			OLED_Printf(1,1,"Others");
-		 }
-		 OLED_Update();
-		 
+//	 if(strcmp(ESP8266_ReceiveCmd,"Request for Communication Protocol\r\n")==0){
+//		RGB_SelectiveLight(Modbus_TestCmmunicationProtocol);
+//		OLED_Clear();
+//		 if(Modbus_TestCmmunicationProtocol==Modbus_Type_A){
+//			OLED_Printf(1,0,"Modbus_Type_A");
+//		 }else if(Modbus_TestCmmunicationProtocol==Modbus_Type_B){
+//			OLED_Printf(1,0,"Modbus_Type_B");
+//		 }else{
+//			OLED_Printf(1,1,"Others");
+//		 }
+//		 OLED_Update();
+//		 
+//	 }else{
+//		USART3_SendString("ERROR!");
+//		 RGB_SelectiveLight(Modbus_Other_Error);
+//		 OLED_Clear();
+//		 OLED_Printf(1,1,"ERROR!");
+//		 OLED_Update();
+//	 }
+	 
+	 USART3_SendString(ESP8266_ReceiveCmd);
+	 
+	 if(strcmp(ESP8266_ReceiveCmd,"A\r\n")==0){
+		RGB_SelectiveLight(Modbus_Type_A);
+		//OLED_Clear();
+		 OLED_Printf(1,1,"                ");
+		OLED_Printf(1,1,"Modbus_Type_A");
+	 }else if(strcmp(ESP8266_ReceiveCmd,"B\r\n")==0){
+		RGB_SelectiveLight(Modbus_Type_B);
+		//OLED_Clear();
+		 OLED_Printf(1,1,"                ");
+		OLED_Printf(1,1,"Modbus_Type_B");
 	 }else{
-		USART3_SendString("ERROR!");
-		 RGB_SelectiveLight(Modbus_Other_Error);
-		 OLED_Clear();
-		 OLED_Printf(1,1,"ERROR!");
-		 OLED_Update();
+		RGB_SelectiveLight(Modbus_Other_Error);
+		//OLED_Clear();
+		 OLED_Printf(1,1,"                ");
+		OLED_Printf(1,1,"OtherTypes/ERROR");
+		//OLED_Printf(2,1,"or ERROR!");
 	 }
-	 
-	 
-	 
-	 
+	 OLED_Update();
 	 
 	 ESP8266_ReceiveFlag=RESET;
 }

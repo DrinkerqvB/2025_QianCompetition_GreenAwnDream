@@ -186,6 +186,38 @@
           <ExecCommand></ExecCommand>
           <Expression>\\ESP8266\Balance/system.c\163</Expression>
         </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>21</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134234638</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>.\Hardware\tracking.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\ESP8266\Hardware/tracking.c\21</Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>26</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134234660</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>.\Hardware\tracking.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\ESP8266\Hardware/tracking.c\26</Expression>
+        </Bp>
       </Breakpoint>
       <WatchWindow1>
         <Ww>
@@ -197,6 +229,11 @@
           <count>1</count>
           <WinNumber>1</WinNumber>
           <ItemText>bias</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>IR_Data_number[IR_Num]</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
