@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\ESP8266.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\ESP8266.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Jul 07 05:48:09 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Jul 07 12:21:31 2025
 <BR><P>
 <H3>Maximum Stack Usage =        416 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1170,7 +1170,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_btod_emul
 </UL>
 
-<P><STRONG><a name="[cb]"></a>Balance_task</STRONG> (Thumb, 124 bytes, Stack size 8 bytes, balance.o(i.Balance_task))
+<P><STRONG><a name="[cb]"></a>Balance_task</STRONG> (Thumb, 128 bytes, Stack size 8 bytes, balance.o(i.Balance_task))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Balance_task &rArr; Get_Velocity_Form_Encoder
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Limit_Pwm
@@ -1391,7 +1391,7 @@ Global Symbols
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RGB_SelectiveLight
 </UL>
 
-<P><STRONG><a name="[cc]"></a>Get_Velocity_Form_Encoder</STRONG> (Thumb, 126 bytes, Stack size 16 bytes, balance.o(i.Get_Velocity_Form_Encoder))
+<P><STRONG><a name="[cc]"></a>Get_Velocity_Form_Encoder</STRONG> (Thumb, 196 bytes, Stack size 16 bytes, balance.o(i.Get_Velocity_Form_Encoder))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Get_Velocity_Form_Encoder
 </UL>
 <BR>[Calls]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Read_Encoder
@@ -1573,8 +1573,8 @@ Global Symbols
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_GenerateSTART
 <LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_CheckEvent
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_init
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_SetCursor
+<BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_SetCursor
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_init
 </UL>
 
 <P><STRONG><a name="[102]"></a>OLED_WriteData</STRONG> (Thumb, 124 bytes, Stack size 8 bytes, oled.o(i.OLED_WriteData))
@@ -2193,8 +2193,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_init
-<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ESP8266_Command
+<BR>[Called By]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ESP8266_Command
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_init
 </UL>
 
 <P><STRONG><a name="[14e]"></a>delay_us</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, delay.o(i.delay_us))
@@ -2221,7 +2221,6 @@ Global Symbols
 <LI>Call Chain = systemInit &rArr; ESP8266_Init &rArr; ESP8266_Command &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_PriorityGroupConfig
-<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_init
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FOC_Init
 <LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM7_Init
 <LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart2_init
@@ -2233,6 +2232,7 @@ Global Symbols
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM8_Init
 <LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM4_Init
 <LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Robot_Select
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>

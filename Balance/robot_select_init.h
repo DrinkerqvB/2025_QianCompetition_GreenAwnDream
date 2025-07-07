@@ -97,7 +97,7 @@ typedef struct
 #define   EncoderMultiples  4
 //Encoder data reading frequency
 //编码器数据读取频率
-#define   CONTROL_FREQUENCY 100
+#define   CONTROL_FREQUENCY 10000
 
 #define PI 3.1415f  //PI //圆周率
 
