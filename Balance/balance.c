@@ -67,10 +67,15 @@ void Balance_task(void)
                 
 		Drive_Motor(Move_X, 0, Move_Z); // 只使用X(速度)和Z(转向)
  
-				Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, Motor_Left.Target);
-				Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, Motor_Right.Target);
+//			Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, Motor_Left.Target);
+//			Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, Motor_Right.Target);
+	
+			Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, 0.5f);
+			Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, 0.5f);
+
 //	Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, 0.5);
-//		 Motor_Right.FOC_freq=50.0f;
+//		Motor_Left.FOC_freq=-10.0f;
+//		Motor_Right.FOC_freq=10.0f;
 				Limit_Pwm(50);
 	 
 }
@@ -142,7 +147,7 @@ void FOC_duty_Update(BrushlessMotor* motor,float freq) {
     motor->dir = (freq >= 0.0f) ? CW : CCW;
     
     // 计算相位增量（每1ms执行1次）
-    float phase_inc = 0.36f * fabsf(freq); // 0.36 = 360°/1000ms
+    float phase_inc = 360.0f / SWITCHFREQ * fabsf(freq); // 0.36 = 360°/1000ms
     
     // 获取当前电机的相位指针
     float *phase_ptr = (motor == &Motor_Left) ? &Phase_Left : &Phase_Right;

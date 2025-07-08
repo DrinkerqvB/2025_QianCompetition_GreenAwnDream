@@ -15,7 +15,7 @@ void TIM7_Init(void)
   
 	//设置时基单元，使得每计时1ms后溢出
   TIM_TimeBaseStructure.TIM_Prescaler = 84-1; 							// No prescaling     //不分频
-  TIM_TimeBaseStructure.TIM_Period = 1000-1;  //设定计数器自动重装值
+  TIM_TimeBaseStructure.TIM_Period = SWITCHFREQ-1;  //设定计数器自动重装值
   TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1; //选择时钟分频：不分频
   TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up; //TIM向上计数    
   TIM_TimeBaseInit(TIM7, &TIM_TimeBaseStructure);  //初始化定时器

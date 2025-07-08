@@ -8,7 +8,7 @@
 
 // 电机参数
 //#define POLE_PAIRS        7       // 电机极对数
-#define PWM_FREQ          20000   // PWM频率(Hz)
+#define PWM_FREQ          40000   // PWM频率(Hz)
 #define PWM_PERIOD        (168000000/PWM_FREQ) // 定时器周期值(APB2=84MHz, TIMxCLK=168MHz)
 
 // 数学常量
