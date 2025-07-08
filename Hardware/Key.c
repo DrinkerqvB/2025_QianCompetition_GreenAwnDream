@@ -3,9 +3,12 @@
 
 void EXTI15_10_IRQHandler(void)
 {
-	while(GPIO_ReadInputDataBit(GPIOD,GPIO_Pin_10)==RESET);
-	delay_ms(20);
-	ESP8266_Init();
+	if(EXTI_GetITStatus(EXTI_Line10)==SET){
+		while(GPIO_ReadInputDataBit(GPIOD,GPIO_Pin_10)==RESET);
+		delay_ms(20);
+		ESP8266_Init();
+		EXTI_ClearITPendingBit(EXTI_Line10);
+	}
 }
 
 
