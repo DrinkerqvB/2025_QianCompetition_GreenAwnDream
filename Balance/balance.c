@@ -27,7 +27,7 @@ Output  : none
 **************************************************************************/
 void Drive_Motor(float Vx,float Vy,float Vz)
 {
-		float amplitude=3.5; //Wheel target speed limit //车轮目标速度限幅
+		float amplitude=6.0f; //Wheel target speed limit //车轮目标速度限幅
 	
 			//Inverse kinematics //运动学逆解
 			Motor_Left.Target  = Vx - Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出左轮的目标速度
@@ -64,6 +64,8 @@ void Balance_task(void)
  
 //			Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, Motor_Left.Target);
 //			Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, Motor_Right.Target);
+		Motor_Left.FOC_freq=-Motor_Left.Target / Wheel_perimeter * 7;
+		Motor_Right.FOC_freq=Motor_Right.Target / Wheel_perimeter * 7;
 	
 //			Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, 0.5f);
 //			Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, 0.5f);
@@ -71,11 +73,11 @@ void Balance_task(void)
 //	printf("%f,%f,%f,%f\n",Motor_Left.Encoder,Motor_Left.Target,Motor_Right.Encoder,Motor_Right.Target);
 	
 //	Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, 0.5);
-#define TEST_FOCFREQ 25.0f
-		Motor_Left.FOC_freq=TEST_FOCFREQ;
-		Motor_Right.FOC_freq=TEST_FOCFREQ;
+//#define TEST_FOCFREQ 25.0f
+//		Motor_Left.FOC_freq=TEST_FOCFREQ;
+//		Motor_Right.FOC_freq=TEST_FOCFREQ;
 		
-		printf("%f,%f,%f,%f\n",Motor_Left.Encoder,TEST_FOCFREQ,Motor_Right.Encoder,TEST_FOCFREQ);
+		//printf("%f,%f,%f,%f\n",Motor_Left.Encoder,Motor_Left.Target,Motor_Right.Encoder,Motor_Right.Target);
 				Limit_Pwm(50);
 	 
 }
@@ -434,8 +436,6 @@ void Get_Velocity_Form_Encoder(void)
 		OriginalEncoder.A=Read_Encoder(2);	
 		OriginalEncoder.B=Read_Encoder(3);	
 		
-		
-
 
 		Encoder_A_pr= OriginalEncoder.A - ENCODER_TIM_PERIOD/2; 
 		Encoder_B_pr= OriginalEncoder.B - ENCODER_TIM_PERIOD/2; 
@@ -443,12 +443,12 @@ void Get_Velocity_Form_Encoder(void)
 		
 		//The encoder converts the raw data to wheel speed in m/s
 		//编码器原始数据转换为车轮速度，单位m/s
-//		Motor_Left.Encoder= Encoder_A_pr*SWITCHFREQ*Wheel_perimeter/Encoder_precision;  
-//		Motor_Right.Encoder= Encoder_B_pr*SWITCHFREQ*Wheel_perimeter/Encoder_precision;  
+		Motor_Left.Encoder= Encoder_A_pr*SWITCHFREQ*Wheel_perimeter/Encoder_precision;  
+		Motor_Right.Encoder= Encoder_B_pr*SWITCHFREQ*Wheel_perimeter/Encoder_precision;  
 
-		//调试用，此值为转速
-		Motor_Left.Encoder= Encoder_A_pr*SWITCHFREQ/Encoder_precision*7;  
-		Motor_Right.Encoder= Encoder_B_pr*SWITCHFREQ/Encoder_precision*7;  
+		//调试用，此值为电频率
+//		Motor_Left.Encoder= Encoder_A_pr*SWITCHFREQ/Encoder_precision*7;  
+//		Motor_Right.Encoder= Encoder_B_pr*SWITCHFREQ/Encoder_precision*7;  
 
 }
 
