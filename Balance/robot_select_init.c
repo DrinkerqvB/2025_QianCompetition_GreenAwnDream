@@ -14,7 +14,7 @@ Output  : none
 void Robot_Select(void)
 {
 	
-		Car_Mode=FourWheel_Car; //固定小车类型
+		uint8_t Car_Mode=FourWheel_Car; //固定小车类型
   if(Car_Mode>5)Car_Mode=5;
 
 	//Car_Mode=0;

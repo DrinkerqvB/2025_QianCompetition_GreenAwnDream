@@ -1594,7 +1594,7 @@ I (.\Library\stm32f4xx_dcmi.h)(0x686ADEED)
 I (.\Library\stm32f4xx_fsmc.h)(0x686ADEED)
 F (.\Library\stm32f4xx_wwdg.h)(0x686ADEED)()
 F (.\User\main.c)(0x686AE387)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\User -I .\Start -I .\Library -I .\Hardware -I .\Balance -I .\System\usart -I .\System\sys -I .\System\delay -I .\Hardware\OLED-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (.\Balance\system.h)(0x686C9390)
+I (.\Balance\system.h)(0x686D46AB)
 I (.\Start\stm32f4xx.h)(0x686ADEED)
 I (.\Start\core_cm4.h)(0x686ADEED)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdint.h)(0x5E8E3CC2)
@@ -1689,7 +1689,7 @@ I (.\Library\stm32f4xx_fsmc.h)(0x686ADEED)
 F (.\User\stm32f4xx_it.h)(0x686ADEED)()
 F (.\Hardware\brushlessMotor.c)(0x686ADEEC)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\User -I .\Start -I .\Library -I .\Hardware -I .\Balance -I .\System\usart -I .\System\sys -I .\System\delay -I .\Hardware\OLED-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\brushlessmotor.o --omf_browse .\objects\brushlessmotor.crf --depend .\objects\brushlessmotor.d)
 I (Hardware\brushlessMotor.h)(0x686CA5A6)
-I (.\Balance\system.h)(0x686C9390)
+I (.\Balance\system.h)(0x686D46AB)
 I (.\Start\stm32f4xx.h)(0x686ADEED)
 I (.\Start\core_cm4.h)(0x686ADEED)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdint.h)(0x5E8E3CC2)
@@ -1782,7 +1782,7 @@ I (.\Library\stm32f4xx_can.h)(0x686ADEED)
 I (.\Library\stm32f4xx_dac.h)(0x686ADEED)
 I (.\Library\stm32f4xx_dcmi.h)(0x686ADEED)
 I (.\Library\stm32f4xx_fsmc.h)(0x686ADEED)
-I (.\Balance\system.h)(0x686C9390)
+I (.\Balance\system.h)(0x686D46AB)
 I (.\System\delay\delay.h)(0x686ADEED)
 I (.\System\usart\usart.h)(0x686ADEED)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)
@@ -1805,7 +1805,7 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\math.h)(0x5E8E3CC2)
 F (.\Hardware\encoder.h)(0x686ADEEC)()
 F (.\Hardware\ESP8266.c)(0x686C9F08)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\User -I .\Start -I .\Library -I .\Hardware -I .\Balance -I .\System\usart -I .\System\sys -I .\System\delay -I .\Hardware\OLED-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\esp8266.o --omf_browse .\objects\esp8266.crf --depend .\objects\esp8266.d)
 I (Hardware\ESP8266.h)(0x686AEC6C)
-I (.\Balance\system.h)(0x686C9390)
+I (.\Balance\system.h)(0x686D46AB)
 I (.\Start\stm32f4xx.h)(0x686ADEED)
 I (.\Start\core_cm4.h)(0x686ADEED)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdint.h)(0x5E8E3CC2)
@@ -1863,7 +1863,7 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\math.h)(0x5E8E3CC2)
 F (.\Hardware\ESP8266.h)(0x686AEC6C)()
 F (.\Hardware\Modbus.c)(0x686D3D2D)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\User -I .\Start -I .\Library -I .\Hardware -I .\Balance -I .\System\usart -I .\System\sys -I .\System\delay -I .\Hardware\OLED-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\modbus.o --omf_browse .\objects\modbus.crf --depend .\objects\modbus.d)
 I (Hardware\Modbus.h)(0x686ADEEC)
-I (.\Balance\system.h)(0x686C9390)
+I (.\Balance\system.h)(0x686D46AB)
 I (.\Start\stm32f4xx.h)(0x686ADEED)
 I (.\Start\core_cm4.h)(0x686ADEED)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdint.h)(0x5E8E3CC2)
@@ -1921,7 +1921,7 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\math.h)(0x5E8E3CC2)
 F (.\Hardware\Modbus.h)(0x686ADEEC)()
 F (.\Hardware\RGB.c)(0x686BED08)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\User -I .\Start -I .\Library -I .\Hardware -I .\Balance -I .\System\usart -I .\System\sys -I .\System\delay -I .\Hardware\OLED-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\rgb.o --omf_browse .\objects\rgb.crf --depend .\objects\rgb.d)
 I (Hardware\RGB.h)(0x686ADEEC)
-I (.\Balance\system.h)(0x686C9390)
+I (.\Balance\system.h)(0x686D46AB)
 I (.\Start\stm32f4xx.h)(0x686ADEED)
 I (.\Start\core_cm4.h)(0x686ADEED)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdint.h)(0x5E8E3CC2)
@@ -2014,7 +2014,7 @@ I (.\Library\stm32f4xx_can.h)(0x686ADEED)
 I (.\Library\stm32f4xx_dac.h)(0x686ADEED)
 I (.\Library\stm32f4xx_dcmi.h)(0x686ADEED)
 I (.\Library\stm32f4xx_fsmc.h)(0x686ADEED)
-I (.\Balance\system.h)(0x686C9390)
+I (.\Balance\system.h)(0x686D46AB)
 I (.\System\delay\delay.h)(0x686ADEED)
 I (.\System\usart\usart.h)(0x686ADEED)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)
@@ -2073,7 +2073,7 @@ I (.\Library\stm32f4xx_can.h)(0x686ADEED)
 I (.\Library\stm32f4xx_dac.h)(0x686ADEED)
 I (.\Library\stm32f4xx_dcmi.h)(0x686ADEED)
 I (.\Library\stm32f4xx_fsmc.h)(0x686ADEED)
-I (.\Balance\system.h)(0x686C9390)
+I (.\Balance\system.h)(0x686D46AB)
 I (.\System\delay\delay.h)(0x686ADEED)
 I (.\System\usart\usart.h)(0x686ADEED)
 I (.\Balance\balance.h)(0x686ADEEC)
@@ -2095,7 +2095,7 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\math.h)(0x5E8E3CC2)
 F (.\Hardware\usartx.h)(0x686ADEED)()
 F (.\Hardware\Timer.c)(0x686D2453)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\User -I .\Start -I .\Library -I .\Hardware -I .\Balance -I .\System\usart -I .\System\sys -I .\System\delay -I .\Hardware\OLED-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\timer.o --omf_browse .\objects\timer.crf --depend .\objects\timer.d)
 I (Hardware\Timer.h)(0x686D3D93)
-I (.\Balance\system.h)(0x686C9390)
+I (.\Balance\system.h)(0x686D46AB)
 I (.\Start\stm32f4xx.h)(0x686ADEED)
 I (.\Start\core_cm4.h)(0x686ADEED)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdint.h)(0x5E8E3CC2)
@@ -2153,7 +2153,7 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\math.h)(0x5E8E3CC2)
 F (.\Hardware\Timer.h)(0x686D3D93)()
 F (.\Hardware\Key.c)(0x686C9BDA)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\User -I .\Start -I .\Library -I .\Hardware -I .\Balance -I .\System\usart -I .\System\sys -I .\System\delay -I .\Hardware\OLED-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\key.o --omf_browse .\objects\key.crf --depend .\objects\key.d)
 I (Hardware\Key.h)(0x686C9353)
-I (.\Balance\system.h)(0x686C9390)
+I (.\Balance\system.h)(0x686D46AB)
 I (.\Start\stm32f4xx.h)(0x686ADEED)
 I (.\Start\core_cm4.h)(0x686ADEED)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdint.h)(0x5E8E3CC2)
@@ -2211,7 +2211,7 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\math.h)(0x5E8E3CC2)
 F (.\Hardware\Key.h)(0x686C9353)()
 F (.\System\delay\delay.c)(0x686ADEED)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\User -I .\Start -I .\Library -I .\Hardware -I .\Balance -I .\System\usart -I .\System\sys -I .\System\delay -I .\Hardware\OLED-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\delay.o --omf_browse .\objects\delay.crf --depend .\objects\delay.d)
 I (System\delay\delay.h)(0x686ADEED)
-I (.\Balance\system.h)(0x686C9390)
+I (.\Balance\system.h)(0x686D46AB)
 I (.\Start\stm32f4xx.h)(0x686ADEED)
 I (.\Start\core_cm4.h)(0x686ADEED)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdint.h)(0x5E8E3CC2)
@@ -2343,7 +2343,7 @@ I (.\Library\stm32f4xx_dcmi.h)(0x686ADEED)
 I (.\Library\stm32f4xx_fsmc.h)(0x686ADEED)
 I (.\System\sys\sys.h)(0x686ADEED)
 F (.\System\usart\usart.h)(0x686ADEED)()
-F (.\Balance\balance.c)(0x686D3EAA)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\User -I .\Start -I .\Library -I .\Hardware -I .\Balance -I .\System\usart -I .\System\sys -I .\System\delay -I .\Hardware\OLED-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\balance.o --omf_browse .\objects\balance.crf --depend .\objects\balance.d)
+F (.\Balance\balance.c)(0x686D46AB)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\User -I .\Start -I .\Library -I .\Hardware -I .\Balance -I .\System\usart -I .\System\sys -I .\System\delay -I .\Hardware\OLED-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\balance.o --omf_browse .\objects\balance.crf --depend .\objects\balance.d)
 I (Balance\balance.h)(0x686ADEEC)
 I (.\System\sys\sys.h)(0x686ADEED)
 I (.\Start\stm32f4xx.h)(0x686ADEED)
@@ -2380,9 +2380,9 @@ I (.\Library\stm32f4xx_can.h)(0x686ADEED)
 I (.\Library\stm32f4xx_dac.h)(0x686ADEED)
 I (.\Library\stm32f4xx_dcmi.h)(0x686ADEED)
 I (.\Library\stm32f4xx_fsmc.h)(0x686ADEED)
-I (Balance\system.h)(0x686C9390)
+I (Balance\system.h)(0x686D46AB)
 I (.\System\delay\delay.h)(0x686ADEED)
-I (.\Balance\system.h)(0x686C9390)
+I (.\Balance\system.h)(0x686D46AB)
 I (.\System\usart\usart.h)(0x686ADEED)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)
 I (.\Hardware\usartx.h)(0x686ADEED)
@@ -2401,8 +2401,8 @@ I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\string.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\math.h)(0x5E8E3CC2)
 F (.\Balance\balance.h)(0x686ADEEC)()
-F (.\Balance\system.c)(0x686D2CCC)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\User -I .\Start -I .\Library -I .\Hardware -I .\Balance -I .\System\usart -I .\System\sys -I .\System\delay -I .\Hardware\OLED-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\system.o --omf_browse .\objects\system.crf --depend .\objects\system.d)
-I (Balance\system.h)(0x686C9390)
+F (.\Balance\system.c)(0x686D45CB)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\User -I .\Start -I .\Library -I .\Hardware -I .\Balance -I .\System\usart -I .\System\sys -I .\System\delay -I .\Hardware\OLED-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\system.o --omf_browse .\objects\system.crf --depend .\objects\system.d)
+I (Balance\system.h)(0x686D46AB)
 I (.\Start\stm32f4xx.h)(0x686ADEED)
 I (.\Start\core_cm4.h)(0x686ADEED)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdint.h)(0x5E8E3CC2)
@@ -2439,7 +2439,7 @@ I (.\Library\stm32f4xx_dcmi.h)(0x686ADEED)
 I (.\Library\stm32f4xx_fsmc.h)(0x686ADEED)
 I (.\System\sys\sys.h)(0x686ADEED)
 I (.\System\delay\delay.h)(0x686ADEED)
-I (.\Balance\system.h)(0x686C9390)
+I (.\Balance\system.h)(0x686D46AB)
 I (.\System\usart\usart.h)(0x686ADEED)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)
 I (Balance\balance.h)(0x686ADEEC)
@@ -2458,8 +2458,8 @@ I (.\Hardware\Key.h)(0x686C9353)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdlib.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\string.h)(0x5E8E3CC2)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\math.h)(0x5E8E3CC2)
-F (.\Balance\system.h)(0x686C9390)()
-F (.\Balance\robot_select_init.c)(0x686ADEEC)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\User -I .\Start -I .\Library -I .\Hardware -I .\Balance -I .\System\usart -I .\System\sys -I .\System\delay -I .\Hardware\OLED-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\robot_select_init.o --omf_browse .\objects\robot_select_init.crf --depend .\objects\robot_select_init.d)
+F (.\Balance\system.h)(0x686D46AB)()
+F (.\Balance\robot_select_init.c)(0x686D46AB)(--c99 --gnu -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections -I .\User -I .\Start -I .\Library -I .\Hardware -I .\Balance -I .\System\usart -I .\System\sys -I .\System\delay -I .\Hardware\OLED-D__UVISION_VERSION="542" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\robot_select_init.o --omf_browse .\objects\robot_select_init.crf --depend .\objects\robot_select_init.d)
 I (Balance\robot_select_init.h)(0x686B492A)
 I (.\System\sys\sys.h)(0x686ADEED)
 I (.\Start\stm32f4xx.h)(0x686ADEED)
@@ -2496,9 +2496,9 @@ I (.\Library\stm32f4xx_can.h)(0x686ADEED)
 I (.\Library\stm32f4xx_dac.h)(0x686ADEED)
 I (.\Library\stm32f4xx_dcmi.h)(0x686ADEED)
 I (.\Library\stm32f4xx_fsmc.h)(0x686ADEED)
-I (Balance\system.h)(0x686C9390)
+I (Balance\system.h)(0x686D46AB)
 I (.\System\delay\delay.h)(0x686ADEED)
-I (.\Balance\system.h)(0x686C9390)
+I (.\Balance\system.h)(0x686D46AB)
 I (.\System\usart\usart.h)(0x686ADEED)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)
 I (Balance\balance.h)(0x686ADEEC)
@@ -2555,7 +2555,7 @@ I (.\Library\stm32f4xx_dcmi.h)(0x686ADEED)
 I (.\Library\stm32f4xx_fsmc.h)(0x686ADEED)
 I (Hardware\OLED\OLED_Data.h)(0x68695FDF)
 I (.\System\delay\delay.h)(0x686ADEED)
-I (.\Balance\system.h)(0x686C9390)
+I (.\Balance\system.h)(0x686D46AB)
 I (.\System\sys\sys.h)(0x686ADEED)
 I (.\System\usart\usart.h)(0x686ADEED)
 I (D:\Keil_v5\ARM\ARMCOMPLIER506\include\stdio.h)(0x5E8E3CC2)

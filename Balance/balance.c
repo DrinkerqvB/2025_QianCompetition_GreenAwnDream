@@ -28,10 +28,7 @@ Output  : none
 void Drive_Motor(float Vx,float Vy,float Vz)
 {
 		float amplitude=3.5; //Wheel target speed limit //车轮目标速度限幅
-		
 	
-		if(Car_Mode==FourWheel_Car) 
-		{	
 			//Inverse kinematics //运动学逆解
 			Motor_Left.Target  = Vx - Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出左轮的目标速度
 			Motor_Right.Target  = Vx + Vz * (Wheel_spacing +  Axle_spacing) / 2.0f; //计算出左轮的目标速度
@@ -40,8 +37,6 @@ void Drive_Motor(float Vx,float Vy,float Vz)
 			//Wheel (motor) target speed limit //车轮(电机)目标速度限幅
 			Motor_Left.Target=target_limit_float( Motor_Left.Target,-amplitude,amplitude); 
 			Motor_Right.Target=target_limit_float( Motor_Right.Target,-amplitude,amplitude); 
-	
-		}
 		
 
 }
@@ -412,87 +407,6 @@ int Incremental_PID_B (float Encoder,float Target)
 //	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
 //	 return Pwm; 
 //}
-/**************************************************************************
-Function: Processes the command sent by APP through usart 2
-Input   : none
-Output  : none
-函数功能：对APP通过串口2发送过来的命令进行处理
-入口参数：无
-返回  值：无
-**************************************************************************/
-void Get_RC(void)
-{
-	u8 Flag_Move=1;
-	if(Car_Mode==Mec_Car||Car_Mode==Omni_Car) //The omnidirectional wheel moving trolley can move laterally //全向轮运动小车可以进行横向移动
-	{
-	 switch(Flag_Direction)  //Handle direction control commands //处理方向控制命令
-	 { 
-			case 1:      Move_X=RC_Velocity;  	 Move_Y=0;             Flag_Move=1;    break;
-			case 2:      Move_X=RC_Velocity;  	 Move_Y=-RC_Velocity;  Flag_Move=1; 	 break;
-			case 3:      Move_X=0;      		     Move_Y=-RC_Velocity;  Flag_Move=1; 	 break;
-			case 4:      Move_X=-RC_Velocity;  	 Move_Y=-RC_Velocity;  Flag_Move=1;    break;
-			case 5:      Move_X=-RC_Velocity;  	 Move_Y=0;             Flag_Move=1;    break;
-			case 6:      Move_X=-RC_Velocity;  	 Move_Y=RC_Velocity;   Flag_Move=1;    break;
-			case 7:      Move_X=0;     	 		     Move_Y=RC_Velocity;   Flag_Move=1;    break;
-			case 8:      Move_X=RC_Velocity; 	   Move_Y=RC_Velocity;   Flag_Move=1;    break; 
-			default:     Move_X=0;               Move_Y=0;             Flag_Move=0;    break;
-	 }
-	 if(Flag_Move==0)		
-	 {	
-		 //If no direction control instruction is available, check the steering control status
-		 //如果无方向控制指令，检查转向控制状态
-		 if     (Flag_Left ==1)  Move_Z= PI/2*(RC_Velocity/500); //left rotation  //左自转  
-		 else if(Flag_Right==1)  Move_Z=-PI/2*(RC_Velocity/500); //right rotation //右自转
-		 else 		               Move_Z=0;                       //stop           //停止
-	 }
-	}	
-	else //Non-omnidirectional moving trolley //非全向移动小车
-	{
-	 switch(Flag_Direction) //Handle direction control commands //处理方向控制命令
-	 { 
-			case 1:      Move_X=+RC_Velocity;  	 Move_Z=0;         break;
-			case 2:      Move_X=+RC_Velocity;  	 Move_Z=-PI/2;   	 break;
-			case 3:      Move_X=0;      				 Move_Z=-PI/2;   	 break;	 
-			case 4:      Move_X=-RC_Velocity;  	 Move_Z=-PI/2;     break;		 
-			case 5:      Move_X=-RC_Velocity;  	 Move_Z=0;         break;	 
-			case 6:      Move_X=-RC_Velocity;  	 Move_Z=+PI/2;     break;	 
-			case 7:      Move_X=0;     	 			 	 Move_Z=+PI/2;     break;
-			case 8:      Move_X=+RC_Velocity; 	 Move_Z=+PI/2;     break; 
-			default:     Move_X=0;               Move_Z=0;         break;
-	 }
-	 if     (Flag_Left ==1)  Move_Z= PI/2; //left rotation  //左自转 
-	 else if(Flag_Right==1)  Move_Z=-PI/2; //right rotation //右自转	
-	}
-	
-	//Z-axis data conversion //Z轴数据转化
-	if(Car_Mode==Akm_Car)
-	{
-		//Ackermann structure car is converted to the front wheel steering Angle system target value, and kinematics analysis is pearformed
-		//阿克曼结构小车转换为前轮转向角度
-		Move_Z=Move_Z*2/9; 
-	}
-	else if(Car_Mode==Diff_Car||Car_Mode==Tank_Car||Car_Mode==FourWheel_Car)
-	{
-	  if(Move_X<0) Move_Z=-Move_Z; //The differential control principle series requires this treatment //差速控制原理系列需要此处理
-		Move_Z=Move_Z*RC_Velocity/500;
-	}		
-	
-	//Unit conversion, mm/s -> m/s
-  //单位转换，mm/s -> m/s	
-	Move_X=Move_X/1000;       Move_Y=Move_Y/1000;         Move_Z=Move_Z;
-	
-	//Control target value is obtained and kinematics analysis is performed
-	//得到控制目标值，进行运动学分析
-	Drive_Motor(Move_X,Move_Y,Move_Z);
-}
-
-
-
-
-
-
-
-
 
 
 /**************************************************************************

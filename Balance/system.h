@@ -116,7 +116,6 @@ typedef struct
 /****** 外部变量定义，当其它c文件引用system.h时，也可以使用system.c定义的变量 ******/
 extern u8 Flag_Stop;
 extern int Divisor_Mode;
-extern u8 Car_Mode;
 extern int Servo;
 extern float RC_Velocity;
 extern float Move_X, Move_Y, Move_Z; 
@@ -130,7 +129,7 @@ extern float Wheel_spacing;
 extern float Axle_spacing; 
 extern float Omni_turn_radiaus; 
 extern u8 PS2_ON_Flag, APP_ON_Flag, Remote_ON_Flag, CAN_ON_Flag, Usart1_ON_Flag, Usart5_ON_Flag;
-extern u8 Flag_Left, Flag_Right, Flag_Direction, Turn_Flag; 
+extern u8 Turn_Flag; 
 extern u8 PID_Send;                                            										                 
 extern float PS2_LX,PS2_LY,PS2_RX,PS2_RY,PS2_KEY;
 extern int Check, Checking, Checked, CheckCount, CheckPhrase1, CheckPhrase2;
