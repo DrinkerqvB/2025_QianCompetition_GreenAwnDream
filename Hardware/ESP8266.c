@@ -58,17 +58,20 @@ void ESP8266_task(void)
 	 if(strcmp(ESP8266_ReceiveCmd,"A\r\n")==0){
 		RGB_SelectiveLight(Modbus_Type_A);
 		//OLED_Clear();
-		 OLED_Printf(1,1,"                ");
+//		 OLED_Printf(1,1,"                ");
+		 OLED_ManualClear();
 		OLED_Printf(1,1,"Modbus_Type_A");
 	 }else if(strcmp(ESP8266_ReceiveCmd,"B\r\n")==0){
 		RGB_SelectiveLight(Modbus_Type_B);
 		//OLED_Clear();
-		 OLED_Printf(1,1,"                ");
+//		 OLED_Printf(1,1,"                ");
+		 OLED_ManualClear();
 		OLED_Printf(1,1,"Modbus_Type_B");
 	 }else{
 		RGB_SelectiveLight(Modbus_Other_Error);
 		//OLED_Clear();
-		 OLED_Printf(1,1,"                ");
+//		 OLED_Printf(1,1,"                ");
+		 OLED_ManualClear();
 		OLED_Printf(1,1,"OtherTypes/ERROR");
 		//OLED_Printf(2,1,"or ERROR!");
 	 }

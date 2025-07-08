@@ -4,6 +4,17 @@
 uint8_t OLED_DispalyBuf[8][128] = {0}; //初始化为0
 
 
+void OLED_ManualClear(void)
+{
+	OLED_Printf(1,1,"                ");
+	OLED_Printf(2,1,"                ");
+	OLED_Printf(3,1,"                ");
+	OLED_Printf(4,1,"                ");
+	
+}
+
+
+
 void IIC_init(void)//PB10-->SCL || PB11-->SDA
 {
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);

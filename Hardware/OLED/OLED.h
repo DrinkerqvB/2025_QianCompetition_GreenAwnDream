@@ -16,6 +16,7 @@ void OLED_WriteData(uint8_t Data);  //在控制位选项上，选择不连续模
 void OLED_SetCursor(uint8_t x , uint8_t page);  //设置光标
 
 /*功能接口*/
+void OLED_ManualClear(void);
 void IIC_init(void);//PB6-->SCL || PB7-->SDA 引脚初始化
 void OLED_init(void); //初始化
 void OLED_Clear(void); //清屏
