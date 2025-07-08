@@ -60,7 +60,7 @@ void Balance_task(void)
 	//float last_error = 0;//偏差
 
 
-		Get_Velocity_Form_Encoder();
+		//Get_Velocity_Form_Encoder();
 			
 				Move_X = cmd.speed_setpoint;
 				Move_Z = cmd.turn_gain;
@@ -70,12 +70,17 @@ void Balance_task(void)
 //			Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, Motor_Left.Target);
 //			Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, Motor_Right.Target);
 	
-			Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, 0.5f);
-			Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, 0.5f);
-
+//			Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, 0.5f);
+//			Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, 0.5f);
+	
+//	printf("%f,%f,%f,%f\n",Motor_Left.Encoder,Motor_Left.Target,Motor_Right.Encoder,Motor_Right.Target);
+	
 //	Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, 0.5);
-//		Motor_Left.FOC_freq=-10.0f;
-//		Motor_Right.FOC_freq=10.0f;
+#define TEST_FOCFREQ 25.0f
+		Motor_Left.FOC_freq=TEST_FOCFREQ;
+		Motor_Right.FOC_freq=TEST_FOCFREQ;
+		
+		printf("%f,%f,%f,%f\n",Motor_Left.Encoder,TEST_FOCFREQ,Motor_Right.Encoder,TEST_FOCFREQ);
 				Limit_Pwm(50);
 	 
 }
@@ -500,13 +505,13 @@ Output  : none
 **************************************************************************/
 void Get_Velocity_Form_Encoder(void)
 {
-	static uint16_t last_time=0,now_time=0;
-	uint8_t bias=(((TIM7->ARR)+1)*CONTROL_FREQUENCY*((TIM7->PSC)+1))/84000000;
-	now_time =TIM7->CNT;
-	if(now_time-last_time<bias && now_time>last_time){
-		return;
-	}
-	last_time = now_time;
+//	static uint16_t last_time=0,now_time=0;
+//	uint8_t bias=(((TIM7->ARR)+1)*CONTROL_FREQUENCY*((TIM7->PSC)+1))/84000000;
+//	now_time =TIM7->CNT;
+//	if(now_time-last_time<bias && now_time>last_time){
+//		return;
+//	}
+//	last_time = now_time;
 	
 	  //Retrieves the original data of the encoder
 	  //获取编码器的原始数据
@@ -514,16 +519,23 @@ void Get_Velocity_Form_Encoder(void)
 //		float Encoder_C_pr,Encoder_D_pr;
 		OriginalEncoder.A=Read_Encoder(2);	
 		OriginalEncoder.B=Read_Encoder(3);	
+		
+		
 
 
-		Encoder_A_pr= OriginalEncoder.A; 
-		Encoder_B_pr= OriginalEncoder.B; 
+		Encoder_A_pr= OriginalEncoder.A - ENCODER_TIM_PERIOD/2; 
+		Encoder_B_pr= OriginalEncoder.B - ENCODER_TIM_PERIOD/2; 
 
 		
 		//The encoder converts the raw data to wheel speed in m/s
 		//编码器原始数据转换为车轮速度，单位m/s
-		Motor_Left.Encoder= Encoder_A_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;  
-		Motor_Right.Encoder= Encoder_B_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;  
+//		Motor_Left.Encoder= Encoder_A_pr*SWITCHFREQ*Wheel_perimeter/Encoder_precision;  
+//		Motor_Right.Encoder= Encoder_B_pr*SWITCHFREQ*Wheel_perimeter/Encoder_precision;  
+
+		//调试用，此值为转速
+		Motor_Left.Encoder= Encoder_A_pr*SWITCHFREQ/Encoder_precision*7;  
+		Motor_Right.Encoder= Encoder_B_pr*SWITCHFREQ/Encoder_precision*7;  
+
 }
 
 

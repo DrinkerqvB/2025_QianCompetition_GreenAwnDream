@@ -163,7 +163,7 @@ void systemInit(void)
 	//串口3初始化，通信波特率115200，串口3为默认用于与ROS端通信的串口
 	//ESP8266 联网初始化 ，使用USART3
 	uart3_init(115200);
-	ESP8266_Init();
+//	ESP8266_Init();
 	OLED_init();
 	
 	//Serial port 5 initialization, communication baud rate 115200, 

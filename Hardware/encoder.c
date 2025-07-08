@@ -44,7 +44,7 @@ void Encoder_Init_TIM2(void)
   
   TIM_EncoderInterfaceConfig(TIM2, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising, TIM_ICPolarity_Rising);//使用编码器模式3
   TIM_ICStructInit(&TIM_ICInitStructure);
-  TIM_ICInitStructure.TIM_ICFilter = 0;
+  TIM_ICInitStructure.TIM_ICFilter = 0xFF;
   TIM_ICInit(TIM2, &TIM_ICInitStructure);
   
   TIM_ClearFlag(TIM2, TIM_FLAG_Update);//清除TIM的更新标志位
@@ -203,8 +203,12 @@ int Read_Encoder(u8 TIMX)
  int Encoder_TIM;    
  switch(TIMX)
  {
-	case 2:  Encoder_TIM= (short)TIM2 -> CNT;   TIM2 -> CNT=0;  break;
-	case 3:  Encoder_TIM= (short)TIM3 -> CNT;   TIM3 -> CNT=0;  break;
+	case 2: Encoder_TIM= (uint16_t)TIM2 -> CNT;   
+			TIM2 -> CNT=ENCODER_TIM_PERIOD/2;  
+			break;
+	case 3: Encoder_TIM= (uint16_t)TIM3 -> CNT;   
+			TIM3 -> CNT=ENCODER_TIM_PERIOD/2;  
+			break;
 	//case 4:  Encoder_TIM= (short)TIM4 -> CNT;   TIM4 -> CNT=0;  break;	
 	//case 5:  Encoder_TIM= (short)TIM5 -> CNT;   TIM5 -> CNT=0;  break;	
 	default: Encoder_TIM=0;
