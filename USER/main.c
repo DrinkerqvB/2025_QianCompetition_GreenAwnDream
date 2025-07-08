@@ -8,7 +8,5 @@ int main()
 		Tracking_task();
 		Balance_task();
 		ESP8266_task();
-		
-		
 	}
 }

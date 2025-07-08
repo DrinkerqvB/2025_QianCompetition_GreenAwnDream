@@ -106,7 +106,7 @@ void systemInit(void)
 	
 	//Serial port 5 initialization, communication baud rate 115200, 
 	//can be used to communicate with ROS terminal
-	//串口5初始化，通信波特率115200，可用于与八路循迹通信
+	
 	Tracking_Init();
 	
   //According to the tap position of the potentiometer, determine which type of car needs to be matched, 

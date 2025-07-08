@@ -64,7 +64,7 @@ void Balance_task(void)
  
 //			Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, Motor_Left.Target);
 //			Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, Motor_Right.Target);
-		Motor_Left.FOC_freq=-Motor_Left.Target / Wheel_perimeter * 7;
+		Motor_Left.FOC_freq=Motor_Left.Target / Wheel_perimeter * 7;
 		Motor_Right.FOC_freq=Motor_Right.Target / Wheel_perimeter * 7;
 	
 //			Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, 0.5f);
@@ -77,7 +77,7 @@ void Balance_task(void)
 //		Motor_Left.FOC_freq=TEST_FOCFREQ;
 //		Motor_Right.FOC_freq=TEST_FOCFREQ;
 		
-		//printf("%f,%f,%f,%f\n",Motor_Left.Encoder,Motor_Left.Target,Motor_Right.Encoder,Motor_Right.Target);
+		printf("%f,%f,%f,%f,%f\n",Motor_Left.Encoder,Motor_Left.Target,Motor_Right.Encoder,Motor_Right.Target , cmd.turn_gain);
 				Limit_Pwm(50);
 	 
 }
@@ -209,46 +209,7 @@ void FOC_duty_Update(BrushlessMotor* motor,float freq) {
     motor->dutyB = DutyB;
     motor->dutyC = DutyC;
 }
-	/*
-	 static float Phase_Left = 0, Phase_Right = 0; // 分离左右电机相位
-		
 	
-	
-	motor->dir = (freq >= 0) ? CW : CCW;//判断正反转
-	
-    float abs_freq = fabsf(freq);
-    float *phase = (motor == &Motor_Left) ? &Phase_Left : &Phase_Right;
-	
-    // 计算相位增量（每1ms更新一次）
-	* phase += 0.36f * freq; // 0.36 = 360° / 1000ms
-	if (* phase >= 360.0f) * phase -= 360.0f;
-	if (* phase <=0.0f) * phase += 360.0f;
-        
-    
-    float theta = (motor->dir == CW) ? *phase : (359-*phase);
-	
-	
-	
-    // 生成三相正弦波
-    float Ua = SinTable[(int)theta % 360];
-    float Ub = SinTable[(int)(theta + 120) % 360];
-    float Uc = SinTable[(int)(theta + 240) % 360];
-    
-    // 转换为PWM占空比（幅值设为50%）
-    uint16_t DutyA = (uint16_t)((Ua + 1.0f) * PWM_PERIOD / 2);
-    uint16_t DutyB = (uint16_t)((Ub + 1.0f) * PWM_PERIOD / 2);
-    uint16_t DutyC = (uint16_t)((Uc + 1.0f) * PWM_PERIOD / 2);
-    
-	
-	motor->dutyA=DutyA;
-	motor->dutyB=DutyB;
-	motor->dutyC=DutyC;
-	
-    // 更新PWM寄存器
-//    TIM1->CCR1 = DutyA;
-//    TIM1->CCR2 = DutyB;
-//    TIM1->CCR3 = DutyC;
-*/
 
 
 
@@ -298,32 +259,7 @@ int target_limit_int(int insert,int low,int high)
     else
         return insert;	
 }
-/**************************************************************************
-Function: Check the battery voltage, enable switch status, software failure flag status
-Input   : Voltage
-Output  : Whether control is allowed, 1: not allowed, 0 allowed
-函数功能：检查电池电压、使能开关状态、软件失能标志位状态
-入口参数：电压
-返回  值：是否允许控制，1：不允许，0允许
-**************************************************************************/
-//u8 Turn_Off( int voltage)
-//{
-//	    u8 temp;
-//			if(voltage<10||Flag_Stop==1)
-//			{	                                                
-//				temp=1;    
-//					TIM4->CCR1=0;
-//				TIM4->CCR2=0;
-//				TIM8->CCR1=0;
-//				TIM8->CCR2=0;
-//				TIM8->CCR3=0;
-//				TIM8->CCR4=0;
-//							
-//      }
-//			else
-//			temp=0;
-//			return temp;			
-//}
+
 /**************************************************************************
 Function: Calculate absolute value
 Input   : long int

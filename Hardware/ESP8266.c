@@ -16,9 +16,13 @@ char SeriaNet_Exit[]="+++";
 char TX_Start[]="AT+CIPSEND\r\n";
 char Type[]="Type";
 
+extern ControlState cmd;
+extern float MoveX_mps,MoveZ_radps;
+
 Modbus_Typedef Modbus_Type=Modbus_Type_A;
 
 FlagStatus ESP8266_ReceiveFlag=RESET;
+FlagStatus Car_StopCmd=RESET;
 Modbus_Typedef Modbus_TestCmmunicationProtocol= Modbus_Type_A;
 /**************************************************************************
 Function: Usartx3, Usartx1,Usartx5 and CAN send data task 
@@ -33,48 +37,53 @@ void ESP8266_task(void)
 	 if(ESP8266_ReceiveFlag==RESET){
 		return;
 	 }
-//	 if(strcmp(ESP8266_ReceiveCmd,"Request for Communication Protocol\r\n")==0){
-//		RGB_SelectiveLight(Modbus_TestCmmunicationProtocol);
-//		OLED_Clear();
-//		 if(Modbus_TestCmmunicationProtocol==Modbus_Type_A){
-//			OLED_Printf(1,0,"Modbus_Type_A");
-//		 }else if(Modbus_TestCmmunicationProtocol==Modbus_Type_B){
-//			OLED_Printf(1,0,"Modbus_Type_B");
-//		 }else{
-//			OLED_Printf(1,1,"Others");
-//		 }
-//		 OLED_Update();
-//		 
-//	 }else{
-//		USART3_SendString("ERROR!");
-//		 RGB_SelectiveLight(Modbus_Other_Error);
-//		 OLED_Clear();
-//		 OLED_Printf(1,1,"ERROR!");
-//		 OLED_Update();
-//	 }
 	 
 	 USART3_SendString(ESP8266_ReceiveCmd);
 	 
-	 if(strcmp(ESP8266_ReceiveCmd,"A\r\n")==0){
-		RGB_SelectiveLight(Modbus_Type_A);
-		//OLED_Clear();
-//		 OLED_Printf(1,1,"                ");
-		 OLED_ManualClear();
-		OLED_Printf(1,1,"Modbus_Type_A");
-	 }else if(strcmp(ESP8266_ReceiveCmd,"B\r\n")==0){
-		RGB_SelectiveLight(Modbus_Type_B);
-		//OLED_Clear();
-//		 OLED_Printf(1,1,"                ");
-		 OLED_ManualClear();
-		OLED_Printf(1,1,"Modbus_Type_B");
+	 
+	 if(strcmp(ESP8266_ReceiveCmd,"STOP\r\n")==0){
+		 
+		 MoveX_mps=0;
+		 Car_StopCmd=SET;
+		 
+	 }else if(strncmp(ESP8266_ReceiveCmd,"RUN",3)==0){
+		 
+		 Car_StopCmd=RESET;
+		 //∏Ò Ω£∫ RUN(+/-)xx.x\r\n
+		 MoveX_mps=((char)ESP8266_ReceiveCmd[4]-'0')*10 + ((char)ESP8266_ReceiveCmd[5]-'0')*1 + ((char)ESP8266_ReceiveCmd[7]-'0')*0.1f;
+		
+		 if((char)ESP8266_ReceiveCmd[3]=='+'){
+			MoveX_mps=+MoveX_mps;
+		 }else if((char)ESP8266_ReceiveCmd[3]=='-'){
+			MoveX_mps= -MoveX_mps;
+		 }
+		
 	 }else{
-		RGB_SelectiveLight(Modbus_Other_Error);
-		//OLED_Clear();
-//		 OLED_Printf(1,1,"                ");
-		 OLED_ManualClear();
-		OLED_Printf(1,1,"OtherTypes/ERROR");
-		//OLED_Printf(2,1,"or ERROR!");
-	 }
+	 
+		 if(strcmp(ESP8266_ReceiveCmd,"A\r\n")==0){
+			RGB_SelectiveLight(Modbus_Type_A);
+			//OLED_Clear();
+	//		 OLED_Printf(1,1,"                ");
+			 OLED_ManualClear();
+			OLED_Printf(1,1,"Modbus_Type_A");
+		 }else if(strcmp(ESP8266_ReceiveCmd,"B\r\n")==0){
+			RGB_SelectiveLight(Modbus_Type_B);
+			//OLED_Clear();
+	//		 OLED_Printf(1,1,"                ");
+			 OLED_ManualClear();
+			OLED_Printf(1,1,"Modbus_Type_B");
+		 }else{
+			RGB_SelectiveLight(Modbus_Other_Error);
+			//OLED_Clear();
+	//		 OLED_Printf(1,1,"                ");
+			 OLED_ManualClear();
+			OLED_Printf(1,1,"OtherTypes/ERROR");
+			//OLED_Printf(2,1,"or ERROR!");
+		 }
+	}
+	 
+	 
+	 
 	 OLED_Update();
 	 
 	 ESP8266_ReceiveFlag=RESET;
