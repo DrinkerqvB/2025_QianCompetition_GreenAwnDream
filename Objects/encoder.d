@@ -80,6 +80,7 @@
 .\objects\encoder.o: .\Hardware\OLED\OLED.h
 .\objects\encoder.o: .\Start\stm32f4xx.h
 .\objects\encoder.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
+.\objects\encoder.o: .\Hardware\Key.h
 .\objects\encoder.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 .\objects\encoder.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
 .\objects\encoder.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\math.h

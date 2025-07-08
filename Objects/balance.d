@@ -80,6 +80,7 @@
 .\objects\balance.o: .\Hardware\OLED\OLED.h
 .\objects\balance.o: .\Start\stm32f4xx.h
 .\objects\balance.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
+.\objects\balance.o: .\Hardware\Key.h
 .\objects\balance.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 .\objects\balance.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
 .\objects\balance.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\math.h

@@ -80,6 +80,7 @@
 .\objects\delay.o: .\Hardware\OLED\OLED.h
 .\objects\delay.o: .\Start\stm32f4xx.h
 .\objects\delay.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
+.\objects\delay.o: .\Hardware\Key.h
 .\objects\delay.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 .\objects\delay.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
 .\objects\delay.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\math.h

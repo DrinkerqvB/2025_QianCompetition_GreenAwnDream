@@ -112,7 +112,7 @@ void uart5_init(u32 bound)
 	//UsartNVIC configuration //UsartNVIC配置
 	NVIC_InitStructure.NVIC_IRQChannel = UART5_IRQn;
 	//Preempt priority //抢占优先级
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=3 ;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=4 ;
 	//Sub priority //子优先级
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;		
 	//Enable the IRQ channel //IRQ通道使能	

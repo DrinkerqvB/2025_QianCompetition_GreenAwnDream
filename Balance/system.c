@@ -141,7 +141,9 @@ void systemInit(void)
 	
 	RGB_Init();
 	
-
+	//KEY0 按钮初始化，用于ESP8266重连
+	Key0_Init();
+	
   //Initialize the hardware interface connected to the OLED display
   //初始化与OLED显示屏连接的硬件接口	
 //	OLED_Init();     
@@ -160,6 +162,7 @@ void systemInit(void)
 	//Serial port 3 is the default port used to communicate with ROS terminal
 	//串口3初始化，通信波特率115200，串口3为默认用于与ROS端通信的串口
 	//ESP8266 联网初始化 ，使用USART3
+	uart3_init(115200);
 	ESP8266_Init();
 	OLED_init();
 	

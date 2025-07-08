@@ -81,7 +81,7 @@ void ESP8266_task(void)
 
 void ESP8266_Init(void)
 {
-	uart3_init(115200);
+	
 	ESP8266_Command(RST_Start);
 
 	ESP8266_Command(MODE_Start);
@@ -162,7 +162,7 @@ void uart3_init(u32 bound)
   //UsartNVIC configuration //UsartNVIC配置
   NVIC_InitStructure.NVIC_IRQChannel = USART3_IRQn;
 	//Preempt priority //抢占优先级
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=2 ;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=3 ;
 	//Preempt priority //抢占优先级
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;		
 	//Enable the IRQ channel //IRQ通道使能	

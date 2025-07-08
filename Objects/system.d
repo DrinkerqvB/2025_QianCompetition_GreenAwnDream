@@ -79,6 +79,7 @@
 .\objects\system.o: .\Hardware\OLED\OLED.h
 .\objects\system.o: .\Start\stm32f4xx.h
 .\objects\system.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
+.\objects\system.o: .\Hardware\Key.h
 .\objects\system.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 .\objects\system.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
 .\objects\system.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\math.h

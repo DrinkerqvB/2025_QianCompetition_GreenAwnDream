@@ -53,6 +53,7 @@
 ".\objects\tracking.o"
 ".\objects\usartx.o"
 ".\objects\timer.o"
+".\objects\key.o"
 ".\objects\delay.o"
 ".\objects\sys.o"
 ".\objects\usart.o"
