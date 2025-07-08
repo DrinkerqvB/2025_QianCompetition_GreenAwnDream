@@ -3,6 +3,8 @@
 
 void EXTI15_10_IRQHandler(void)
 {
+	while(GPIO_ReadInputDataBit(GPIOD,GPIO_Pin_10)==RESET);
+	delay_ms(20);
 	ESP8266_Init();
 }
 
