@@ -75,7 +75,7 @@
 .\objects\tracking.o: .\Hardware\brushlessMotor.h
 .\objects\tracking.o: .\Hardware\ESP8266.h
 .\objects\tracking.o: .\Hardware\RGB.h
-.\objects\tracking.o: .\Hardware\Timer.h
+.\objects\tracking.o: .\System\Timer\Timer.h
 .\objects\tracking.o: .\Hardware\OLED\OLED_Data.h
 .\objects\tracking.o: .\Hardware\OLED\OLED.h
 .\objects\tracking.o: .\Start\stm32f4xx.h

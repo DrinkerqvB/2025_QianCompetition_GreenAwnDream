@@ -2,6 +2,7 @@
 
 extern Modbus_Typedef Modbus_Type;
 
+//简介：RGB三色灯初始化
 void RGB_Init(void)
 {
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE,ENABLE);
@@ -17,7 +18,7 @@ void RGB_Init(void)
 	GPIO_Init(GPIOE,&GPIO_InitStructure);
 }
 
-
+//简介：熄灭RGB三色灯
 void RGB_DeInit(void)
 {
 	GPIO_SetBits(GPIOE,GPIO_Pin_2);
@@ -25,7 +26,8 @@ void RGB_DeInit(void)
 	GPIO_ResetBits(GPIOE,GPIO_Pin_4);
 }
 	
-
+//简介：根据所输入的通讯协议类型，使RGB灯发出不同颜色的光
+//参数：通讯协议类型
 void RGB_SelectiveLight(Modbus_Typedef type)
 {
 	switch(type){

@@ -75,7 +75,7 @@
 .\objects\balance.o: .\Hardware\brushlessMotor.h
 .\objects\balance.o: .\Hardware\ESP8266.h
 .\objects\balance.o: .\Hardware\RGB.h
-.\objects\balance.o: .\Hardware\Timer.h
+.\objects\balance.o: .\System\Timer\Timer.h
 .\objects\balance.o: .\Hardware\OLED\OLED_Data.h
 .\objects\balance.o: .\Hardware\OLED\OLED.h
 .\objects\balance.o: .\Start\stm32f4xx.h

@@ -1,17 +1,12 @@
 #include "tracking.h"
 #include "string.h"
-const float IR_Weights[8] = {-3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5};
-//extern int Time_count;
-////QueueHandle_t xControlQueue = NULL;//给了一个队列的基本指针***出现问题要回去看
-//u8 rx_buff[Package_size];//用于直接接收串口数据
-//u8 new_package[Package_size];//用于转换为数字
-//u8 g_new_package_flag = 0;//接收到新的一包数据标志
+const float IR_Weights[8] = {-3.5, -2.5, -1.5, -0.5, 0.5, 1.5, 2.5, 3.5};//权重矩阵
 
 u8 IR_Data_number[IR_Num];//（所需数据）最终得到的探测数据，从0位到7位为x1-x8
 extern ControlState cmd;//存储偏差、前进速度、转向角速度
 extern FlagStatus Car_StopCmd;
-float MoveX_mps;
-float error;
+float MoveX_mps; //前进速度 m/s
+float error; //偏差，由IR_Data_number与IR_Weights做内积得出
 
 /**************************************************************************
 函数功能：任务，八路循迹数据处理

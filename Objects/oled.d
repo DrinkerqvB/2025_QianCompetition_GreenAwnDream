@@ -78,7 +78,7 @@
 .\objects\oled.o: .\Hardware\brushlessMotor.h
 .\objects\oled.o: .\Hardware\ESP8266.h
 .\objects\oled.o: .\Hardware\RGB.h
-.\objects\oled.o: .\Hardware\Timer.h
+.\objects\oled.o: .\System\Timer\Timer.h
 .\objects\oled.o: .\Hardware\OLED\OLED.h
 .\objects\oled.o: .\Hardware\Key.h
 .\objects\oled.o: .\Hardware\Modbus.h

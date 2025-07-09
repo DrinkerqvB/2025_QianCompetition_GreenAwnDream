@@ -1,6 +1,6 @@
 #include "Key.h"
 
-
+//中断函数
 void EXTI15_10_IRQHandler(void)
 {
 	if(EXTI_GetITStatus(EXTI_Line10)==SET){
@@ -12,8 +12,7 @@ void EXTI15_10_IRQHandler(void)
 }
 
 
-//初始化PD10引脚为外部中断，输入上拉
-//上升沿触发吗？
+//初始化PD10引脚为外部中断，输入上拉，上升沿触发
 void Key0_Init(void)
 {
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE);

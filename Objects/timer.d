@@ -1,5 +1,5 @@
-.\objects\timer.o: Hardware\Timer.c
-.\objects\timer.o: Hardware\Timer.h
+.\objects\timer.o: System\Timer\Timer.c
+.\objects\timer.o: System\Timer\Timer.h
 .\objects\timer.o: .\Balance\system.h
 .\objects\timer.o: .\Start\stm32f4xx.h
 .\objects\timer.o: .\Start\core_cm4.h
@@ -75,7 +75,7 @@
 .\objects\timer.o: .\Hardware\brushlessMotor.h
 .\objects\timer.o: .\Hardware\ESP8266.h
 .\objects\timer.o: .\Hardware\RGB.h
-.\objects\timer.o: .\Hardware\Timer.h
+.\objects\timer.o: .\System\Timer\Timer.h
 .\objects\timer.o: .\Hardware\OLED\OLED_Data.h
 .\objects\timer.o: .\Hardware\OLED\OLED.h
 .\objects\timer.o: .\Start\stm32f4xx.h

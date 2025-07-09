@@ -44,7 +44,7 @@ typedef struct
 #define MEC_axlespacing           0.085
 #define Akm_axlespacing           0.144f
 #define Diff_axlespacing          0.155f
-#define Four_Mortor__axlespacing  0.466f//四驱车
+#define Four_Mortor__axlespacing  0.166f//四驱车
 #define Tank_axlespacing          0.222f
 
 //Motor_gear_ratio

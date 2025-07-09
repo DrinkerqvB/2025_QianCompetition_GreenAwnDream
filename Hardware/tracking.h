@@ -7,7 +7,7 @@
 
 #define IR_Num 8 //探头数量
 
-#define TRACKING_SLAVE_7BITADDRESS 0x12<<1
+#define TRACKING_SLAVE_7BITADDRESS 0x12<<1   //八路循迹从机7位地址
 #define TRACKING_CALIBRATION_STATUS_REG 0x01  //校准状态寄存器，只写
 #define TRACKING_TRACKING_DATA_REG 0x30    //循迹数据寄存器，只读
 

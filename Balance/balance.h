@@ -3,14 +3,10 @@
 #include "sys.h"
 #include "system.h"
 
-#define X_PARAMETER    (sqrt(3)/2.f)               
-#define Y_PARAMETER    (0.5f)    
-#define L_PARAMETER    (1.0f)
 typedef enum {
    CW = 0,  // À≥ ±’Î
    CCW = 1  // ƒÊ ±’Î
 } MotorDirection;
-
 
 void Balance_task(void);
 
@@ -34,7 +30,6 @@ void Get_Velocity_Form_Encoder(void);
 void Smooth_control(float vx,float vy,float vz);
 
 float float_abs(float insert);
-
 
 #endif  
 

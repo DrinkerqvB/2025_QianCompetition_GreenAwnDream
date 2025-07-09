@@ -6,10 +6,10 @@
 #include "system.h"
 
 
-#define FRAME_HEADER      0X7B //Frame_header //֡ͷ
-#define FRAME_TAIL        0X7D //Frame_tail   //֡β
-#define SEND_DATA_SIZE    24
-#define RECEIVE_DATA_SIZE 11
+//#define FRAME_HEADER      0X7B //Frame_header //֡ͷ
+//#define FRAME_TAIL        0X7D //Frame_tail   //֡β
+//#define SEND_DATA_SIZE    24
+//#define RECEIVE_DATA_SIZE 11
 
 
 /*******The structure of the serial port sending data************/

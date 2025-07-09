@@ -1,13 +1,5 @@
 #include "balance.h"
 
-int Time_count=0; //Time variable //计时变量
-u32 Buzzer_count1 = 0;
-// Robot mode is wrong to detect flag bits
-//机器人模式是否出错检测标志位
-int robot_mode_check_flag=0; 
-
-short test_num;
-
 // 正弦表（预生成360点，幅值0-1）
 static float SinTable[360];
 
@@ -44,19 +36,12 @@ void Drive_Motor(float Vx,float Vy,float Vz)
 Function: FreerTOS task, core motion control task
 Input   : none
 Output  : none
-函数功能：FreeRTOS任务，核心运动控制任务
+函数功能：任务，核心运动控制任务
 入口参数：无
 返回  值：无
 **************************************************************************/
 void Balance_task(void)
 { 	
-	  
-	//ControlState ctrl;//把红外传输的数据粘贴
-	//float last_error = 0;//偏差
-
-
-		//Get_Velocity_Form_Encoder();
-			
 				Move_X = cmd.speed_setpoint;
 				Move_Z = cmd.turn_gain;
                 
@@ -70,9 +55,8 @@ void Balance_task(void)
 //			Motor_Left.FOC_freq=Incremental_PID_left(Motor_Left.Encoder, 0.5f);
 //			Motor_Right.FOC_freq=Incremental_PID_Right(Motor_Right.Encoder, 0.5f);
 	
-//	printf("%f,%f,%f,%f\n",Motor_Left.Encoder,Motor_Left.Target,Motor_Right.Encoder,Motor_Right.Target);
-	
 //	Motor_Right.FOC_freq=Incremental_PID_Right(Motor_Right.Encoder, 0.5);
+	
 //#define TEST_FOCFREQ 25.0f
 //		Motor_Left.FOC_freq=TEST_FOCFREQ;
 //		Motor_Right.FOC_freq=TEST_FOCFREQ;
@@ -84,20 +68,17 @@ void Balance_task(void)
 
 
 /**************************************************************************
-函数功能：用于FOC循环的FreeRTOS任务
+函数功能：任务，用于FOC占空比更新
 入口参数：
 返回  值：无
 **************************************************************************/
 void FOCLoop_task(void)
 {
-	
-			// This task runs at a frequency of 100Hz (10ms control once)
 			//此任务以1000Hz的频率运行（1ms控制一次）
 		
 			FOC_duty_Update(&Motor_Left, Motor_Left.FOC_freq);
 			FOC_duty_Update(&Motor_Right, Motor_Right.FOC_freq);
 			Set_Pwm();
-
 }
 
 /**************************************************************************
@@ -305,9 +286,6 @@ int Incremental_PID_A (float Encoder,float Target)
 	
 	 ElecFreq+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias+Velocity_KD*(Bias-Last_bias); 
 	
-//	 if(ElecFreq>200)ElecFreq=200;
-//	 if(ElecFreq<-200)ElecFreq=-200;
-	
 	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
 	 return ElecFreq;    
 }
@@ -319,32 +297,10 @@ int Incremental_PID_B (float Encoder,float Target)
 	
 	 ElecFreq+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias+Velocity_KD*(Bias-Last_bias);  
 	
-//	 if(ElecFreq>200)ElecFreq=200;
-//	 if(ElecFreq<-200)ElecFreq=-200;
-	
 	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
 	 return ElecFreq;
 }
-//int Incremental_PI_C (float Encoder,float Target)
-//{  
-//	 static float Bias,Pwm,Last_bias;
-//	 Bias=Target-Encoder; //Calculate the deviation //计算偏差
-//	 Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias; 
-//	 if(Pwm>16700)Pwm=16700;
-//	 if(Pwm<-16700)Pwm=-16700;
-//	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
-//	 return Pwm; 
-//}
-//int Incremental_PI_D (float Encoder,float Target)
-//{  
-//	 static float Bias,Pwm,Last_bias;
-//	 Bias=Target-Encoder; //Calculate the deviation //计算偏差
-//	 Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias;  
-//	 if(Pwm>16700)Pwm=16700;
-//	 if(Pwm<-16700)Pwm=-16700;
-//	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
-//	 return Pwm; 
-//}
+
 
 
 /**************************************************************************
@@ -357,18 +313,11 @@ Output  : none
 **************************************************************************/
 void Get_Velocity_Form_Encoder(void)
 {
-//	static uint16_t last_time=0,now_time=0;
-//	uint8_t bias=(((TIM7->ARR)+1)*CONTROL_FREQUENCY*((TIM7->PSC)+1))/84000000;
-//	now_time =TIM7->CNT;
-//	if(now_time-last_time<bias && now_time>last_time){
-//		return;
-//	}
-//	last_time = now_time;
 	
 	  //Retrieves the original data of the encoder
 	  //获取编码器的原始数据
 		float Encoder_A_pr,Encoder_B_pr; 
-//		float Encoder_C_pr,Encoder_D_pr;
+
 		OriginalEncoder.A=Read_Encoder(2);	
 		OriginalEncoder.B=Read_Encoder(3);	
 		
@@ -387,12 +336,6 @@ void Get_Velocity_Form_Encoder(void)
 //		Motor_Right.Encoder= Encoder_B_pr*SWITCHFREQ/Encoder_precision*7;  
 
 }
-
-
-
-
-
-
 
 
 

@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\User;.\Start;.\Library;.\Hardware;.\Balance;.\System\usart;.\System\sys;.\System\delay;.\Hardware\OLED</IncludePath>
+              <IncludePath>.\User;.\Start;.\Library;.\Hardware;.\Balance;.\System\usart;.\System\sys;.\System\delay;.\Hardware\OLED;.\System\Timer</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -925,16 +925,6 @@
               <FilePath>.\Hardware\usartx.h</FilePath>
             </File>
             <File>
-              <FileName>Timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Hardware\Timer.c</FilePath>
-            </File>
-            <File>
-              <FileName>Timer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Hardware\Timer.h</FilePath>
-            </File>
-            <File>
               <FileName>Key.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Hardware\Key.c</FilePath>
@@ -949,6 +939,16 @@
         <Group>
           <GroupName>System</GroupName>
           <Files>
+            <File>
+              <FileName>Timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\System\Timer\Timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\System\Timer\Timer.h</FilePath>
+            </File>
             <File>
               <FileName>delay.c</FileName>
               <FileType>1</FileType>

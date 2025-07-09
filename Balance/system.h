@@ -1,20 +1,9 @@
 #ifndef __SYSTEM_H
 #define __SYSTEM_H
 
-
-
-
 // Refer to all header files you need
 //引用所有需要用到的头文件
-//#include "FreeRTOSConfig.h"
-////FreeRTOS相关头文件 
-////FreeRTOS related header files
-//#include "FreeRTOS.h"
 #include "stm32f4xx.h"
-//#include "task.h"
-//#include "queue.h"
-//#include "timers.h"
-//#include "semphr.h"
 //The associated header file for the peripheral 
 //外设的相关头文件
 
@@ -29,7 +18,7 @@ typedef struct{
     float speed_setpoint;  // 目标速度（m/s）
     float turn_gain;       // 转向系数（左正右负）
 }ControlState;
-//extern QueueHandle_t xControlQueue;
+
 typedef struct  
 {
 	float U1,U2,U3;//三个电压
@@ -41,11 +30,7 @@ typedef struct
 	 uint8_t dir;//0=CW, 1=CCW（方向控制）
 	float Encoder;     //Read the real time speed of the motor by encoder //编码器数值，读取电机实时速度
 	
-	
-//	float Motor_Pwm;   //Motor PWM value, control the real-time speed of the motor //电机PWM数值，控制电机实时速度
 	float Target;      //Control the target speed of the motor //电机目标速度值，控制电机目标速度
-//	float Velocity_KP; //Speed control PID parameters //速度控制PID参数
-//	float	Velocity_KI; //Speed control PID parameters //速度控制PID参数
 }BrushlessMotor;
 
 
@@ -67,12 +52,6 @@ typedef struct
 #include "Key.h"
 #include "Modbus.h"
 
-
-
-#define EN     PDin(3)
-
-//typedef struct BrushlessMotor BrushlessMotor;
-
 // Enumeration of car types
 //小车型号的枚举定义
 typedef enum 
@@ -85,9 +64,6 @@ typedef enum
 	Tank_Car
 } CarMode;
 
-//Motor speed control related parameters of the structure
-//电机速度控制相关参数结构体
-
 
 //Smoothed the speed of the three axes
 //平滑处理后的三轴速度
@@ -99,44 +75,23 @@ typedef struct
 }Smooth_Control;
 
 
-
-
 /****** external variable definition. When system.h is referenced in other C files, 
         other C files can also use the variable defined by system.c           ******/
 /****** 外部变量定义，当其它c文件引用system.h时，也可以使用system.c定义的变量 ******/
-extern u8 Flag_Stop;
-extern int Divisor_Mode;
-extern int Servo;
-extern float RC_Velocity;
+
 extern float Move_X, Move_Y, Move_Z; 
 extern float Velocity_KP, Velocity_KI, Velocity_KD;	
 extern Smooth_Control smooth_control;
-//extern BrushlessMotor MOTOR_A, MOTOR_B, MOTOR_C, MOTOR_D;
+
 extern BrushlessMotor Motor_Left,Motor_Right;
 extern float Encoder_precision;
 extern float Wheel_perimeter;
 extern float Wheel_spacing; 
 extern float Axle_spacing; 
 extern float Omni_turn_radiaus; 
-extern u8 PS2_ON_Flag, APP_ON_Flag, Remote_ON_Flag, CAN_ON_Flag, Usart1_ON_Flag, Usart5_ON_Flag;
-extern u8 Turn_Flag; 
-extern u8 PID_Send;                                            										                 
-extern float PS2_LX,PS2_LY,PS2_RX,PS2_RY,PS2_KEY;
-extern int Check, Checking, Checked, CheckCount, CheckPhrase1, CheckPhrase2;
-extern long int ErrorCode; 
 
-extern u8 Proc_Flag;
-extern int servo_direction[6],servo_pwm_count;
-extern int check_time_count_motor_forward,check_time_count_motor_retreat;
-extern int POT_val;
-extern int Servo_Count[6];
-extern u8 uart3_receive_message[50];
-extern u8 uart3_send_flag;
-extern u8 message_count;
 extern u8 uart2_receive_message[50];
 extern u8 uart2_send_flag;
-extern u8 app_count;
-extern int Full_rotation;
 
 void systemInit(void);
 

@@ -11,13 +11,13 @@ float Velocity_KI=0.06f;
 float Velocity_KD=0.2; 
 
 //Smooth control of intermediate variables, dedicated to omni-directional moving cars
-//平滑控制中间变量，全向移动小车专用
+//平滑控制中间变量
 Smooth_Control smooth_control;  
 
 //The parameter structure of the motor
 //电机的参数结构体
 BrushlessMotor Motor_Left, Motor_Right;
-//BrushlessMotor MOTOR_A,MOTOR_B,MOTOR_C,MOTOR_D;  
+
 
 /************ 小车型号相关变量 **************************/
 /************ Variables related to car model ************/
@@ -36,34 +36,7 @@ float Axle_spacing;
 //All-directional wheel turning radius, unit: m
 //全向轮转弯半径，单位：m
 float Omni_turn_radiaus; 
-/************ 小车型号相关变量 **************************/
-/************ Variables related to car model ************/
 
-//PS2 controller, Bluetooth APP, aircraft model controller, CAN communication, serial port 1, serial port 5 communication control flag bit.
-//These 6 flag bits are all 0 by default, representing the serial port 3 control mode
-//PS2手柄、蓝牙APP、航模手柄、CAN通信、串口1、串口5通信控制标志位。这6个标志位默认都为0，代表串口3控制模式
-u8 APP_ON_Flag=0, Usart1_ON_Flag, Usart5_ON_Flag; 
-
-
-
-//舵机计数值
-int servo_direction[6] = {0};
-int servo_pwm_count = 500;
-
-int check_time_count_motor_forward=300,check_time_count_motor_retreat=500;
-int POT_val;
-
-int Servo_Count[6] = {500, 500, 500, 500, 500, 500};
-
-u8 uart3_receive_message[50];
-u8 uart3_send_flag;
-u8 message_count=0;
-
-u8 uart2_receive_message[50];
-u8 uart2_send_flag=5;
-u8 app_count=0;
-
-int Full_rotation = 16799;
 
 void systemInit(void)
 {       

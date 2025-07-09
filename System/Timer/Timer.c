@@ -1,6 +1,6 @@
 #include "Timer.h"
 
-
+//简介：定时器7初始化，用于函数定时执行
 void TIM7_Init(void)
 {
 

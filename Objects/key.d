@@ -75,7 +75,7 @@
 .\objects\key.o: .\Hardware\brushlessMotor.h
 .\objects\key.o: .\Hardware\ESP8266.h
 .\objects\key.o: .\Hardware\RGB.h
-.\objects\key.o: .\Hardware\Timer.h
+.\objects\key.o: .\System\Timer\Timer.h
 .\objects\key.o: .\Hardware\OLED\OLED_Data.h
 .\objects\key.o: .\Hardware\OLED\OLED.h
 .\objects\key.o: .\Start\stm32f4xx.h
