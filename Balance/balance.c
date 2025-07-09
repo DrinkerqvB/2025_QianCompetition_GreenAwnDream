@@ -62,23 +62,23 @@ void Balance_task(void)
                 
 		Drive_Motor(Move_X, 0, Move_Z); // 只使用X(速度)和Z(转向)
  
-//			Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, Motor_Left.Target);
-//			Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, Motor_Right.Target);
+//			Motor_Left.FOC_freq=Incremental_PID_Left(Motor_Left.Encoder, Motor_Left.Target);
+//			Motor_Right.FOC_freq=Incremental_PID_Right(Motor_Right.Encoder, Motor_Right.Target);
 		Motor_Left.FOC_freq=Motor_Left.Target / Wheel_perimeter * 7;
 		Motor_Right.FOC_freq=Motor_Right.Target / Wheel_perimeter * 7;
 	
-//			Motor_Left.FOC_freq=Incremental_PID_A(Motor_Left.Encoder, 0.5f);
-//			Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, 0.5f);
+//			Motor_Left.FOC_freq=Incremental_PID_left(Motor_Left.Encoder, 0.5f);
+//			Motor_Right.FOC_freq=Incremental_PID_Right(Motor_Right.Encoder, 0.5f);
 	
 //	printf("%f,%f,%f,%f\n",Motor_Left.Encoder,Motor_Left.Target,Motor_Right.Encoder,Motor_Right.Target);
 	
-//	Motor_Right.FOC_freq=Incremental_PID_B(Motor_Right.Encoder, 0.5);
+//	Motor_Right.FOC_freq=Incremental_PID_Right(Motor_Right.Encoder, 0.5);
 //#define TEST_FOCFREQ 25.0f
 //		Motor_Left.FOC_freq=TEST_FOCFREQ;
 //		Motor_Right.FOC_freq=TEST_FOCFREQ;
 		
 		printf("%f,%f,%f,%f,%f\n",Motor_Left.Encoder,Motor_Left.Target,Motor_Right.Encoder,Motor_Right.Target , cmd.turn_gain);
-				Limit_Pwm(50);
+				Limit_Freq(50);
 	 
 }
 
@@ -191,8 +191,8 @@ void FOC_duty_Update(BrushlessMotor* motor,float freq) {
     
     float Uc = (SinTable[idx0] + frac * (SinTable[idx1] - SinTable[idx0])) * inversion_factor;
     
-    // 转换到PWM占空比（电压中心点偏移）
-    float V_offset = 0.5f;
+//    // 转换到PWM占空比（电压中心点偏移）
+//    float V_offset = 0.5f;
     
     // 限幅保护
     Ua = fmaxf(-1.0f, fminf(Ua, 1.0f));
@@ -226,7 +226,7 @@ Output  : none
 入口参数：幅值
 返回  值：无
 **************************************************************************/
-void Limit_Pwm(int amplitude)
+void Limit_Freq(int amplitude)
 {	
 	Motor_Left.FOC_freq=target_limit_float(Motor_Left.FOC_freq,-amplitude,amplitude);
 	

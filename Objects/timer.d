@@ -81,6 +81,7 @@
 .\objects\timer.o: .\Start\stm32f4xx.h
 .\objects\timer.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
 .\objects\timer.o: .\Hardware\Key.h
+.\objects\timer.o: .\Hardware\Modbus.h
 .\objects\timer.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 .\objects\timer.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
 .\objects\timer.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\math.h

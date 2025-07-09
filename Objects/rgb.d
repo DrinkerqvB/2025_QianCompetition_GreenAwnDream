@@ -81,6 +81,7 @@
 .\objects\rgb.o: .\Start\stm32f4xx.h
 .\objects\rgb.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
 .\objects\rgb.o: .\Hardware\Key.h
+.\objects\rgb.o: .\Hardware\Modbus.h
 .\objects\rgb.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 .\objects\rgb.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
 .\objects\rgb.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\math.h

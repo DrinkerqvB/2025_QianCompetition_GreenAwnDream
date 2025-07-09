@@ -35,13 +35,4 @@ void TIM7_Init(void)
 
 }
 
-void TIM7_IRQHandler(void)
-{
-	if(TIM_GetITStatus(TIM7,TIM_IT_Update)==SET){
-		Get_Velocity_Form_Encoder();
-		FOCLoop_task();
-		
-		TIM_ClearITPendingBit(TIM7,TIM_IT_Update);
-	}
 
-}

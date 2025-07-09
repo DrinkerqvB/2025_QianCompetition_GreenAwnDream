@@ -3,11 +3,6 @@
 #include "sys.h"
 #include "system.h"
 
-#define BALANCE_TASK_PRIO		4     //Task priority //任务优先级
-#define BALANCE_STK_SIZE 		512   //Task stack size //任务堆栈大小
-
-//Parameter of kinematics analysis of omnidirectional trolley
-//全向轮小车运动学分析参数
 #define X_PARAMETER    (sqrt(3)/2.f)               
 #define Y_PARAMETER    (0.5f)    
 #define L_PARAMETER    (1.0f)
@@ -15,39 +10,31 @@ typedef enum {
    CW = 0,  // 顺时针
    CCW = 1  // 逆时针
 } MotorDirection;
-//extern BrushlessMotor Motor_Left, Motor_Right;
 
-//BrushlessMotor Motor_Left, Motor_Right;
 
-extern short test_num;
-extern int robot_mode_check_flag;
-extern u8 command_lost_count; //串口、CAN控制命令丢失时间计数，丢失1秒后停止控制
 void Balance_task(void);
 
-//void Set_Pwm(int motor_a,int motor_b,int motor_c,int motor_d,int servo);
 void FOCLoop_task(void);
 void Set_Pwm(void);
 void FOC_Init(void);
 void FOC_duty_Update(BrushlessMotor* motor,float freq);
 
 
-void Limit_Pwm(int amplitude);
+void Limit_Freq(int amplitude);
 float target_limit_float(float insert,float low,float high);
 int target_limit_int(int insert,int low,int high);
-u8 Turn_Off( int voltage);
-u32 myabs(long int a);
-int Incremental_PID_A (float Encoder,float Target);
-int Incremental_PID_B (float Encoder,float Target);
 
-void Get_RC(void);
-//void Remote_Control(void);
+u32 myabs(long int a);
+int Incremental_PID_Left (float Encoder,float Target);
+int Incremental_PID_Right (float Encoder,float Target);
+
 void Drive_Motor(float Vx,float Vy,float Vz);
-void Key(void);
+
 void Get_Velocity_Form_Encoder(void);
 void Smooth_control(float vx,float vy,float vz);
-//void PS2_control(void);
+
 float float_abs(float insert);
-void robot_mode_check(void);
+
 
 #endif  
 

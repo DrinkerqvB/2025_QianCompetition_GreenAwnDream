@@ -80,6 +80,7 @@
 .\objects\main.o: .\Start\stm32f4xx.h
 .\objects\main.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
 .\objects\main.o: .\Hardware\Key.h
+.\objects\main.o: .\Hardware\Modbus.h
 .\objects\main.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 .\objects\main.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
 .\objects\main.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\math.h

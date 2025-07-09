@@ -81,6 +81,7 @@
 .\objects\brushlessmotor.o: .\Start\stm32f4xx.h
 .\objects\brushlessmotor.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
 .\objects\brushlessmotor.o: .\Hardware\Key.h
+.\objects\brushlessmotor.o: .\Hardware\Modbus.h
 .\objects\brushlessmotor.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 .\objects\brushlessmotor.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
 .\objects\brushlessmotor.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\math.h

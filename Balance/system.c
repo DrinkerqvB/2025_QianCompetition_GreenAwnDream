@@ -68,63 +68,49 @@ int Full_rotation = 16799;
 void systemInit(void)
 {       
 	
-//	//Interrupt priority group setti  ng
-//	//中断优先级分组设置
+	//中断优先级分组设置
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
-//	
-//	//Delay function initialization
-//	//延时函数初始化
-//	delay_init(168);	
 	
-	
+	//RGB三色灯控制引脚初始化
 	RGB_Init();
 	
 	//KEY0 按钮初始化，用于ESP8266重连
 	Key0_Init();
 	
-  //Initialize the hardware interface connected to the OLED display
-  //初始化与OLED显示屏连接的硬件接口	
-//	OLED_Init();     
-
-	//Serial port 1 initialization, communication baud rate 115200, 
-	//can be used to communicate with ROS terminal
-	//串口1初始化，通信波特率115200，可用于与ROS端通信
-//	uart1_init(115200);	  
+	//串口1初始化，通信波特率115200，可用于Modbus通信
+	Modbus_Init();
 	
-	//Serial port 2 initialization, communication baud rate 9600, 
-	//used to communicate with Bluetooth APP terminal
-	//串口2初始化，通信波特率9600，用于printf调试
 	uart2_init(9600);  
 	
-	//Serial port 3 is initialized and the baud rate is 115200. 
-	//Serial port 3 is the default port used to communicate with ROS terminal
-	//串口3初始化，通信波特率115200，串口3为默认用于与ROS端通信的串口
+	
+	//串口3初始化，通信波特率115200
 	//ESP8266 联网初始化 ，使用USART3
 	uart3_init(115200);
 //	ESP8266_Init();
+
+	//初始化与OLED显示屏连接的硬件接口	
 	OLED_init();
 	
-	//Serial port 5 initialization, communication baud rate 115200, 
-	//can be used to communicate with ROS terminal
 	
+	//八路循迹初始化，使用I2C1
 	Tracking_Init();
 	
-  //According to the tap position of the potentiometer, determine which type of car needs to be matched, 
-  //and then initialize the corresponding parameters	
-  //根据电位器的档位判断需要适配的是哪一种型号的小车，然后进行对应的参数初始化	
+	
+  //进行小车对应的参数初始化	
 	Robot_Select();                 
 	
 	 //Encoder A is initialized to read the real time speed of motor C  
-  //编码器A初始化，用于读取电机C的实时速度	
+  //左轮编码器初始化，用于读取Motor_Left的实时速度	
 	 Encoder_Init_TIM2();
 	//Encoder B is initialized to read the real time speed of motor D
-  //编码器B初始化，用于读取电机D的实时速度	
+  //右轮编码器初始化，用于读取Motor_Right的实时速度	
 	  Encoder_Init_TIM3();   
 	
 	//生成正弦表
-	//初始化电机PWM所需定时器
 	 FOC_Init();
-	 TIM7_Init();
+	 //初始化电机所需定时器
+	 TIM7_Init();  //FOC更新定时器
+	 //输出信号波形所需定时器
 	 TIM4_Init();
 	 TIM8_Init();
 						

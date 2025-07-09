@@ -81,6 +81,7 @@
 .\objects\robot_select_init.o: .\Start\stm32f4xx.h
 .\objects\robot_select_init.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
 .\objects\robot_select_init.o: .\Hardware\Key.h
+.\objects\robot_select_init.o: .\Hardware\Modbus.h
 .\objects\robot_select_init.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 .\objects\robot_select_init.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
 .\objects\robot_select_init.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\math.h

@@ -81,6 +81,7 @@
 .\objects\usartx.o: .\Start\stm32f4xx.h
 .\objects\usartx.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
 .\objects\usartx.o: .\Hardware\Key.h
+.\objects\usartx.o: .\Hardware\Modbus.h
 .\objects\usartx.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 .\objects\usartx.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
 .\objects\usartx.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\math.h

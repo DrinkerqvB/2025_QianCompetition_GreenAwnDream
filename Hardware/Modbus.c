@@ -38,9 +38,6 @@ PowerMeter_t powerMeter;                 // 电能计量数据结构体
 
 /* 函数声明 ----------------------------------------------------------------*/
 static float RegToFloat(void);
-static void USART2_Init(void);
-static void GPIO_Config(void);
-static void NVIC_Config(void);
 static void Delay(uint32_t nCount);
 
 /* Modbus CRC表 */
@@ -71,15 +68,10 @@ uint16_t ModbusCRC_CheckTable(uint8_t *data, uint16_t length) {
 /**
   * @brief  系统初始化
   */
-void Modbus_Init(void) {
-    /* 配置系统时钟为168MHz (根据实际需求配置) */
-    //RCC_DeInit();
-    //SystemInit();
-    
+void Modbus_Init(void) {  
     /* 初始化外设 */
-    GPIO_Config();
-    USART2_Init();
-    NVIC_Config();
+    USART1_Init(9600);
+	Modbus_GPIOConfig();
     
     /* 初始化电能计量结构体 */
     memset(&powerMeter, 0, sizeof(PowerMeter_t));
@@ -90,24 +82,12 @@ void Modbus_Init(void) {
 /**
   * @brief  GPIO配置
   */
-static void GPIO_Config(void) {
+static void Modbus_GPIOConfig(void) {
     GPIO_InitTypeDef GPIO_InitStructure;
     
     /* 启用GPIO时钟 */
-    RCC_AHB1PeriphClockCmd(USART2_GPIO_RCC | RS485_IO_RCC, ENABLE);
-    
-    /* 配置USART2 TX/RX引脚 */
-    GPIO_InitStructure.GPIO_Pin = USART2_TX_PIN | USART2_RX_PIN;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
-    GPIO_Init(USART2_GPIO_PORT, &GPIO_InitStructure);
-    
-    /* 配置USART2复用功能 */
-    GPIO_PinAFConfig(USART2_GPIO_PORT, GPIO_PinSource2, GPIO_AF_USART2);
-    GPIO_PinAFConfig(USART2_GPIO_PORT, GPIO_PinSource3, GPIO_AF_USART2);
-    
+    RCC_AHB1PeriphClockCmd(RS485_IO_RCC, ENABLE);
+   
     /* 配置RS485方向控制引脚 */
     GPIO_InitStructure.GPIO_Pin = RS485_IO_PIN;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
@@ -120,45 +100,7 @@ static void GPIO_Config(void) {
     GPIO_ResetBits(RS485_IO_GPIO_PORT, RS485_IO_PIN);
 }
 
-/**
-  * @brief  USART2初始化
-  */
-static void USART2_Init(void) {
-    USART_InitTypeDef USART_InitStructure;
-    
-    /* 启用USART2时钟 */
-    RCC_APB1PeriphClockCmd(USART2_RCC, ENABLE);
-    
-    /* USART2配置 */
-    USART_InitStructure.USART_BaudRate = 9600;
-    USART_InitStructure.USART_WordLength = USART_WordLength_8b;
-    USART_InitStructure.USART_StopBits = USART_StopBits_1;
-    USART_InitStructure.USART_Parity = USART_Parity_No;
-    USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-    USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
-    
-    USART_Init(USART2_PERIPH, &USART_InitStructure);
-    
-    /* 启用USART2 */
-    USART_Cmd(USART2_PERIPH, ENABLE);
-    
-    /* 启用接收中断 */
-    USART_ITConfig(USART2_PERIPH, USART_IT_RXNE, ENABLE);
-}
 
-/**
-  * @brief  NVIC配置
-  */
-static void NVIC_Config(void) {
-    NVIC_InitTypeDef NVIC_InitStructure;
-    
-    /* 配置USART2中断 */
-    NVIC_InitStructure.NVIC_IRQChannel = USART2_IRQn;
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-    NVIC_Init(&NVIC_InitStructure);
-}
 
 /**
   * @brief  简单延时函数
@@ -189,8 +131,8 @@ void PowerMeter_RequestData(void) {
     
     /* 发送数据 */
     for (uint8_t i = 0; i < TX_BUF_SIZE; i++) {
-        USART_SendData(USART2_PERIPH, txBuffer[i]);
-        while (USART_GetFlagStatus(USART2_PERIPH, USART_FLAG_TXE) == RESET);
+        USART_SendData(USART1, txBuffer[i]);
+        while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);
     }
     
     /* 切换回接收模式 */
@@ -211,14 +153,14 @@ void PowerMeter_StartReceive(void) {
 }
 
 /**
-  * @brief  USART2中断服务函数
+  * @brief  USART1中断服务函数
   */
-void USART2_IRQHandler(void) {
+void USART1_IRQHandler(void) {
     static uint8_t rx_index = 0;
     
-    if(USART_GetITStatus(USART2_PERIPH, USART_IT_RXNE) != RESET) {
+    if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET) {
         /* 读取接收到的数据 */
-        rxBuffer[rx_index++] = USART_ReceiveData(USART2_PERIPH);
+        rxBuffer[rx_index++] = USART_ReceiveData(USART1);
         
         /* 如果收到完整帧 */
         if(rx_index >= RX_BUF_SIZE) {
@@ -285,6 +227,59 @@ static float RegToFloat(void) {
                        rxBuffer[6];
     return *(float*)&rawData;
 }
+
+/**************************************************************************
+Function: Serial port 1 initialization
+Input   : none
+Output  : none
+函数功能：串口1初始化
+入口参数：无
+返 回 值：无
+**************************************************************************/
+void USART1_Init(u32 bound)
+{  	 
+	GPIO_InitTypeDef GPIO_InitStructure;
+	USART_InitTypeDef USART_InitStructure;
+	NVIC_InitTypeDef NVIC_InitStructure;
+	
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);	 //Enable the gpio clock //使能GPIO时钟
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE); //Enable the Usart clock //使能USART时钟
+
+	GPIO_PinAFConfig(GPIOA,GPIO_PinSource9,GPIO_AF_USART1);	
+	GPIO_PinAFConfig(GPIOA,GPIO_PinSource10 ,GPIO_AF_USART1);	 
+	
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9|GPIO_Pin_10;
+	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_AF;            //输出模式
+	GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;          //推挽输出
+	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_50MHz;       //高速50MHZ
+	GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_UP;            //上拉
+	GPIO_Init(GPIOA, &GPIO_InitStructure);  		          //初始化
+	
+  //UsartNVIC configuration //UsartNVIC配置
+	NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
+	//Preempt priority //抢占优先级
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=1 ;
+	//Subpriority //子优先级
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;		
+	//Enable the IRQ channel //IRQ通道使能
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;	
+  //Initialize the VIC register with the specified parameters 
+	//根据指定的参数初始化VIC寄存器	
+	NVIC_Init(&NVIC_InitStructure);	
+	
+  //USART Initialization Settings 初始化设置
+	USART_InitStructure.USART_BaudRate = bound; //Port rate //串口波特率
+	USART_InitStructure.USART_WordLength = USART_WordLength_8b; //The word length is 8 bit data format //字长为8位数据格式
+	USART_InitStructure.USART_StopBits = USART_StopBits_1; //A stop bit //一个停止位
+	USART_InitStructure.USART_Parity = USART_Parity_No; //Prosaic parity bits //无奇偶校验位
+	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None; //No hardware data flow control //无硬件数据流控制
+	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;	//Sending and receiving mode //收发模式
+	USART_Init(USART1, &USART_InitStructure); //Initialize serial port 1 //初始化串口1
+	
+	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE); //Open the serial port to accept interrupts //开启串口接受中断
+	USART_Cmd(USART1, ENABLE);                     //Enable serial port 1 //使能串口1
+}
+
 
 /**
   * @brief  主函数

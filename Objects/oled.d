@@ -81,6 +81,7 @@
 .\objects\oled.o: .\Hardware\Timer.h
 .\objects\oled.o: .\Hardware\OLED\OLED.h
 .\objects\oled.o: .\Hardware\Key.h
+.\objects\oled.o: .\Hardware\Modbus.h
 .\objects\oled.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 .\objects\oled.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
 .\objects\oled.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\math.h

@@ -7,14 +7,6 @@
 #define RS485_IO_PIN          GPIO_Pin_1     // 根据实际电路修改
 #define RS485_IO_RCC          RCC_AHB1Periph_GPIOA
 
-#define USART2_GPIO_PORT      GPIOA
-#define USART2_TX_PIN         GPIO_Pin_2
-#define USART2_RX_PIN         GPIO_Pin_3
-#define USART2_GPIO_RCC       RCC_AHB1Periph_GPIOA
-#define USART2_PERIPH         USART2
-#define USART2_RCC            RCC_APB1Periph_USART2
-#define USART2_IRQn           USART2_IRQn
-
 /* 常量定义 -----------------------------------------------------------------*/
 #define RX_BUF_SIZE       9   // 接收缓冲区大小（含2字节CRC）
 #define TX_BUF_SIZE       8   // 发送请求帧长度
@@ -53,10 +45,9 @@ typedef struct {
 
 uint16_t ModbusCRC_CheckTable(uint8_t *data, uint16_t length);
 void Modbus_Init(void);
-static void GPIO_Config(void);
-static void USART2_Init(void);
-static void NVIC_Config(void);
+static void Modbus_GPIOConfig(void);
 static void Delay(uint32_t nCount);
+void USART1_Init(u32 bound);
 void PowerMeter_RequestData(void);
 void PowerMeter_StartReceive(void);
 void PowerMeter_DataAnalyse(void);

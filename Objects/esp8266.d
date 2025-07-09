@@ -81,6 +81,7 @@
 .\objects\esp8266.o: .\Start\stm32f4xx.h
 .\objects\esp8266.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdarg.h
 .\objects\esp8266.o: .\Hardware\Key.h
+.\objects\esp8266.o: .\Hardware\Modbus.h
 .\objects\esp8266.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\stdlib.h
 .\objects\esp8266.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\string.h
 .\objects\esp8266.o: D:\Keil_v5\ARM\ARMCOMPLIER506\Bin\..\include\math.h
